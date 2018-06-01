@@ -1,0 +1,47 @@
+"""
+Author: Thomas Sandmann
+Aim: A simple Snakemake workflow to QC single-end RNA-Seq data
+Date: Fri June 1st
+Run: snakemake -s Snakefile -p --cores 2 2>&1 | tee snake.log
+"""
+
+SAMPLES, = glob_wildcards("{sample}_R1.fastq.gz")
+
+def LOCAL():
+    return [
+        "multiqc_report.html"
+    ]
+
+rule all:
+    input: LOCAL()
+
+rule fastqc:
+    input: "{prefix}_R1.fastq.gz"
+    output:
+        qc = "{prefix}/{prefix}_R1_fastqc.zip"
+    threads: 1
+    shell:
+        """
+        fastqc \
+            -o $(dirname {output.qc}) \
+  	    -t {threads} \
+	    {input}
+        """
+
+rule multiqc:
+    input: 
+        fastqc = expand("{prefix}/{prefix}_R1_fastqc.zip", prefix=SAMPLES)
+    output:
+        report = "multiqc_report.html",
+        data = "multiqc_data.zip",
+    threads: 1
+    params:
+        directories = SAMPLES
+    shell:
+        """
+        multiqc \
+            -z \
+            --force \
+            --cl_config "extra_fn_clean_exts: ['_R1',]" \
+            {params.directories}
+        """

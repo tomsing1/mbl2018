@@ -1,0 +1,48 @@
+# Require the AWS provider plugin
+require 'vagrant-aws'
+
+instance = "mbl2018-r"
+project = "mbl2018"
+poc = "mblneuro2017@gmail.com"
+
+# Create and configure the AWS instance(s)
+Vagrant.configure('2') do |config|
+
+  # Use dummy AWS box
+  config.vm.box = 'dummy'
+  config.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
+
+  # Specify AWS provider configuration
+  config.vm.provider 'aws' do |aws, override|
+
+    # Specify SSH keypair to use
+    aws.access_key_id = ENV['AWS_ACCESS_KEY_ID']
+    aws.secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
+    aws.keypair_name = "participant"
+    aws.security_groups = ["sg-a380b5dd"]  # open to the world
+    aws.iam_instance_profile_name = "EC2ReadDataBucket"
+    # Specify region, AMI ID, and security group(s)
+    aws.region = 'us-east-1'
+    aws.ami = 'ami-ac5df1d3' # Ubuntu 16.4: ami-80861296; BioC 3.6: ami-ac5df1d3
+    aws.instance_type = 'm4.2xlarge'
+    aws.subnet_id = 'subnet-3a46bf60'
+    aws.associate_public_ip = true
+    aws.terminate_on_shutdown = true
+
+    # Specify username and private key path
+    override.ssh.username = 'ubuntu'
+    override.ssh.private_key_path = '/Users/sandmann/.ssh/participant.pem'
+    
+    # Tags
+    aws.tags = {
+      'Name' => "#{instance}",
+      'env' => 'dev',
+      'project' => "#{project}",
+      'poc' => "#{poc}"
+    }
+
+    # Boostrapping
+    aws.user_data = File.read("bootstrap.sh")
+
+  end
+end
