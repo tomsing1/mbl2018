@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.DS_Store
+.vagrant
+*.Rproj
+logins.txt
+passwords.txt
+*~
