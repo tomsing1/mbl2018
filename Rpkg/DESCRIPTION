@@ -1,0 +1,27 @@
+Package: mbl2018
+Type: Package
+Title: Supporting package for Neurobiology course at MBL, 2018
+Version: 0.1.0
+Authors@R: c(
+    person("Steve", "Lianoglou", , "slianoglou@gmail.com", c("aut", "cre")),
+    person("Thomas", "Sandmann", , "sandmann.t@gmail.com", c("aut"))
+    )
+Description: Code to support genomics data analysis for Neurobiology course at
+    MBL, 2018.
+Depends:
+    aws.s3,
+    dplyr,
+    edgeR (>= 3.18.1),
+    ggplot2,
+    multiGSEA,
+    GeneSetDb.MSigDB.Mmusculus.v61,
+Imports:
+    checkmate
+Syggests:
+    testthat,
+    knitr,
+    rmarkdown
+Remotes: 
+    github::lianos/multiGSEA,
+    github::lianos/GeneSetDb.MSigDB.Mmusculus.v61
+RoxygenNote: 6.0.1.9000

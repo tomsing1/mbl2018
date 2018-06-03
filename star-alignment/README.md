@@ -156,3 +156,13 @@ We can now remove the raw FASTQ files we downloaded.
 ```bash
 rm -Rf /data/reads/$ORG
 ```
+
+# Finally
+
+When we run the above stes for each organism, ie.`$ORG="fly"`, `$ORG="fish"`,
+and `$ORG="mouse"`, we can sync the results back up to the S3 bucket:
+
+```bash
+aws s3 sync alignments s3://mbl.data/star-alignments/may
+```
+
