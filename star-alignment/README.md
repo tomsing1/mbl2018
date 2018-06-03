@@ -61,7 +61,9 @@ Spinning up a large instance to run files through STAR:
     AMI: mbl_2018_v1_ref - ami-260d7a59
     type: c5d.4xlarge (vCPU 16; RAM 32gb)
 
-Worfklow:
+For analysis we might pick a c5d.xlarge (8GB ram; 4vCPUs)
+
+## Worfklow:
 
 1. Setup machine after launch
 

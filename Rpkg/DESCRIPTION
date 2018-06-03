@@ -14,9 +14,10 @@ Depends:
     edgeR (>= 3.18.1),
     ggplot2,
     multiGSEA,
-    GeneSetDb.MSigDB.Mmusculus.v61,
+    GeneSetDb.MSigDB.Mmusculus.v61
 Imports:
-    checkmate
+    checkmate,
+    tidyr
 Syggests:
     testthat,
     knitr,
