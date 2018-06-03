@@ -23,7 +23,7 @@ Vagrant.configure('2') do |config|
     aws.iam_instance_profile_name = "EC2ReadWriteDataBucket"
     # Specify region, AMI ID, and security group(s)
     aws.region = 'us-east-1'
-    aws.ami = 'ami-ac5df1d3' # BioC 3.6
+    aws.ami = 'ami-8033baff' # BioC 3.7
     aws.instance_type = 't2.small'
     aws.block_device_mapping = [{ 'DeviceName' => '/dev/sda1', 'Ebs.VolumeSize' => 50 }]
     aws.subnet_id = 'subnet-3a46bf60'

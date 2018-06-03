@@ -1,8 +1,8 @@
 # Require the AWS provider plugin
 require 'vagrant-aws'
 
-instance = "mbl2017-instructor"
-project = "mbl2017"
+instance = "mbl2018-instructor"
+project = "mbl2018"
 poc = "mblneuro2017@gmail.com"
 
 # Create and configure the AWS instance(s)
@@ -26,7 +26,7 @@ Vagrant.configure('2') do |config|
     aws.region = 'us-east-1'
     aws.ami = 'ami-de6637c8' #MBL_v3: ami-de6637c8
     aws.instance_type = 'm4.large' # 't2.2xlarge'
-    aws.block_device_mapping = [{ 'DeviceName' => '/dev/sda1', 'Ebs.VolumeSize' => 500, 'Ebs.VolumeType' => 'gp2' }]
+    aws.block_device_mapping = [{ 'DeviceName' => '/dev/sda1', 'Ebs.VolumeSize' => 100, 'Ebs.VolumeType' => 'gp2' }]
     aws.subnet_id = 'subnet-3a46bf60'
     aws.associate_public_ip = true
     aws.terminate_on_shutdown = true

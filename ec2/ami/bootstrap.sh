@@ -15,12 +15,12 @@ pip install --upgrade pip
 pip install --upgrade awscli
 
 # install conda
-wget -q https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh \
+wget -q https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
   -O miniconda.sh
 chmod +x miniconda.sh
-./miniconda.sh -b -p /home/ubuntu/miniconda
+./miniconda.sh -b -p /home/ubuntu/miniconda3
 chown -R ubuntu /home/ubuntu/
-echo PATH=/home/ubuntu/miniconda/bin:$PATH >> /etc/environment
+echo PATH=/home/ubuntu/miniconda3/bin:$PATH >> /etc/environment
 
 # configure apache2 webserver to listen on port 8080 and show ubuntu's home directory
 cat <<EOF >> /etc/apache2/apache2.conf

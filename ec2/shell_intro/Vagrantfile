@@ -1,8 +1,8 @@
 # Require the AWS provider plugin
 require 'vagrant-aws'
 
-instance = "mbl2017-shell"
-project = "mbl2017"
+instance = "mbl2018-shell"
+project = "mbl2018"
 poc = "mblneuro2017@gmail.com"
 
 # Create and configure the AWS instance(s)
@@ -18,12 +18,12 @@ Vagrant.configure('2') do |config|
     aws.access_key_id = ENV['AWS_ACCESS_KEY_ID']
     aws.secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
     aws.keypair_name = "participant"
-    aws.security_groups = ["sg-a380b5dd"]  # open to the world
+    aws.security_groups = ["sg-fe751980"]  # open to the world
     aws.iam_instance_profile_name = "EC2ReadDataBucket"
     aws.region = 'us-east-1'
-    aws.elastic_ip = '34.204.46.183'
+    aws.elastic_ip = '18.205.137.44'
     aws.ami = 'ami-a4dc46db' # Ubuntu 16.4: ami-a4dc46db; BioC 3.5: ami-d47d09c2
-    aws.instance_type = 't2.medium'
+    aws.instance_type = 't2.small'
     aws.subnet_id = 'subnet-3a46bf60'
     aws.associate_public_ip = true
     aws.terminate_on_shutdown = true
