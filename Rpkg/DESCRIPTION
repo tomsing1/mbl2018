@@ -15,8 +15,10 @@ Depends:
     ggplot2
 Imports:
     checkmate,
+    matrixStats,
+    reshape2,
     tidyr
-Syggests:
+Suggests:
     testthat,
     knitr,
     rmarkdown,

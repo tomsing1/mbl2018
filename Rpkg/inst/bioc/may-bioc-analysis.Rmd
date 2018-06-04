@@ -7,7 +7,144 @@ output:
     toc_float: true
 ---
 
-```{r setup}
+```{r setup, message=FALSE, warning=FALSE}
+devtools::load_all("/Users/lianoglou/workspace/MBL2018-stuff/mbl2018/Rpkg")
+aws.signature::use_credentials("mbl18")
+# library(FacileAnalysis)
+# library(FacileViz)
+library(multiGSEA)
+library(ComplexHeatmap)
+library(ggplot2)
+theme_set(theme_bw())
+```
 
+# Mouse
+
+```{r}
+y.mouse.all <- s3readRDS("s3://mbl.data/star-alignments/may/mouse/DGEList.rds")
+if ("description" %in% names(y.mouse.all$genes)) {
+  y.mouse.all$genes$description <- NULL
+}
+y.mouse.all$design <- model.matrix(~ 0 + group, y.mouse.all$samples)
+colnames(y.mouse.all$design) <- sub("group", "", colnames(y.mouse.all$design))
+
+ytm <- mbl_tidy(y.mouse.all) %>% 
+  select(-(replicate:N_ambiguous))
+y.mouse <- y.mouse.all[filterByExpr(y.mouse.all, y.mouse.all$design),,
+                       keep.lib.size=FALSE]
+y.mouse <- estimateDisp(y.mouse, robust = TRUE)
+```
+
+## PCA
+
+```{r}
+pca <- mbl_pca(y.mouse)
+ggplot(pca$data, aes(PC1, PC2, color = group)) +
+  geom_point()
+```
+
+1way anova
+
+```{r}
+onedes <- model.matrix(~ group, y.mouse$samples)
+ares <- glmQLFit(y.mouse, onedes, robust = TRUE) %>% 
+  glmQLFTest(2:ncol(onedes)) %>% 
+  topTags(n = Inf) %>% 
+  as.data.frame
+```
+
+```{r, fig.height = 10, fig.width = 7}
+take <- head(rownames(ares), 100)
+col.anno <- HeatmapAnnotation(
+  y.mouse$samples[, c("source", "genotype", "group")],
+  col = list(
+    source = create_color_map(y.mouse$samples$source, "Set1"),
+    genotype = create_color_map(y.mouse$samples$genotype, "Set2"),
+    group = create_color_map(y.mouse$samples$group, "Set3")))
+
+mgheatmap(y.mouse[take,], top_annotation = col.anno,
+          recenter = TRUE, rescale = TRUE,
+          rename.rows = "ext_gene", zlim = c(-2, 2))
+```
+
+# Differential Expression of KO
+
+## Pan tissue (source) analysis
+
+First analyze a "global" KO effect, then go source by source
+
+```{r}
+y.mouse$samples$genotype <- factor(y.mouse$samples$genotype,
+                                   c("wildtype", "knockout"))
+ko.des <- model.matrix(~ source + genotype, y.mouse$samples)
+ko.res <- glmQLFit(y.mouse, ko.des, robust = TRUE) %>% 
+  glmQLFTest("genotypeknockout") %>% 
+  topTags(n = Inf) %>% 
+  as.data.frame
+ko.sig <- filter(ko.res, FDR <= 0.10)
+
+filter(ytm, ens_gene %in% ko.res$ens_gene[1:10]) %>% 
+  ggplot(aes(source, cpm, fill = genotype)) +
+  geom_boxplot(outlier.size = 0, position = position_dodge(width = 0.9)) +
+  geom_point(position = position_jitterdodge(dodge.width = 0.9)) +
+  facet_wrap(~ ext_gene) +
+  theme(axis.text.x=element_text(angle=90, hjust=1))
+```
+
+```{r}
+gg <- filter(ytm, ext_gene == "Atoh1") %>% 
+  ggplot(aes(source, cpm, fill = genotype)) +
+  geom_boxplot(outlier.size = 0, position = position_dodge(width = 0.9)) +
+  geom_point(position = position_jitterdodge(dodge.width = 0.9)) +
+  facet_wrap(~ ext_gene) +
+  theme(axis.text.x=element_text(angle=90, hjust=1))
+gg
+```
+
+## Source-by-source analysis
+
+```{r}
+res.all <- lapply(unique(y.mouse$samples$source), function(s) {
+  message("====", s)
+  ys <- y.mouse[, y.mouse$samples$source == s]
+  ys$design <- model.matrix(~ genotype, ys$samples)
+  glmQLFit(ys, ys$design, robust = TRUE) %>% 
+    glmQLFTest("genotypeknockout") %>% 
+    topTags(n = Inf) %>% 
+    as.data.frame %>% 
+    select(-description) %>% 
+    mutate(source = s)
+}) %>% bind_rows
+
+res.sig <- res.all %>% 
+  filter(FDR < 0.1)
+```
+
+Number of DEG per source
+
+```{r}
+ggplot(res.sig, aes(source)) +
+  geom_bar() +
+  theme(axis.text.x=element_text(angle=90, hjust=1))
+```
+
+```{r}
+observe <- filter(res.sig, source != "cheek")
+filter(ytm, ens_gene %in% observe$ens_gene) %>% 
+  ggplot(aes(source, cpm, fill = genotype)) +
+  geom_boxplot(outlier.size = 0, position = position_dodge(width = 0.9)) +
+  geom_point(position = position_jitterdodge(dodge.width = 0.9)) +
+  facet_wrap(~ ext_gene) +
+  theme(axis.text.x=element_text(angle=90, hjust=1))
+```
+
+# GSEA of cheek
+
+```{r}
+gdbm <- getMSigGeneSetDb(c("h", "c2", "c5", "c7"), "mouse", "ensembl")
+
+ys <- y.mouse[, y.mouse$samples$source == "cheek"]
+ys$design <- model.matrix(~ genotype, ys$samples)
+mgm <- multiGSEA(gdbm, ys, ys$design, "genotypeknockout", "camera")
 ```
 

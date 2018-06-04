@@ -16,7 +16,7 @@ align.dir <- "/data/alignments/may"
 genDGEList <- function(organism = c("mouse", "fly", "fish")) {
   count.base <- file.path("/data/alignments", organism)
   sample.names <- dir(count.base, full.names = FALSE)
-  
+
   # create count table and gather alignment info per sample ==============
   count.fn <- file.path(count.base, sample.names, "ReadsPerGene.out.tab")
   counts.all <- lapply(count.fn, function(fn) {
@@ -30,21 +30,22 @@ genDGEList <- function(organism = c("mouse", "fly", "fish")) {
   })
   counts <- do.call(cbind, lapply(counts.all, "[[", "counts"))
   rownames(counts) <- rownames(counts.all[[1]]$counts)
-  
+
   ameta <- bind_rows(lapply(counts.all, "[[", "meta"))
   rownames(ameta) <- colnames(counts)
-  
+
   si <- cbind(
     get_sample_annotation(organism, "provided")[rownames(ameta),],
     ameta)
-  
+
   if (any(is.na(si$sample_id))) stop("sample information matching went south")
-  
-  gene.info <- get_gene_annotation(organism)
+
+  gene.info <- mbl_get_gene_annotation(organism)
   gxref <- match(rownames(counts), gene.info$ens_gene)
   if (any(is.na(gxref))) stop("Gene matching went south")
-  
+
   gi <- gene.info[gxref, ]
+  gi$description <- NULL
   stopifnot(all.equal(rownames(counts), rownames(gi)))
 
   out <- DGEList(counts, samples = si, genes = gi)
@@ -54,10 +55,10 @@ genDGEList <- function(organism = c("mouse", "fly", "fish")) {
 if (FALSE) {
   y.mouse <- genDGEList("mouse")
   s3saveRDS(y.mouse, "s3://mbl.data/star-alignments/may/mouse/DGEList.rds")
-  
+
   y.fly <- genDGEList("fly")
   s3saveRDS(y.fly, "s3://mbl.data/star-alignments/may/fly/DGEList.rds")
-  
+
   y.fish <- genDGEList("fish")
   s3saveRDS(y.fish, "s3://mbl.data/star-alignments/may/fish/DGEList.rds")
 }

@@ -127,12 +127,12 @@ s3://mbl.data/referenes/<ORGANISM>/gene_table.csv
 ```
 
 which you can download and load into R, but are also made availble from within
-the `mbl2018` R package via the `get_gene_annotation()` function, which uses
+the `mbl2018` R package via the `mbl_get_gene_annotation()` function, which uses
 R code to download the same file from S3 and loads it straight into your
 session, like so:
 
 ```{r, message=FALSE, warning=FALSE}
-mouse_tx_info <- get_transcript_annotation("mouse")
+mouse_tx_info <- mbl_get_transcript_annotation("mouse")
 ```
 
 ## Simple Sleuth Setup
