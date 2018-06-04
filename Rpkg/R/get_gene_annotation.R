@@ -38,6 +38,7 @@ get_gene_annotation <- function(organism = c("mouse", "fly", "fish")) {
 
 #' @export
 #' @rdname get_gene_annotation
+#' @importFrom readr read_csv read_tsv
 get_transcript_annotation <- function(organism = c("mouse", "fly", "fish")) {
   organism <- match.arg(organism)
   anno.base <- "s3://mbl.data/references/%s/gene_table.csv"

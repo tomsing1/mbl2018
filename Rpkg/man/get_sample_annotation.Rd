@@ -5,7 +5,8 @@
 \title{Retrieve the sample annotation}
 \usage{
 get_sample_annotation(organism = c("mouse", "fly", "fish"),
-  dataset = c("provided", "generated"), for_kallisto = FALSE)
+  dataset = c("provided", "generated"), for_kallisto = FALSE,
+  kallisto_parent_dir = NULL)
 }
 \arguments{
 \item{organism}{either "mouse", "fly", or "fish".}
