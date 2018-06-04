@@ -12,16 +12,16 @@ Depends:
     aws.s3,
     dplyr,
     edgeR (>= 3.18.1),
-    ggplot2,
-    multiGSEA,
-    GeneSetDb.MSigDB.Mmusculus.v61
+    ggplot2
 Imports:
     checkmate,
     tidyr
 Syggests:
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    multiGSEA,
+    GeneSetDb.MSigDB.Mmusculus.v61
 Remotes: 
     github::lianos/multiGSEA,
     github::lianos/GeneSetDb.MSigDB.Mmusculus.v61
