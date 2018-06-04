@@ -17,13 +17,13 @@ mmtgko03,trigeminal,knockout,NA,3,mouse/mmtgko03_R1.fastq.gz,180524MBL01,1,AGGCA
 mmtgwt02,trigeminal,wildtype,NA,2,mouse/mmtgwt02_R1.fastq.gz,180524MBL01,1,TAAGGCGA-CTCTCTAT,mouse,1_HHFGCBCX2.1.TAAGGCGA_CTCTCTAT.unmapped.1.fastq.gz
 mmtgwt03,trigeminal,wildtype,NA,3,mouse/mmtgwt03_R1.fastq.gz,180524MBL01,1,CGTACTAG-CGTCTAAT,mouse,1_HHFGCBCX2.1.CGTACTAG_CGTCTAAT.unmapped.1.fastq.gz
 mmtgwt04,trigeminal,wildtype,NA,4,mouse/mmtgwt04_R1.fastq.gz,180524MBL01,1,AGGCAGAA-AAGGAGTA,mouse,1_HHFGCBCX2.1.AGGCAGAA_AAGGAGTA.unmapped.1.fastq.gz
-mmwpko01,whisker pad,knockout,NA,1,mouse/mmwpko01_R1.fastq.gz,180524MBL01,1,TAAGGCGA-CTAAGCCT,mouse,1_HHFGCBCX2.1.TAAGGCGA_CTAAGCCT.unmapped.1.fastq.gz
-mmwpko02,whisker pad,knockout,NA,2,mouse/mmwpko02_R1.fastq.gz,180524MBL01,1,CGTACTAG-GTAAGGAG,mouse,1_HHFGCBCX2.1.CGTACTAG_GTAAGGAG.unmapped.1.fastq.gz
-mmwpko03,whisker pad,knockout,NA,3,mouse/mmwpko03_R1.fastq.gz,180524MBL01,1,AGGCAGAA-TATCCTCT,mouse,1_HHFGCBCX2.1.AGGCAGAA_TATCCTCT.unmapped.1.fastq.gz
-mmwpwt01,whisker pad,wildtype,NA,1,mouse/mmwpwt01_R1.fastq.gz,180524MBL01,1,TAAGGCGA-AAGGAGTA,mouse,1_HHFGCBCX2.1.TAAGGCGA_AAGGAGTA.unmapped.1.fastq.gz
-mmwpwt02,whisker pad,wildtype,NA,2,mouse/mmwpwt02_R1.fastq.gz,180524MBL01,1,CGTACTAG-ACTGCATA,mouse,1_HHFGCBCX2.1.CGTACTAG_ACTGCATA.unmapped.1.fastq.gz
-mmwpwt03,whisker pad,wildtype,NA,3,mouse/mmwpwt03_R1.fastq.gz,180524MBL01,1,AGGCAGAA-CTCTCTAT,mouse,1_HHFGCBCX2.1.AGGCAGAA_CTCTCTAT.unmapped.1.fastq.gz
-mmwpwt04,whisker pad,wildtype,NA,4,mouse/mmwpwt04_R1.fastq.gz,180524MBL01,1,AGGCAGAA-TCTCTCCG,mouse,1_HHFGCBCX2.1.AGGCAGAA_TCTCTCCG.unmapped.1.fastq.gz
+mmwpko01,whisker_pad,knockout,NA,1,mouse/mmwpko01_R1.fastq.gz,180524MBL01,1,TAAGGCGA-CTAAGCCT,mouse,1_HHFGCBCX2.1.TAAGGCGA_CTAAGCCT.unmapped.1.fastq.gz
+mmwpko02,whisker_pad,knockout,NA,2,mouse/mmwpko02_R1.fastq.gz,180524MBL01,1,CGTACTAG-GTAAGGAG,mouse,1_HHFGCBCX2.1.CGTACTAG_GTAAGGAG.unmapped.1.fastq.gz
+mmwpko03,whisker_pad,knockout,NA,3,mouse/mmwpko03_R1.fastq.gz,180524MBL01,1,AGGCAGAA-TATCCTCT,mouse,1_HHFGCBCX2.1.AGGCAGAA_TATCCTCT.unmapped.1.fastq.gz
+mmwpwt01,whisker_pad,wildtype,NA,1,mouse/mmwpwt01_R1.fastq.gz,180524MBL01,1,TAAGGCGA-AAGGAGTA,mouse,1_HHFGCBCX2.1.TAAGGCGA_AAGGAGTA.unmapped.1.fastq.gz
+mmwpwt02,whisker_pad,wildtype,NA,2,mouse/mmwpwt02_R1.fastq.gz,180524MBL01,1,CGTACTAG-ACTGCATA,mouse,1_HHFGCBCX2.1.CGTACTAG_ACTGCATA.unmapped.1.fastq.gz
+mmwpwt03,whisker_pad,wildtype,NA,3,mouse/mmwpwt03_R1.fastq.gz,180524MBL01,1,AGGCAGAA-CTCTCTAT,mouse,1_HHFGCBCX2.1.AGGCAGAA_CTCTCTAT.unmapped.1.fastq.gz
+mmwpwt04,whisker_pad,wildtype,NA,4,mouse/mmwpwt04_R1.fastq.gz,180524MBL01,1,AGGCAGAA-TCTCTCCG,mouse,1_HHFGCBCX2.1.AGGCAGAA_TCTCTCCG.unmapped.1.fastq.gz
 dmneaohi01,neuron,silencing_channel,histamine_inhibition,1,fly/dmneaohi01_R1.fastq.gz,180524MBL02,2,TAAGGCGA-CGTCTAAT,fly,2_HHFGCBCX2.2.TAAGGCGA_CGTCTAAT.unmapped.1.fastq.gz
 dmneaohi03,neuron,silencing_channel,histamine_inhibition,3,fly/dmneaohi03_R1.fastq.gz,180524MBL02,2,CGTACTAG-CTCTCTAT,fly,2_HHFGCBCX2.2.CGTACTAG_CTCTCTAT.unmapped.1.fastq.gz
 dmneaohi05,neuron,silencing_channel,histamine_inhibition,5,fly/dmneaohi05_R1.fastq.gz,180524MBL02,2,AGGCAGAA-GTAAGGAG,fly,2_HHFGCBCX2.2.AGGCAGAA_GTAAGGAG.unmapped.1.fastq.gz
