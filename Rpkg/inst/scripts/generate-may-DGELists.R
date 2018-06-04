@@ -41,20 +41,13 @@ genDGEList <- function(organism = c("mouse", "fly", "fish")) {
   if (any(is.na(si$sample_id))) stop("sample information matching went south")
   
   gene.info <- get_gene_annotation(organism)
-  gxref <- match(rownames(counts), gene.info$ensembl_gene_id)
+  gxref <- match(rownames(counts), gene.info$ens_gene)
   if (any(is.na(gxref))) stop("Gene matching went south")
   
-  gi <- gene.info[gxref, c("ensembl_gene_id", "symbol", "biotype")]
+  gi <- gene.info[gxref, ]
   stopifnot(all.equal(rownames(counts), rownames(gi)))
 
   out <- DGEList(counts, samples = si, genes = gi)
-  # organism specific group specification
-  if (organism == "fly") {
-    out$samples$group <- paste(si$genotype, si$treatment, sep = "_")
-  } else {
-    out$samples$group <- paste(si$source, si$genotype, sep = "_")
-  }
-  
   calcNormFactors(out)
 }
 

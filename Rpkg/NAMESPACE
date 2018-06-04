@@ -3,6 +3,7 @@
 S3method(tidy,DGEList)
 export(get_gene_annotation)
 export(get_sample_annotation)
+export(get_transcript_annotation)
 export(load_rnaseq)
 importFrom(broom,tidy)
 importFrom(edgeR,cpm)

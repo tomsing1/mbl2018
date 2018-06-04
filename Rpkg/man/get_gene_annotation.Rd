@@ -2,9 +2,12 @@
 % Please edit documentation in R/get_gene_annotation.R
 \name{get_gene_annotation}
 \alias{get_gene_annotation}
+\alias{get_transcript_annotation}
 \title{Retrieves the gene-level anntation file for this organism}
 \usage{
 get_gene_annotation(organism = c("mouse", "fly", "fish"))
+
+get_transcript_annotation(organism = c("mouse", "fly", "fish"))
 }
 \arguments{
 \item{organism}{either "mouse", "fly", or "fish"}

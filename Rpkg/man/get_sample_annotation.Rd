@@ -4,11 +4,11 @@
 \alias{get_sample_annotation}
 \title{Retrieve the sample annotation}
 \usage{
-get_sample_annotation(organism = NULL, dataset = c("provided", "generated"))
+get_sample_annotation(organism = c("mouse", "fly", "fish"),
+  dataset = c("provided", "generated"), for_kallisto = FALSE)
 }
 \arguments{
-\item{organism}{either "mouse", "fly", or "fish". If `NULL`, annotations
-for all experiments are returned.}
+\item{organism}{either "mouse", "fly", or "fish".}
 
 \item{dataset}{either "provided" or "generated"}
 }
