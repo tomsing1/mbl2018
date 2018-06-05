@@ -78,6 +78,23 @@ We understand that this will be very frustrating at times, but trust that:
    ii. These `mbl_*` functions won't disappear, and you can refer (or use)
        them for your future analyses.
 
+3. **One more thing about plotting.** In a later class, we will introduce a
+   powerful and (eventually) intuitive system of visualizing data in R using
+   the [ggplot2 pakage](http://ggplot2.tidyverse.org). This package provides a
+   grammar of data visualization that composable is used r you combine together to quickly make
+   visualizations.
+   
+   i. There will be code in this tutorial that uses `ggplot` to plot graphics.
+      We will explain a bit about this "live," but you will learn more about it
+      in a class coming soon.
+   ii. the `mbl_*` plotting functions in this package use ggplot2, and you can
+      look at that source code as a reference.
+
+# Goal of Differential Expression Analysis
+
+TODO: show examples of DGE and explain that we are finding genes whose
+mean expression is different (ie. "not the same") across groups.
+
 # Data Setup
 
 To perform an analysis of gene expression data, we have three different sources
@@ -125,10 +142,7 @@ of data that we want to merge together.
       
    ii. Different DGE analysis tools use data in this format to find DGE.
 
-## What is differential expression?
-
-TODO: show examples of DGE and explain that we are finding genes whose
-      mean expression is different (ie. "not the same") across groups.
+2. How does this help do the DGE we outlined above?
 
 ## Do it
 
@@ -141,8 +155,57 @@ txi <- tximport(files, type = "kallisto", tx2gene = tx2gene,
                 countsFromAbundance = "lengthScaledTPM")
 ```
 
-2. 
+2. TODO: Create DGEList out of everythiing
 
+3. TODO: Redraw ExpressionSet image with `y$counts`, `y$genes`, `y$samples`
+   labels.
+
+# Quality Control
+
+In addition to the read-level quality control you already did with FastQC and
+MultiQC, there are a number of ways to explore the quality of our data now that
+it has been summarized to gene-level expression estimates per sample.
+
+## Effective Sequencing Depth
+
+How many reads aligned to the features (genes) we are analyzing here?
+
+1. TODO: barplot of `lib.size`
+2. TODO: barplot of `lib.size` per group
+
+## Principal Component Analysis
+
+TODO: Show simple example of 2d correlated measurements, rotate and project to
+1D.
+
+## Heatmaps
+
+TODO: Heatmaps
+
+## QC Conclusion
+
+3. TODO: identify crazy outliers and remove those samples
+
+# Differenial Gene Expression
+
+1. Introduce design matrix
+   i. explains experiment (`~ 0 + group`)
+   ii. call `lmFit` and show `fit$coefficients`
+   iii. `mbl_plot_expression` of genes and show 1:1 match to (ii)
+   
+2. Introduce contrast as doing arithmetic over columns of the design matrix
+3. Run DGE!
+4. Introduce alternate paramterization with intercept
+   i. show `fit$coefficients`, use `mbl_plot_expression` to eyeball logFC
+      calc off of columns vs intercept
+
+5. Use (4) paramaterization to find tissue specific genes
+6. Draw heatmap of (5)
+   i. use `mbl_heatmap` but explain further customization with `ComplexHeatmap`
+
+# GSEA
+
+multiGSEA reuses what we learned above but gives you much bang for your back
 
 [//]: # References =============================================================
 
