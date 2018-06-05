@@ -193,6 +193,20 @@ sources of data that we want to merge together.
 
 ## Why?
 
+The main reason to package your data in this way is that it now becomes easier
+to handle and manipulate.
+
+We will put store these three pieces of data into a variable `y`, which is
+a `DGEList`. A `DGEList` is simply a `list()` object (remember those(?))
+with a bit more know-how.
+
+1. The **assay** data is retrieved via `y$counts`.
+2. The **phenotype data** is retrieved via `y$samples`
+3. The **gene-level data** is retrieved via `y$samples`
+
+
+
+This
 1. Data is easily manipulatable:
 
    i. indexable/subsettable like a 2d object, you can extract rows and columns
@@ -259,6 +273,9 @@ TODO: Heatmaps
       calc off of columns vs intercept
 
 5. Use (4) paramaterization to find tissue specific genes
+   - [Omnibus test][omnibus]: test whether the explained variance in a set of
+     data is significantly greater than the unexplained variance, overall.
+
 6. Draw heatmap of (5)
    i. use `mbl_heatmap` but explain further customization with `ComplexHeatmap`
 
@@ -272,6 +289,7 @@ multiGSEA reuses what we learned above but gives you much bang for your back
 [deseq2tut]: http://bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html
 [ensid]: https://uswest.ensembl.org/Help/Faq?id=488
 [glimmatut]: https://f1000research.com/articles/5-1408/v2
+[omnibus]: https://en.wikipedia.org/wiki/Omnibus_test
 [qlftut]: https://f1000research.com/articles/5-1438/v2
 [ttest]: https://en.wikipedia.org/wiki/Student%27s_t-test
 [tximport]: http://bioconductor.org/packages/release/bioc/vignettes/tximport/inst/doc/tximport.html

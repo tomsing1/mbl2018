@@ -10,4 +10,5 @@
 #' @return a DGEList of the data.
 mbl_load_rnaseq <- function(organism = c("mouse", "fly", "fish"),
                             dataset = c("provided", "generated"), ...) {
+
 }
