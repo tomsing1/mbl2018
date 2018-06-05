@@ -7,6 +7,7 @@ output:
     toc: true
     toc_depth: 3
     toc_float: true
+    code_folding: hide
 vignette: >
   %\VignetteIndexEntry{Analysis of RNA-seq data (tutorial)}
   %\VignetteEngine{knitr::rmarkdown}
@@ -14,6 +15,10 @@ vignette: >
 ---
 
 ```{r setup, include = FALSE}
+library(dplyr)
+library(ggplot2)
+theme_set(theme_bw())
+source("tutorial-helpers.R")
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -81,8 +86,8 @@ We understand that this will be very frustrating at times, but trust that:
 3. **One more thing about plotting.** In a later class, we will introduce a
    powerful and (eventually) intuitive system of visualizing data in R using
    the [ggplot2 pakage](http://ggplot2.tidyverse.org). This package provides a
-   grammar of data visualization that composable is used r you combine together to quickly make
-   visualizations.
+   composable grammar of data visualization that you can use to quickly build
+   up arbitrarily detailed plots.
    
    i. There will be code in this tutorial that uses `ggplot` to plot graphics.
       We will explain a bit about this "live," but you will learn more about it
@@ -92,15 +97,69 @@ We understand that this will be very frustrating at times, but trust that:
 
 # Goal of Differential Expression Analysis
 
-TODO: show examples of DGE and explain that we are finding genes whose
-mean expression is different (ie. "not the same") across groups.
+We have performed manipulations to groups of samples (replicates) and want to
+understand how these manipulations effect our samples. To measure this effect,
+we have chosen to use a "ruler" that measures gene expression estimates of all
+of the genes per sample (RNA-seq).
+
+The goal of a differential expression analysis is to identify the **individual**
+genes that exhibit **statistically significant** differences in their
+**mean expression estimates**.
+
+**Note that** *statistical significance* **does not equal biological
+significance**.
+
+## Simple Example
+
+Suppose we want to understand the effect of knocking out an ion channel on the
+gene expression profiles taken from Merkel cells. To explore this effect, you
+isolate Merkel cells from three WT mice, and three KO mice and perform RNA-seq
+on these samples.
+
+We may identify results that land into three broad categories, as outlined
+below:
+
+```{r, fig.height = 3, fig.width = 7.6}
+exdat <- example_dge_data()
+ggplot(exdat, aes(x = condition, y = expression)) +
+   geom_boxplot() +
+   geom_point() +
+   facet_wrap(~ gene)
+```
+
+* **Gene A** shows clear differential expression. The mean expression of this
+  gene in WT mice is much higher than in KO mice.
+* **Gene B** shows questionable differential expression. Although the mean
+  gene expression between the two groups is clearly different, there is a
+  higher **variance** in these expression estimates, so it's not clear that
+  future replicate measurements will show these to be different, or similar.
+* **Gene C** the mean expression of these genes between conditions doesn't
+  look to be different.
+
+## Formal Assessment of Differential Gene Expression
+
+To address the issues diagrammed above, we will apply statistical tools
+developed specifically for RNA-seq data to:
+
+1. estimate the mean differenes in expression between groups of replicate
+   samples
+2. incorporate the variance in the expression estimates to provide p-values
+   for the statistical significance of this mean difference given the this
+   variance.
+
+The statistical framework we will use for these analyses is based on
+[linear models](https://en.wikipedia.org/wiki/Linear_model).
+
+In your prior encounters with statistics, you may have head of (or used) things
+like [t-tests][ttest] or [ANOVA][anova]. Linear models are simply super-charged
+versions of these.
 
 # Data Setup
 
-To perform an analysis of gene expression data, we have three different sources
-of data that we want to merge together.
+To perform an analysis of gene expression data, we have **three** different
+sources of data that we want to merge together.
 
-(TODO: ExpressionSet image)
+![Expression Data Schematic](./images/data_schematic.png)
 
 1. The processed RNA-seq data: aka our **assay data**. This consists of a matrix
    of gene-level counts for each sample across our entire experiment. The rows
@@ -209,9 +268,11 @@ multiGSEA reuses what we learned above but gives you much bang for your back
 
 [//]: # References =============================================================
 
+[anova]: https://en.wikipedia.org/wiki/Analysis_of_variance
 [deseq2tut]: http://bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html
 [ensid]: https://uswest.ensembl.org/Help/Faq?id=488
 [glimmatut]: https://f1000research.com/articles/5-1408/v2
 [qlftut]: https://f1000research.com/articles/5-1438/v2
+[ttest]: https://en.wikipedia.org/wiki/Student%27s_t-test
 [tximport]: http://bioconductor.org/packages/release/bioc/vignettes/tximport/inst/doc/tximport.html
 
