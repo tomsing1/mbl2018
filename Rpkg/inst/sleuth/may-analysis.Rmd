@@ -106,7 +106,7 @@ you:
 devtools::load_all("/home/ubuntu/mbl2018/Rpkg")
 library(ggplot2)
 theme_set(theme_bw())
-sample_info <- get_sample_annotation("mouse", dataset = "provided",
+sample_info <- get_sample_annotation("mouse", dataset = "may",
                                      for_kallisto = TRUE,
                                      kallisto_parent_dir = "/data/may-kallisto/mouse")
 ```

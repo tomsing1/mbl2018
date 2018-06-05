@@ -7,7 +7,7 @@ output:
     toc: true
     toc_depth: 3
     toc_float: true
-    code_folding: hide
+    code_folding: show
 vignette: >
   %\VignetteIndexEntry{Analysis of RNA-seq data (tutorial)}
   %\VignetteEngine{knitr::rmarkdown}
@@ -39,9 +39,9 @@ following:
    "vanilla" differential expression to assist with the interpretation of
    your experiment.
 
-# Caveats
+## Caveats
 
-## There is no joy without suffering
+### There is no joy without suffering
 
 There are sections of this analysis document that are not filled in. This is
 intentional, because we will work on these parts together in the class. 
@@ -56,7 +56,7 @@ We understand that this will be very frustrating at times, but trust that:
 1. we will get through this together (sleep be damned); and
 2. deep down inside, we will be better people for it
 
-## A little joy never hurt nobody
+### A little joy never hurt nobody
 
 1. For your **future reference**, we have included a sister tutorial in this
    package ("Analysis of RNA-seq data (complete)") which "fills in the holes"
@@ -95,7 +95,7 @@ We understand that this will be very frustrating at times, but trust that:
    ii. the `mbl_*` plotting functions in this package use ggplot2, and you can
       look at that source code as a reference.
 
-# Goal of Differential Expression Analysis
+## Goal of Differential Expression Analysis
 
 We have performed manipulations to groups of samples (replicates) and want to
 understand how these manipulations effect our samples. To measure this effect,
@@ -109,7 +109,7 @@ genes that exhibit **statistically significant** differences in their
 **Note that** *statistical significance* **does not equal biological
 significance**.
 
-## Simple Example
+### Simple Example
 
 Suppose we want to understand the effect of knocking out an ion channel on the
 gene expression profiles taken from Merkel cells. To explore this effect, you
@@ -136,7 +136,7 @@ ggplot(exdat, aes(x = condition, y = expression)) +
 * **Gene C** the mean expression of these genes between conditions doesn't
   look to be different.
 
-## Formal Assessment of Differential Gene Expression
+### Formal Assessment of Differential Gene Expression
 
 To address the issues diagrammed above, we will apply statistical tools
 developed specifically for RNA-seq data to:
@@ -150,11 +150,11 @@ developed specifically for RNA-seq data to:
 The statistical framework we will use for these analyses is based on
 [linear models](https://en.wikipedia.org/wiki/Linear_model).
 
-In your prior encounters with statistics, you may have head of (or used) things
-like [t-tests][ttest] or [ANOVA][anova]. Linear models are simply super-charged
-versions of these.
+In your prior encounters with statistics, you may have heard of (or used) things
+like [t-tests][ttest] or [ANOVA][anova] ... you can think of inear models are
+super-charged versions of these methods.
 
-# Data Setup
+## Data Setup
 
 To perform an analysis of gene expression data, we have **three** different
 sources of data that we want to merge together.
@@ -191,7 +191,7 @@ sources of data that we want to merge together.
    ii. official gene name/symbol
    iii. "biotype" (protein coding, lincRNA, etc.)
 
-## Why?
+### Why?
 
 The main reason to package your data in this way is that it now becomes easier
 to handle and manipulate.
@@ -204,20 +204,130 @@ with a bit more know-how.
 2. The **phenotype data** is retrieved via `y$samples`
 3. The **gene-level data** is retrieved via `y$samples`
 
+This means that our data will now be accessible like so:
+
+```{r, out.width = "300px"}
+# ![DGEList Data Schematic](./images/data_schematic_dgelist.png)
+knitr::include_graphics("./images/data_schematic_dgelist.png")
+```
+
+We will learn how to build these objects from our data. We have also provided
+helper functions inside this `mbl2018` R package that allow you to retrieve
+pre-generated datsets, and will use the mouse data for this.
+
+First we load the `mbl2018` R package, and retrieve the `"mouse"` dataset.
+
+```{r, message=FALSE, warning=FALSE}
+library(mbl2018)
+y <- mbl_load_rnaseq(organism = "mouse", dataset = "may")
+is(y)
+```
+
+Let's take a peak at our gene counts in `y$counts`
+
+```{r}
+head(y$counts)
+```
+
+**Try to take a peak at the sample and gene inormation to see what type of
+information we have**
+
+### Manipulating a DGEList
+
+Although a single `DGEList` internally carries a number of different pieces of
+data, we can still think of this as a two-dimensionall object that
+we can manipulate (like a `data.frame`, or a `matrix`).
+
+The rows of this pseudo-2D object correspond to the genes, and the columns are
+the samples:
+
+```{r}
+dim(y)
+```
+
+```{r}
+head(rownames(y))
+```
+
+```{r}
+head(colnames(y))
+```
+
+In your analyses, you will find cause to remove some genes or samples from
+downstream analysis, and you can index into this object like other 2D objects
+in R. For instance, let's say we only want data for the first, tenth, and
+twentieth gene, and the first five samples:
+
+```{r}
+y2 <- y[c(1, 10, 20), 1:5]
+dim(y2)
+```
+
+**Take a look at the assay, gene-level, and sample phenotypic data to confirm
+that everything was subsetted correctly.**
+
+# Build Your Own DGEList
+
+In a previous session, you learned how to use Kallisto to align FASTQ files.
+You then combined this with some shell scripting mojo to automate the
+quantitation of all of the samples into an output directory.
+
+While you were wrestling with those tasks, we also "baked" these data and have
+made them available to you in the `s3://mbl.data/mapping/may` directory.
+
+Let's take a look at what's in there by listing the contents of this bucket.
+You will find a "Terimanl" tab in one of the panes of your RStudio IDE. You
+should find it in the same window pane that has the "Console". This is just
+like the "Chrome Terminal" you have been using, so let's go there and list
+the contents of this directory:
+
+```bash
+$ aws s3 ls s3://mbl.data/mapping/may/
+                           PRE fish/
+                           PRE fly/
+                           PRE mouse/
+```
+
+We will start by assembling the mouse data first, which we will use as the basis
+for the rest of this tutorial. When we are done, you can come back and tweak
+this code.
+
+Staying inside the Terminal, run the following command to sync the aligned
+mouse data to your machine:
+
+```bash
+$ aws s3 sync s3://mbl.data/mapping/may/mouse ~/may-mouse-kallisto
+```
+
+**Take a peak in the directory you just created to confirm its contents.**
+
+**What do you see?**
+
+**Note: you can also explore the filesystem within R**
+
+## Sample Phenotypic Data
+
+An important part of conducting a successful experiment is to ensure that you
+keep the information about the samples you collect in a "tidy format". We
+introduced the idea of tidy data earlier.
+
+* The main concepts are summarized in
+  [this Wikipedia page](https://en.wikipedia.org/wiki/Tidy_data#Characteristics)
+* A full explanation of "tidy data" can be found in the "R or Data Science" book,
+  which is freely available online. [This is a direct link to the chapter that
+  explains Tidy Data](http://r4ds.had.co.nz/tidy-data.html).
+* A gateway to the "tidyverse" for more information
+  [is here][https://www.tidyverse.org].
+
+We have provided an example of a phenotypic data table or these mouse
+experiments that you can load into your workspace:
+
+```{r}
+pheno <- read.csv("~/may-mouse-kallisto/sample-information.csv",
+                  stringsAsFactors = FALSE)
+```
 
 
-This
-1. Data is easily manipulatable:
-
-   i. indexable/subsettable like a 2d object, you can extract rows and columns
-      and the right assay data, phneotypic data, and gene data come along
-      for the ride
-      
-   ii. Different DGE analysis tools use data in this format to find DGE.
-
-2. How does this help do the DGE we outlined above?
-
-## Do it
 
 1. Turn mouse Kallisto quant results into a matrix of gene-level data using
    [tximport][tximport]. Need a vector that points to the `abundance.h5` files

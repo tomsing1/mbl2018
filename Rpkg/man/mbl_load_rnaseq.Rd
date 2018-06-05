@@ -4,13 +4,13 @@
 \alias{mbl_load_rnaseq}
 \title{Loads RNA-seq datasets}
 \usage{
-mbl_load_rnaseq(organism = c("mouse", "fly", "fish"),
-  dataset = c("provided", "generated"), ...)
+mbl_load_rnaseq(organism = c("mouse", "fly", "fish"), dataset = c("may",
+  "generated"), ...)
 }
 \arguments{
 \item{organism}{either "mouse", "fly", or "fish"}
 
-\item{dataset}{either "provided" or "generated"}
+\item{dataset}{either "may" or "generated"}
 }
 \value{
 a DGEList of the data.

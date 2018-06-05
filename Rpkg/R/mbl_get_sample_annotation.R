@@ -4,16 +4,16 @@
 #'
 #' @export
 #' @param organism either "mouse", "fly", or "fish".
-#' @param dataset either "provided" or "generated"
+#' @param dataset either "may" or "generated"
 #' @return a data.frame of sample annotations
 mbl_get_sample_annotation <- function(organism = c("mouse", "fly", "fish"),
-                                      dataset = c("provided", "generated"),
+                                      dataset = c("may", "generated"),
                                       kallisto_parent_dir = NULL,
                                       trim = TRUE) {
   organism <- match.arg(organism)
   dataset <- match.arg(dataset)
 
-  if (dataset == "provided") {
+  if (dataset == "may") {
     out <- read.csv(
       paste(
         "https://raw.githubusercontent.com/tomsing1/mbl2018/master",

@@ -5,9 +5,11 @@
 \alias{mbl_get_transcript_annotation}
 \title{Retrieves the gene-level anntation file for this organism}
 \usage{
-mbl_get_gene_annotation(organism = c("mouse", "fly", "fish"))
+mbl_get_gene_annotation(organism = c("mouse", "fly", "fish"),
+  rm.description = TRUE)
 
-mbl_get_transcript_annotation(organism = c("mouse", "fly", "fish"))
+mbl_get_transcript_annotation(organism = c("mouse", "fly", "fish"),
+  rm.description = TRUE)
 }
 \arguments{
 \item{organism}{either "mouse", "fly", or "fish"}

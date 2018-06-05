@@ -6,14 +6,14 @@
 #'
 #' @export
 #' @param organism either "mouse", "fly", or "fish"
-#' @param dataset either "provided" or "generated"
+#' @param dataset either "may" or "generated"
 #' @return a DGEList of the data.
 mbl_load_rnaseq <- function(organism = c("mouse", "fly", "fish"),
-                            dataset = c("provided", "generated"), ...) {
+                            dataset = c("may", "generated"), ...) {
   organism <- match.arg(organism)
   dataset <- match.arg(dataset)
 
-  if (dataset == "provided") {
+  if (dataset == "may") {
     fn <- sprintf("s3://mbl.data/mapping/may/%s/kallisto-DGEList.rds",
                   organism)
   } else {

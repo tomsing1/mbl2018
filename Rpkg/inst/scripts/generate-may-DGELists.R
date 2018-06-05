@@ -35,7 +35,7 @@ genDGEList <- function(organism = c("mouse", "fly", "fish")) {
   rownames(ameta) <- colnames(counts)
 
   si <- cbind(
-    get_sample_annotation(organism, "provided")[rownames(ameta),],
+    get_sample_annotation(organism, "may")[rownames(ameta),],
     ameta)
 
   if (any(is.na(si$sample_id))) stop("sample information matching went south")

@@ -5,12 +5,13 @@
 \title{Retrieve the sample annotation}
 \usage{
 mbl_get_sample_annotation(organism = c("mouse", "fly", "fish"),
-  dataset = c("provided", "generated"), kallisto_parent_dir = NULL)
+  dataset = c("may", "generated"), kallisto_parent_dir = NULL,
+  trim = TRUE)
 }
 \arguments{
 \item{organism}{either "mouse", "fly", or "fish".}
 
-\item{dataset}{either "provided" or "generated"}
+\item{dataset}{either "may" or "generated"}
 }
 \value{
 a data.frame of sample annotations
