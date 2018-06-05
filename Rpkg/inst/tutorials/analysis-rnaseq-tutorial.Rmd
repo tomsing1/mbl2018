@@ -235,7 +235,7 @@ information we have**
 ### Manipulating a DGEList
 
 Although a single `DGEList` internally carries a number of different pieces of
-data, we can still think of this as a two-dimensionall object that
+data, we can still think of this as a **two-dimensional** object that
 we can manipulate (like a `data.frame`, or a `matrix`).
 
 The rows of this pseudo-2D object correspond to the genes, and the columns are
@@ -283,9 +283,9 @@ the contents of this directory:
 
 ```bash
 $ aws s3 ls s3://mbl.data/mapping/may/
-                           PRE fish/
-                           PRE fly/
-                           PRE mouse/
+#                           PRE fish/
+#                           PRE fly/
+#                           PRE mouse/
 ```
 
 We will start by assembling the mouse data first, which we will use as the basis
@@ -303,7 +303,8 @@ $ aws s3 sync s3://mbl.data/mapping/may/mouse ~/may-mouse-kallisto
 
 **What do you see?**
 
-**Note: you can also explore the filesystem within R**
+**NOTE: There is a bug with this terminal, let's close this terminal together
+and open a new one**
 
 ## Sample Phenotypic Data
 
@@ -327,7 +328,59 @@ pheno <- read.csv("~/may-mouse-kallisto/sample-information.csv",
                   stringsAsFactors = FALSE)
 ```
 
+Take a peak at the `pheno` table:
 
+* `rownames()`
+* Why do we have a `group` columns?
+* **Assume we didn't provide a `group` column, can you reconstruct its values
+  and store them in a `group2` column on the `pheno` table?
+
+This table will end up becoming our `y$samples` table.
+
+## Transcript and Gene Information Table
+
+Recall that we used Kallisto to "align" our reads to a transcriptome index.
+Kallisto's output will be a count table **at the transcript level**. 
+
+We need two things:
+
+1. To be able to summarize individual transcript level counts to gene level
+  counts.
+2. To retrieve metadata about these transcripts (and genes), ie. gene symbol,
+   "biotype", etc.
+
+These types of tables are retrievable from many sources. For convenience, we
+have made it easily available via a helper function in this package:
+
+```{r, message=FALSE}
+txinfo <- mbl_get_transcript_annotation("mouse")
+```
+
+**Take a peak**
+
+## Assay (count) data
+
+We need to process the Kallisto output into a count matrix. Fortunately there
+is a package for that!
+
+We will use the [Biconductor `tximport` package][tximport] for this task.
+
+**Take a minute to:**
+
+1. Browse to the [tximport website][tximport]
+2. Scroll down to the "**Documentation** section, and open the
+   "Importing transcript abundance datasets with tximport" vignette for a quick
+   skim.
+3. Load the `tximport` package, and skim the help file in `?tximport`
+
+**We need to specify the paths to the kallisto output files for each sample**
+
+We'll use `dir` to explore the filesystem (don't have to jump to terminal) and
+will use the `paste` function to concatenate strings.
+
+```{r}
+# dir() and paste()
+```
 
 1. Turn mouse Kallisto quant results into a matrix of gene-level data using
    [tximport][tximport]. Need a vector that points to the `abundance.h5` files
@@ -404,5 +457,5 @@ multiGSEA reuses what we learned above but gives you much bang for your back
 [omnibus]: https://en.wikipedia.org/wiki/Omnibus_test
 [qlftut]: https://f1000research.com/articles/5-1438/v2
 [ttest]: https://en.wikipedia.org/wiki/Student%27s_t-test
-[tximport]: http://bioconductor.org/packages/release/bioc/vignettes/tximport/inst/doc/tximport.html
+[tximport]: http://bioconductor.org/packages/tximport
 
