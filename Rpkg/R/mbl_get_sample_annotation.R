@@ -6,10 +6,10 @@
 #' @param organism either "mouse", "fly", or "fish".
 #' @param dataset either "provided" or "generated"
 #' @return a data.frame of sample annotations
-get_sample_annotation <- function(organism = c("mouse", "fly", "fish"),
-                                  dataset = c("provided", "generated"),
-                                  for_kallisto = FALSE,
-                                  kallisto_parent_dir = NULL) {
+mbl_get_sample_annotation <- function(organism = c("mouse", "fly", "fish"),
+                                      dataset = c("provided", "generated"),
+                                      kallisto_parent_dir = NULL,
+                                      trim = TRUE) {
   organism <- match.arg(organism)
   dataset <- match.arg(dataset)
 
@@ -36,21 +36,19 @@ get_sample_annotation <- function(organism = c("mouse", "fly", "fish"),
     out$animal_id <- paste("fish", out$replicate, sep = "_")
   }
 
-  if (for_kallisto) {
-    out <- rename(out, sample = "sample_id", condition = "group")
-    if (is.null(kallisto_parent_dir)) {
-      kallisto_parent_dir <- file.path("/data/may-kallisto", organism)
-    }
-    out$path <- file.path(kallisto_parent_dir, out$sample)
-    out <- select(out, sample, condition, path, source, treatment, genotype)
-    rmcols <- sapply(out, function(x) all(is.na(x)))
-    out <- out[!rmcols]
-
-    bad.files <- !file.exists(out$path)
-    if (any(bad.files)) {
-      stop("Can't find kallisto directories: ",
-           paste(out$path[bad.files]), collapse =",")
-    }
+  out <- select(out, group, sample_id, source, genotype, treatment, animal_id,
+                everything())
+  if (trim) {
+    out <- select(out, group:animal_id)
   }
+
+  if (is.character(kallisto_parent_dir)) {
+    out$kallisto_fn = file.path(kallisto_parent_dir, out$sample_id,
+                                "abundance.h5")
+  }
+
+  # remove columns that are all NA
+  rm.me <- sapply(out, function(vals) all(is.na(vals)))
+  out <- out[, !rm.me, drop = FALSE]
   out
 }

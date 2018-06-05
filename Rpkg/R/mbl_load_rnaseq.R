@@ -10,5 +10,15 @@
 #' @return a DGEList of the data.
 mbl_load_rnaseq <- function(organism = c("mouse", "fly", "fish"),
                             dataset = c("provided", "generated"), ...) {
+  organism <- match.arg(organism)
+  dataset <- match.arg(dataset)
 
+  if (dataset == "provided") {
+    fn <- sprintf("s3://mbl.data/mapping/may/%s/kallisto-DGEList.rds",
+                  organism)
+  } else {
+    stop("generated data not ready yet")
+  }
+
+  s3readRDS(fn)
 }

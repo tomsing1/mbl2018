@@ -4,7 +4,7 @@
 \alias{mbl_plot_expression}
 \title{Plot expression of a gene/feature}
 \usage{
-mbl_plot_expression(y, gene, group, ...)
+mbl_plot_expression(y, gene, group, color_by = NULL, ...)
 }
 \description{
 This function returns a raw ggplot object that you can decorate
