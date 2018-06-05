@@ -4,21 +4,36 @@
 #' further
 #'
 #' @export
-mbl_plot_expression <- function(y, gene, group, ...) {
+mbl_plot_expression <- function(y, gene, group, color_by = NULL, ...) {
   stopifnot(is(y, "DGEList") || is(y, "EList"))
   assert_string(gene)
   assert_character(group, min.len = 1, max.len = 2)
   gidx <- mbl_fuzzy_find_gene_row(y, gene)
 
   dat <- mbl_tidy(y[gidx,])
-  dat <- .with_aes_columns(dat, group)
 
-  ggplot(dat, aes(.group_by, cpm)) +
+  # Add column to data.frame to indicate group of observations
+  dat <- .with_aes_columns(dat, group, ".group_by")
+
+  if (!is.null(color_by)) {
+    assert_character(color_by, min.len = 1, max.len = 2)
+    dat <- .with_aes_columns(dat, color_by, ".color_by")
+  }
+
+  gg <- ggplot(dat, aes(.group_by, cpm)) +
     geom_boxplot(outlier.size = 0) +
-    geom_jitter(width = 0.25) +
     ylab("log2(cpm)") +
     xlab(paste(group, collapse = "_")) +
-    theme(axis.text.x=element_text(angle=90, hjust=1))
+    theme(axis.text.x=element_text(angle=90, hjust=1)) +
+    ggtitle(paste(gene, "Expression"))
+
+  if (is.character(color_by))   {
+    gg <- gg+ geom_jitter(aes(color = .color_by), width = 0.25)
+  } else {
+    gg <- gg + geom_jitter(width = 0.25)
+  }
+
+  gg
 }
 
 mbl_heatmap <- function(x, ...) {
@@ -27,17 +42,17 @@ mbl_heatmap <- function(x, ...) {
 
 # Utilify functions ============================================================
 # Some serious voodoo is going on here
-.with_aes_columns <- function(x, aesthetic, ...) {
+.with_aes_columns <- function(x, aesthetic, out_column, ...) {
   assert_class(x, "data.frame")
   assert_character(aesthetic, min.len = 1, max.len = min(3, ncol(x)))
   assert_subset(aesthetic, colnames(x))
 
   if (length(aesthetic) == 1L) {
-    x[[".group_by"]] <- x[[aesthetic]]
+    x[[out_column]] <- x[[aesthetic]]
   } else {
     is.cat <- sapply(x[, aesthetic], is.categorical)
     assert_true(all(is.cat))
-    x <- tidyr::unite_(x, ".group_by", aesthetic, remove = FALSE)
+    x <- tidyr::unite_(x, out_column, aesthetic, remove = FALSE)
   }
 
   x

@@ -1,0 +1,106 @@
+---
+title: "Analysis of RNA-seq data (tutorial)"
+author: "Steve Lianoglou and Thomas Sandmann"
+date: "MBL Neurobiology, Summer 2018"
+output: 
+  rmarkdown::html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+vignette: >
+  %\VignetteIndexEntry{Analysis of RNA-seq data (tutorial)}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Overview
+
+This document is meant to be worked on together in the classroom. We outline
+some of the basic steps of a complete RNA-seq analysis by performing the
+following:
+
+1. Assembling the raw we have mapped with Kallisto into an analyzable form
+2. Performing an initial QC of the dataset
+3. Performing your first differential expression analysis
+4. Interpreting the result from (3)
+5. Using gene sets and gene set enrichment analysis (GSEA) in addition to
+   "vanilla" differential expression to assist with the interpretation of
+   your experiment.
+
+# Caveats
+
+## There is no joy without suffering
+
+There are sections of this analysis document that are not filled in. This is
+intentional, because we will work on these parts together in the class. 
+
+You are meant to struggle through these things so we can:
+
+1. *discover* the answer (no spoon feeding); and
+2. perhaps learn more elegant ways to get to it
+
+We understand that this will be very frustrating at times, but trust that:
+
+1. we will get through this together (sleep be damned); and
+2. deep down inside, we will be better people for it
+
+## A little joy never hurt nobody
+
+1. For your **future reference**, we have included a sister tutorial in this
+   package ("Analysis of RNA-seq data (complete)") which "fills in the holes"
+   of this one This can act as a document you can use as reference in the future
+   to remind yourself how we performed a "soup to nuts" analysis of this data.
+   
+   There are other references online that provide workflows for RNA-seq analysis
+   that you should also refer to in the future. You will find many examples and
+   points of discussion here are liberraly borrow from these sources:
+   
+   i. Reads to pathways
+   ii. limma, glimma, 1-2-3
+   iii. DESeq2 rnaseq workflow
+
+2. We have provided helper functions in this package to assist with different
+   parts of the analysis. These functions start with the `mbl_*` prefix and are
+   provided as a crutch so that we can quickly draw certain types of plots, or
+   munge certain types of data together.
+   
+   i.  **We aim to teach you how to make these plots or munge these data 
+       without the use of these helper functions by the end of this course**
+   ii. These `mbl_*` functions won't disappear, and you can refer (or use)
+       them for your future analyses.
+
+# Data Setup
+
+To perform an analysis of gene expression data, we have three different sources
+of data that we want to merge together.
+
+1. The processed RNA-seq data: aka our **assay data**. This consists of a matrix
+   of gene-level counts for each sample across our entire experiment. The rows
+   of this matrix refer to the individual genes, and the columns refer to the
+   individual samples samples. A the value in a given `(x,y)` entry of this
+   matrix tells us the number of reads that align to gene `x` in sample `y`.
+
+2. A `data.frame` (table) of **phenotypic data**. The rows of this table refer
+   to the different experiments, so there are **as many rows here as there are
+   columns in our assay data**. The columns of this table contain the variety of
+   covariates we are tracking for these samples, ie. things like:
+   
+   i. the `"treatment"` condition of the sample;
+   ii. the `"genotype"` of the cell(s) (or animal(s)) used in the sample;
+   iii. the `"source/tissue"` the sample was taken from;
+   iv. the person who prepared the libraries for the sample;
+   v. the time of day the sample was run;
+   vi. the RIN score for the sample;
+   vii. etc.
+
+3. A `data.frame` (table) of **gene-level data**
+who knew there were channels outside of the tv?
+[Check this out](http://lmgtfy.com?q=calcium+channel)
+

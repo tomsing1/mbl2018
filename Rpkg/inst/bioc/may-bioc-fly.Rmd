@@ -1,0 +1,90 @@
+---
+title: "May Fly Analysis"
+author: "Steve Lianoglou"
+date: "6/4/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+devtools::load_all("/Users/lianoglou/workspace/MBL2018-stuff/mbl2018/Rpkg")
+aws.signature::use_credentials("mbl18")
+library(multiGSEA)
+library(ComplexHeatmap)
+library(ggplot2)
+theme_set(theme_bw())
+
+y.all <- s3readRDS("s3://mbl.data/star-alignments/may/fly/DGEList.rds")
+y.all <- y.all[, y.all$samples$treatment != "no_treatment"]
+
+yt.all <- mbl_tidy(y.all)
+
+des0 <- model.matrix(~ 0 + group, y.all$samples)
+colnames(des0) <- sub("group", "", colnames(des0))
+
+yf <- y.all[filterByExpr(y.all, des0),,keep.lib.sizes = FALSE]
+yt.f <- mbl_tidy(yf)
+```
+
+```{r}
+ggplot(yt.all, aes(cpm, color = sample_id)) +
+  geom_density() +
+  facet_wrap(~ group)
+```
+
+```{r}
+ggplot(yt.f, aes(cpm, color = sample_id)) +
+  geom_density() +
+  facet_wrap(~ group)
+```
+
+```{r}
+pca <- mbl_pca(yf)
+gg.pca <- ggplot(pca$data, aes(PC1, PC2, color = group, shape = treatment)) +
+  geom_point(size = 2)
+gg.pca
+```
+
+```{r, message=FALSE, warning=FALSE}
+gg.pca <- ggplot(pca$data, 
+                 aes(PC1, PC2, color = group, shape = treatment,
+                     size = log2(lib.size))) +
+  geom_point()
+gg.pca
+```
+
+```{r}
+pca2 <- mbl_pca(yf[, yf$samples$lib.size >= 100000])
+ggplot(pca2$data, aes(PC1, PC2, color = group, shape = treatment)) +
+  geom_point(size = 5)
+```
+
+# DGE
+
+```{r}
+yff <- yf[, yf$samples$lib.size > 100000]
+
+des0 <- model.matrix(~ 0 + group, yff$samples)
+colnames(des0) <- sub("group", "", colnames(des0))
+
+yff <- yff[filterByExpr(yff, des0),,keep.lib.sizes = FALSE]
+vm <- voom(yff, des0, plot = TRUE)
+```
+
+```{r}
+cm <- makeContrasts(
+  atp = activating_channel_ATP_activation - wildtype_ATP_activation,
+  hist = silencing_channel_histamine_inhibition - wildtype_histamine_inhibition,
+  levels = des0)
+
+fit <- lmFit(vm2, vm2$design)
+fit2 <- contrasts.fit(fit, cm)
+fit2 <- eBayes(fit2)
+
+tt.atp <- topTable(fit2, "atp", number = Inf)
+tt.hist <- topTable(fit2, "hist", number = Inf)
+```
+
+```{r}
+vm2 <- voom(yff, model.matrix(~ 0 + group + animal_id, yff$samples))
+```
+

@@ -1,7 +1,7 @@
 #' Retrieve the sample annotation
-#' 
+#'
 #' Returns the sample annotations for a particular dataset.
-#' 
+#'
 #' @export
 #' @param organism either "mouse", "fly", or "fish".
 #' @param dataset either "provided" or "generated"
@@ -12,16 +12,16 @@ get_sample_annotation <- function(organism = c("mouse", "fly", "fish"),
                                   kallisto_parent_dir = NULL) {
   organism <- match.arg(organism)
   dataset <- match.arg(dataset)
-  
+
   if (dataset == "provided") {
     out <- read.csv(
       paste(
         "https://raw.githubusercontent.com/tomsing1/mbl2018/master",
-        "fastq_processing/may/sample_annotation.csv",    
+        "fastq_processing/may/sample_annotation.csv",
         sep="/"),
       stringsAsFactors = FALSE)
     rownames(out) <- out$sample_id
-    
+
     out$group <- ifelse(out$species == "fly",
                         paste(out$genotype, out$treatment, sep = "_"),
                         paste(out$source, out$genotype, sep = "_"))
@@ -29,7 +29,13 @@ get_sample_annotation <- function(organism = c("mouse", "fly", "fish"),
   } else {
     stop("We don't have the generated data yet.")
   }
-  
+
+  if (organism %in% c("mouse", "fly")) {
+    out$animal_id <- paste(out$genotype, out$replicate, sep = "_")
+  } else {
+    out$animal_id <- paste("fish", out$replicate, sep = "_")
+  }
+
   if (for_kallisto) {
     out <- rename(out, sample = "sample_id", condition = "group")
     if (is.null(kallisto_parent_dir)) {
@@ -39,7 +45,7 @@ get_sample_annotation <- function(organism = c("mouse", "fly", "fish"),
     out <- select(out, sample, condition, path, source, treatment, genotype)
     rmcols <- sapply(out, function(x) all(is.na(x)))
     out <- out[!rmcols]
-    
+
     bad.files <- !file.exists(out$path)
     if (any(bad.files)) {
       stop("Can't find kallisto directories: ",
