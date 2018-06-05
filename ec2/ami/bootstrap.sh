@@ -7,7 +7,7 @@ timedatectl status
 sleep 60
 
 apt-get update
-apt-get install -y git python-pip htop apache2 emacs
+apt-get install -y git python-pip htop apache2 emacs nvme-cli
 echo "ubuntu:2018neuroscience!" | chpasswd  # update default password!
 
 # install AWS CLI tool

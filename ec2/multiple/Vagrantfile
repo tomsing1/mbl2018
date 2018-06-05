@@ -1,7 +1,7 @@
 # Require the AWS provider plugin and YAML module
 require 'vagrant-aws'
 require 'yaml'
-project = "mbl2017"
+project = "mbl2018"
 poc = "mblneuro2017@gmail.com"
 
 # Read YAML file with instance information
@@ -31,6 +31,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Specify default region and default AMI ID
     aws.region = 'us-east-1'
+    aws.user_data = File.read("bootstrap.sh")
+
   end # config.vm.provider 'aws'
 
   # Loop through YAML file and set per-instance information
@@ -46,16 +48,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         override.ssh.username = instance['user']
         aws.instance_type = instance['type']
         aws.ami = instance['ami']
-        aws.security_groups = ["sg-a380b5dd"]
+        aws.security_groups = ["sg-fe751980"]
         aws.iam_instance_profile_name = "EC2ReadDataBucket"
-        aws.subnet_id = 'subnet-3a46bf60'
+        aws.subnet_id = 'subnet-0e992402'
+        aws.elastic_ip = instance['ip']
         aws.tags = {
           'Name' => instance['name'],
           'env' => 'dev',
           'project' => "#{project}",
           'poc' => "#{poc}"
         }
-
+      
       end # srv.vm.provider 'aws'
     end # config.vm.define
   end # instances.each
