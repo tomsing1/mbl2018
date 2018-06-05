@@ -12,7 +12,9 @@ Depends:
     aws.s3,
     dplyr,
     edgeR (>= 3.18.1),
-    ggplot2
+    ggplot2,
+    multiGSEA,
+    GeneSetDb.MSigDB.Mmusculus.v61
 Imports:
     checkmate,
     matrixStats,
@@ -22,8 +24,6 @@ Suggests:
     testthat,
     knitr,
     rmarkdown,
-    multiGSEA,
-    GeneSetDb.MSigDB.Mmusculus.v61
 Remotes: 
     github::lianos/multiGSEA,
     github::lianos/GeneSetDb.MSigDB.Mmusculus.v61
