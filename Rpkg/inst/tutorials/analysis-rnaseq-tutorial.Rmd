@@ -62,9 +62,11 @@ We understand that this will be very frustrating at times, but trust that:
    that you should also refer to in the future. You will find many examples and
    points of discussion here are liberraly borrow from these sources:
    
-   i. Reads to pathways
-   ii. limma, glimma, 1-2-3
-   iii. DESeq2 rnaseq workflow
+   i. [From reads to genes to pathways: differential expression analysis of
+       RNA-Seq experiments using Rsubread and the edgeR quasi-likelihood
+       pipeline][qlftut]
+   ii. [RNA-seq analysis is easy as 1-2-3 with limma, Glimma and edgeR][glimmatut]
+   iii. [Analyzing RNA-seq data with DESeq2][deseq2tut]
 
 2. We have provided helper functions in this package to assist with different
    parts of the analysis. These functions start with the `mbl_*` prefix and are
@@ -81,6 +83,8 @@ We understand that this will be very frustrating at times, but trust that:
 To perform an analysis of gene expression data, we have three different sources
 of data that we want to merge together.
 
+(TODO: ExpressionSet image)
+
 1. The processed RNA-seq data: aka our **assay data**. This consists of a matrix
    of gene-level counts for each sample across our entire experiment. The rows
    of this matrix refer to the individual genes, and the columns refer to the
@@ -95,12 +99,56 @@ of data that we want to merge together.
    i. the `"treatment"` condition of the sample;
    ii. the `"genotype"` of the cell(s) (or animal(s)) used in the sample;
    iii. the `"source/tissue"` the sample was taken from;
+   iv. the animial identifier for the mouse that sample was taken from
+       (you might extract samples from different organs of an animal);
    iv. the person who prepared the libraries for the sample;
    v. the time of day the sample was run;
    vi. the RIN score for the sample;
    vii. etc.
 
-3. A `data.frame` (table) of **gene-level data**
-who knew there were channels outside of the tv?
-[Check this out](http://lmgtfy.com?q=calcium+channel)
+3. A `data.frame` (table) of **gene-level data**. The rows of this table refer
+   to the genes quantitated in our experiment, so there are **as many rows here
+   as there are rows in our assay data**. The columns provide the information
+   we know about these genes, such as:
+   
+   i. their official [ensembl identifier][ensid]
+   ii. official gene name/symbol
+   iii. "biotype" (protein coding, lincRNA, etc.)
+
+## Why?
+
+1. Data is easily manipulatable:
+
+   i. indexable/subsettable like a 2d object, you can extract rows and columns
+      and the right assay data, phneotypic data, and gene data come along
+      for the ride
+      
+   ii. Different DGE analysis tools use data in this format to find DGE.
+
+## What is differential expression?
+
+TODO: show examples of DGE and explain that we are finding genes whose
+      mean expression is different (ie. "not the same") across groups.
+
+## Do it
+
+1. Turn mouse Kallisto quant results into a matrix of gene-level data using
+   [tximport][tximport]. Need a vector that points to the `abundance.h5` files
+   for each sample.
+
+```{r, eval = FALSE}
+txi <- tximport(files, type = "kallisto", tx2gene = tx2gene,
+                countsFromAbundance = "lengthScaledTPM")
+```
+
+2. 
+
+
+[//]: # References =============================================================
+
+[deseq2tut]: http://bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html
+[ensid]: https://uswest.ensembl.org/Help/Faq?id=488
+[glimmatut]: https://f1000research.com/articles/5-1408/v2
+[qlftut]: https://f1000research.com/articles/5-1438/v2
+[tximport]: http://bioconductor.org/packages/release/bioc/vignettes/tximport/inst/doc/tximport.html
 
