@@ -241,7 +241,7 @@ it has been summarized to gene-level expression estimates per sample.
 
 ## Effective Sequencing Depth
 
-How many reads aligned to the features (genes) we are analyzing here?
+How many reads actually aligned to the features (genes) we are analyzing here?
 
 1. TODO: barplot of `lib.size`
 2. TODO: barplot of `lib.size` per group
@@ -250,6 +250,8 @@ How many reads aligned to the features (genes) we are analyzing here?
 
 TODO: Show simple example of 2d correlated measurements, rotate and project to
 1D.
+
+Fun interactive tutorial here: http://setosa.io/ev/principal-component-analysis/
 
 ## Heatmaps
 
