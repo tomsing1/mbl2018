@@ -1,0 +1,193 @@
+sample_id,mbl_group,sample_name,species,tube_id,tissue,genotype,collector,dissector,animal_id,replicate,tube_label,date,time,n_cells,notes
+dmnewt01,A,A1,fly,A10,Neurons,control,JZP,,,,A10,180531,19:50,9,"A58, cha (independent of A9)"
+dmneco01,B,B1,fly,A12*,Neurons,cora,Katie,,,,A12*,180601,11:10,9,"**cora neurons, should have been 'B' samples"
+dmnewt02,C,C1,fly,A14,Neurons,control,Miguel,,,,A14,180601,15:00,13,
+dmnewt03,D,D1,fly,A15,Neurons,control,Juan,,,,A15,180601,15:15,10,
+dmnewt04,E,E1,fly,A16,Neurons,control,Miguel,,,,A16,180601,15:40,10,
+dmnewt05,F,F1,fly,A18,Neurons,control,Katie,,,,A18,180601,15:45,7,"approx cell number; -80 was opened just before this sample was put in -> 5 min elay in getting sample in, sample sat on ice"
+dmnewt06,G,G1,fly,A19,Neurons,control,Javier,,,,A19,180601,15:50,10,paired with A17
+dmnewt07,H,H1,fly,A20,Neurons,control,Juan,,,,A20,180601,16:00,10,
+dmnewt08,A,A2,fly,A21,Neurons,control,Katie,,,,A21,180601,16:10,10,They look awesome!
+dmnewt09,B,B2,fly,A22,Neurons,control,Zazil,,,,A22,180601,16:35,7,
+dmnewt10,C,C2,fly,A5,Neurons,control,JZP,,,,A5,180531,17:52,10,paired with A4
+dmnewt11,D,D2,fly,A9,Neurons,control,JZP,,,,A9,180531,19:50,9,"A58, cha"
+dmneco02,E,E2,fly,B11,Neurons,cora,JZP,,,,B11,180601,11:00,10,paired with B10
+dmneco03,F,F2,fly,B13,Neurons,cora,Miguel,,,,B13,180601,11:34,9,paired with B12
+dmneco04,G,G2,fly,B14,Neurons,cora,Juan,,,,B14,180601,11:34,8,
+dmneco05,H,H2,fly,B16,Neurons,cora,Javier,,,,B16,180601,11:56,14,paired with B15
+dmneco06,A,A3,fly,B2,Neurons,cora,JZP,,,,B2,180531,18:05,9,"paired with B1; A58, cha"
+dmneco07,B,B3,fly,B3,Neurons,cora,JZP,,,,B3,180531,19:35,9,"A58, cha"
+dmneco08,C,C3,fly,B4,Neurons,cora,JZP,,,,B4,180531,19:35,9,"A58, cha (independent of B3)"
+dmneco09,D,D3,fly,B5,Neurons,cora,Javier,,,,B5,180601,10:38,10,paired with B7
+dmneco10,E,E3,fly,B6,Neurons,cora,Juan,,,,B6,180601,10:00,10,
+dmneco11,F,F3,fly,B8,Neurons,cora,JZP,,,,B8,180601,11:00,10,paired with B9
+dmepco01,G,G3,fly,D1,Epidermis,cora,JZP,,,,D1,180601,1:45,8,
+dmepco02,H,H3,fly,D11,Epidermis,cora,JZP,,,,D11,180601,16:45,10,paired with D10
+dmepco03,A,A4,fly,D12,Epidermis,cora,JZP,,,,D12,180601,16:45,10,paired with D13
+dmepco04,B,B4,fly,D2,Epidermis,cora,JZP,,,,D2,180601,1:45,8,
+dmepco05,C,C4,fly,D3,Epidermis,cora,JZP,,,,D3,180601,1:45,8,
+dmepco06,D,D4,fly,D6,Epidermis,cora,JZP,,,,D6,180601,16:30,10,paired with D7
+dmepco07,E,E4,fly,D7,Epidermis,cora,JZP,,,,D7,180601,16:30,10,paired with D6
+dmepco08,F,F4,fly,D8,Epidermis,cora,JZP,,,,D8,180601,16:30,10,paired with D9
+dmepco09,G,G4,fly,D9,Epidermis,cora,JZP,,,,D9,180601,16:30,10,paired with D8
+dmeppi01,H,H4,fly,F10,Epidermis,PI4K,JZP/Zazil,,,,F10,180602,11:35,8,
+dmeppi02,A,A5,fly,F12,Epidermis,PI4K,JZP/Javier,,,,F12,180602,12:30,8,
+dmeppi03,B,B5,fly,F2,Epidermis,PI4K,JZP/Javier,,,,F2,180602,10:55,8,paired with F1
+dmeppi04,C,C5,fly,F4,Epidermis,PI4K,JZP/Juan,,,,F4,180602,11:15,8,paired with F3
+dmeppi05,D,D5,fly,F5,Epidermis,PI4K,JZP/Miguel,,,,F5,180602,11:15,8,
+dmeppi06,E,E5,fly,F6,Epidermis,PI4K,JZP/Javier,,,,F6,180602,11:15,8,
+dmeppi07,F,F5,fly,F7,Epidermis,PI4K,JZP/Javier,,,,F7,180602,11:15,8,
+dmeppi08,G,G5,fly,F8,Epidermis,PI4K,JZP/Katie,,,,F8,180602,11:35,8,
+dmeppi09,H,H5,fly,F9,Epidermis,PI4K,JZP/Katie,,,,F9,180602,11:35,8,
+dmepwt01,A,A6,fly,C1,Epidermis,control,JZP,,,,C1,180601,1:30,8,
+dmepwt02,B,B6,fly,C10,Epidermis,control,JZP,,,,C10,180601,15:18,10,paired with C11
+dmepwt03,C,C6,fly,C10new,Epidermis,control,JZP/Javier,,,,C10new,180602,12:15,7,
+dmepwt04,D,D6,fly,C12new,Epidermis,control,JZP/Javier,,,,C12new,180602,12:30,8,paired with C13new
+dmepwt05,E,E6,fly,C13,Epidermis,control,JZP,,,,C13,180601,15:18,10,paired with C12
+dmepwt06,F,F6,fly,C14new,Epidermis,control,JZP/Zazil,,,,C14new,180602,12:30,8,
+dmepwt07,G,G6,fly,C2,Epidermis,control,JZP,,,,C2,180601,1:30,8,
+dmepwt08,H,H6,fly,C3,Epidermis,control,JZP,,,,C3,180601,1:30,8,
+dmepwt09,A,A7,fly,C6,Epidermis,control,JZP,,,,C6,180601,15:10,10,paired with C7
+dmepwt10,B,B7,fly,C8,Epidermis,control,JZP,,,,C8,180601,15:10,10,paired with C9
+dmnepi01,C,C7,fly,E1,Neurons,PI4K,Javier,,,,E1,180601,17:45,8,BEST EVER!; paired with E5
+dmnepi02,D,D7,fly,E10,Neurons,PI4K,Javier,,,,E10,180601,18:42,7,
+dmnepi03,E,E7,fly,E12,Neurons,PI4K,Katie,,,,E12,180602,11:50,12,
+dmnepi04,F,F7,fly,E13,Neurons,PI4K,Juan,,,,E13,180602,11:57,9,
+dmnepi05,G,G7,fly,E2,Neurons,PI4K,Miguel,,,,E2,180601,17:45,10,
+dmnepi06,H,H7,fly,E3,Neurons,PI4K,Miguel,,,,E3,180601,17:45,10,
+dmnepi07,A,A8,fly,E4,Neurons,PI4K,Juan,,,,E4,180601,17:45,10,
+dmnepi08,B,B8,fly,E5,Neurons,PI4K,Javier,,,,E5,180601,18:10,10,paired with E1
+dmnepi09,C,C8,fly,E6,Neurons,PI4K,Katie,,,,E6,180601,18:10,11,Terrific
+dmnepi10,D,D8,fly,E7,Neurons,PI4K,Javier,,,,E7,180601,18:30,10,paired with E11; SUPER!
+dmnepi11,E,E8,fly,E9,Neurons,PI4K,Miguel,,,,E9,180601,18:30,10,paired with E8
+dmedwt01,F,F8,fly,JD1,EpidermisDorsal,control,JZP,,,,JD1,180602,1:00,10,some mixing between JD1 - JD6
+dmedwt02,G,G8,fly,JD2,EpidermisDorsal,control,JZP,,,,JD2,180602,1:00,10,some mixing between JD1 - JD6
+dmedwt03,H,H8,fly,JD3,EpidermisDorsal,control,JZP,,,,JD3,180602,1:00,10,some mixing between JD1 - JD6
+dmedwt04,A,A9,fly,JD4,EpidermisDorsal,control,JZP,,,,JD4,180602,1:00,10,some mixing between JD1 - JD6
+dmedwt05,B,B9,fly,JD5,EpidermisDorsal,control,JZP,,,,JD5,180602,1:00,10,some mixing between JD1 - JD6
+dmedwt06,C,C9,fly,JD6,EpidermisDorsal,control,JZP,,,,JD6,180602,1:00,10,some mixing between JD1 - JD6
+dmedwt07,D,D9,fly,JD7,EpidermisDorsal,control,JZP,,,,JD7,180602,10:55,7,paired with JD8
+dmedwt08,E,E9,fly,JD8,EpidermisDorsal,control,JZP,,,,JD8,180602,10:55,6,paired with JD7
+dmevwt01,F,F9,fly,JV1,EpidermisVentral,control,JZP,,,,JV1,180601,18:50,10,paired with JV2
+dmevwt02,G,G9,fly,JV2,EpidermisVentral,control,JZP,,,,JV2,180601,18:50,10,paired with JV1
+dmevwt03,H,H9,fly,JV3,EpidermisVentral,control,JZP,,,,JV3,180601,18:50,10,paired with JV4
+dmevwt04,A,A10,fly,JV4,EpidermisVentral,control,JZP,,,,JV4,180601,18:50,10,paired with JV3
+dmevwt05,B,B10,fly,JV5,EpidermisVentral,control,JZP,,,,JV5,180602,11:57,6,
+dmevwt06,C,C10,fly,JV6,EpidermisVentral,control,JZP,,,,JV6,180602,11:57,7,
+dmevwt07,D,D10,fly,JV7,EpidermisVentral,control,JZP,,,,JV7,180602,11:57,7,
+dmevwt08,E,E10,fly,JV8,EpidermisVentral,control,JZP,,,,JV8,180602,11:57,7,
+drnewt01,F,F10,fish,M10,DRG,eda sibling,Robin,Bri,,R3,M10,1-Jun,2:10p,10,10 cells
+drnewt02,G,G10,fish,M14,DRG,eda sibling,Melissa,Amin,8,,M14,1-Jun,3:10p,10,10 cells
+drnewt03,H,H10,fish,M13,DRG,eda sibling,Melissa,Amin,,R4,M13,1-Jun,3:10p,10,10 cells
+drnewt04,A,A11,fish,M16,DRG,eda sibling,Robin,Amin,,R6,M16,1-Jun,3:15p,7,7 cells
+drnewt05,B,B11,fish,M17,DRG,eda sibling,Robin,Bri,,R5,M17,1-Jun,4:40p,10,10 cells
+drnewt06,C,C11,fish,M18,DRG,eda sibling,Robin,Bri,,R5,M18,1-Jun,4:40p,10,10 cells
+drnewt07,D,D11,fish,M2,DRG,eda sibling,Robin,Bri,,,M2,31-May,6:20P,6,6 cells
+drnewt08,E,E11,fish,M3,DRG,eda sibling,Robin,Bri,,,M3,31-May,6:20P,8,8 cells
+drnewt09,F,F11,fish,M4,DRG,eda sibling,Melissa,Melissa,,R1,M4,31-May,6:30p,10,10 cells
+drnewt10,G,G11,fish,M5,DRG,eda sibling,Robin,Sherri,,R2,M5,31-May,6:40p,5,5 cells
+drnewt11,H,H11,fish,M6,DRG,eda sibling,Robin,Sherri,,R2,M6,31-May,6:40p,8,8 cells
+drnewt12,A,A12,fish,M7,DRG,eda sibling,Robin,Bri,,R3,M7,1-Jun,2:10p,10,10 cells
+drneed01,B,B12,fish,N1,DRG,eda mutant,Robin,Bri,,RE1,N1,1-Jun,3:50p,10,10 cells
+drneed02,C,C12,fish,N5,DRG,eda mutant,Melissa,Brittany,12,,N5,1-Jun,4:20p,7,7 cells
+drneed03,D,D12,fish,N14,DRG,eda mutant,Rob,Brittany,,,N14,6/2/18,11:20a,10,"10 cells; Bright, but few"
+drneed04,E,E12,fish,N15,DRG,eda mutant,JR,Brie,,,N15,6/2/18,11:21a,10,"10 cells; Bright, but few"
+drneed05,F,F12,fish,N16,DRG,eda mutant,JR,Brie,,,N16,6/2/18,11:21a,10,"10 cells; Bright, but few"
+drneed06,G,G12,fish,N17,DRG,eda mutant,Mel,Sherri,,,N17,6/2/18,11:25a,8,8 cells
+drneed07,H,H12,fish,N18,DRG,eda mutant,Mel,Sherri,,,N18,6/2/18,11:25a,7,7 cells
+drneed08,A,A13,fish,N2,DRG,eda mutant,Robin,Bri,,RE1,N2,1-Jun,3:50p,10,10 cells
+drneed09,B,B13,fish,N3,DRG,eda mutant,Melissa,Brittany,,RE2,N3,1-Jun,3:55p,10,10 cells
+drneed10,C,C13,fish,N4,DRG,eda mutant,Melissa,Brittany,,RE2,N4,1-Jun,3:55p,10,10 cells
+drneed11,D,D13,fish,N6,DRG,eda mutant,Robin,Amin,,RE3,N6,1-Jun,5:40p,7,7 cells
+drneed12,E,E13,fish,N7,DRG,eda mutant,Robin,Amin,,RE3,N7,1-Jun,5:40p,6,6 cells
+drepwt01,F,F13,fish,O1,keratinocyte,eda sibling,JR,Melissa,,R1,O1,31-May,6:15p,8,8 cells
+drepwt02,G,G13,fish,O12,keratinocyte,eda sibling,JR,Bri,,R5,O12,1-Jun,1:55p,10,10 cells
+drepwt03,H,H13,fish,O14,keratinocyte,eda sibling,JR,Bri,,R5,O14,1-Jun,1:55p,10,10 cells
+drepwt04,A,A14,fish,O17,keratinocyte,eda sibling,JR,Amin,,R6,O17,1-Jun,2:30p,10,10 cells
+drepwt05,B,B14,fish,O18,keratinocyte,eda sibling,JR,Amin,,R6,O18,1-Jun,2:30p,10,10 cells
+drepwt06,C,C14,fish,O19,keratinocyte,eda sibling,JR,Amin,,R6,O19,1-Jun,2:30p,10,10 cells
+drepwt07,D,D14,fish,O3,keratinocyte,eda sibling,JR,Brittany,,R3,O3,1-Jun,11:05a,10,10 cells
+drepwt08,E,E14,fish,O4,keratinocyte,eda sibling,JR,Brittany,,R3,O4,1-Jun,11:05a,10,10 cells
+drepwt09,F,F14,fish,O5,keratinocyte,eda sibling,JR,Amin,,R4,O5,1-Jun,10:40a,10,10 cells
+drepwt10,G,G14,fish,O6,keratinocyte,eda sibling,JR,Amin,,R4,O6,1-Jun,10:40a,10,10 cells
+dreped01,H,H14,fish,P1,keratinocyte,eda mutant,Rob,Amin,,,P1,1-Jun,11:55a,10,10 cell
+dreped02,A,A15,fish,P10,keratinocyte,eda mutant,JR,Brittany,,RE2,P10,1-Jun,4:30p,10,High confidence of indivdual cells
+dreped03,B,B15,fish,P11,keratinocyte,eda mutant,JR,Brittany,,RE2,P11,1-Jun,4:30p,10,
+dreped04,C,C15,fish,P12,keratinocyte,eda mutant,JR,Brittany,,RE2,P12,1-Jun,4:30p,10,
+dreped05,D,D15,fish,P15,keratinocyte,eda mutant,JR,Amin,,RE3,P15,1-Jun,5:30p,10,
+dreped06,E,E15,fish,P16,keratinocyte,eda mutant,JR,Amin,,RE3,P16,1-Jun,5:30p,10,
+dreped07,F,F15,fish,P2,keratinocyte,eda mutant,JR,Amin,,,P2,1-Jun,11:56a,10,10 cells
+dreped08,G,G15,fish,P3,keratinocyte,eda mutant,Rob,Amin,,,P3,1-Jun,11:57a,10,10 cells
+dreped09,H,H15,fish,P5,keratinocyte,eda mutant,JR,Bri,,RE1,P5,1-Jun,3:30p,10,
+dreped10,A,A16,fish,P7,keratinocyte,eda mutant,JR,Bri,,RE1,P7,1-Jun,3:30p,10,
+mmchwt01,B,B16,mouse,C1,Cheek,CONTROL,,,,,C1,,,,
+mmchko01,C,C16,mouse,C2,Cheek,CKO,,,,,C2,,,,
+mmchko02,D,D16,mouse,C3,Cheek,CKO,,,,,C3,,,,
+mmchwt02,E,E16,mouse,C4,Cheek,CONTROL,,,,,C4,,,,
+mmchko03,F,F16,mouse,C5,Cheek,CKO,,,,,C5,,,,
+mmchko04,G,G16,mouse,C6,Cheek,CKO,,,,,C6,,,,
+mmchwt03,H,H16,mouse,C7,Cheek,CONTROL,,,,,C7,,,,
+mmchko05,A,A17,mouse,C8,Cheek,CKO,,,,,C8,,,,
+mmchwt04,B,B17,mouse,C10,Cheek,CONTROL,,,,,C10,,,,
+mmchwt05,C,C17,mouse,C11,Cheek,CONTROL,,,,,C11,,,,
+mmchko06,D,D17,mouse,C12,Cheek,CKO,,,,,C12,,,,
+mmchwt06,E,E17,mouse,C13,Cheek,CONTROL,,,,,C13,,,,
+mmchko07,F,F17,mouse,C14,Cheek,CKO,,,,,C14,,,,
+mmchko08,G,G17,mouse,C15,Cheek,CKO,,,,,C15,,,,
+mmchwt07,H,H17,mouse,C16,Cheek,CONTROL,,,,,C16,,,,
+mmchwt08,A,A18,mouse,C17,Cheek,CONTROL,,,,,C17,,,,
+mmchyo01,B,B18,mouse,C18,Cheek,Young,,,,,C18,,,,
+mmchyo02,C,C18,mouse,C19,Cheek,Young,,,,,C19,,,,
+mmchyo03,D,D18,mouse,C20,Cheek,Young,,,,,C20,,,,
+mmchyo04,E,E18,mouse,C21,Cheek,Young,,,,,C21,,,,
+mmchyo05,F,F18,mouse,C22,Cheek,Young,,,,,C22,,,,
+mmchyo06,G,G18,mouse,C23,Cheek,Young,,,,,C23,,,,
+mmchol01,H,H18,mouse,C24,Cheek,Old,,,,,C24,,,,
+mmchol02,A,A19,mouse,C26,Cheek,Old,,,,,C26,,,,
+mmchol03,B,B19,mouse,C27,Cheek,Old,,,,,C27,,,,
+mmchol04,C,C19,mouse,C28,Cheek,Old,,,,,C28,,,,
+mmchol05,D,D19,mouse,C29,Cheek,Old,,,,,C29,,,,
+mmtgwt01,E,E19,mouse,T1,Trigme,CONTROL,,,,,T1,,,,
+mmtgko01,F,F19,mouse,T3,Trigme,CKO,,,,,T3,,,,
+mmtgwt02,G,G19,mouse,T4,Trigme,CONTROL,,,,,T4,,,,
+mmtgko02,H,H19,mouse,T5,Trigme,CKO,,,,,T5,,,,
+mmtgko03,A,A20,mouse,T6,Trigme,CKO,,,,,T6,,,,
+mmtgwt03,B,B20,mouse,T7,Trigme,CONTROL,,,,,T7,,,,
+mmtgko04,C,C20,mouse,T8,Trigme,CKO,,,,,T8,,,,
+mmtgko05,D,D20,mouse,T9,Trigme,CKO,,,,,T9,,,,
+mmtgwt04,E,E20,mouse,T10,Trigme,CONTROL,,,,,T10,,,,
+mmtgwt05,F,F20,mouse,T11,Trigme,CONTROL,,,,,T11,,,,
+mmtgko06,G,G20,mouse,T12,Trigme,CKO,,,,,T12,,,,
+mmtgwt06,H,H20,mouse,T13,Trigme,CONTROL,,,,,T13,,,,
+mmtgko07,A,A21,mouse,T14,Trigme,CKO,,,,,T14,,,,
+mmtgko08,B,B21,mouse,T15,Trigme,CKO,,,,,T15,,,,
+mmtgwt07,C,C21,mouse,T16,Trigme,CONTROL,,,,,T16,,,,
+mmtgwt08,D,D21,mouse,T17,Trigme,CONTROL,,,,,T17,,,,
+mmtgyo01,E,E21,mouse,T18,Trigme,Young,,,,,T18,,,,
+mmtgyo02,F,F21,mouse,T19,Trigme,Young,,,,,T19,,,,
+mmtgyo03,G,G21,mouse,T20,Trigme,Young,,,,,T20,,,,
+mmtgyo04,H,H21,mouse,T21,Trigme,Young,,,,,T21,,,,
+mmtgyo05,A,A22,mouse,T22,Trigme,Young,,,,,T22,,,,
+mmtgyo06,B,B22,mouse,T23,Trigme,Young,,,,,T23,,,,
+mmtgol01,C,C22,mouse,T24,Trigme,Old,,,,,T24,,,,
+mmtgol02,D,D22,mouse,T25,Trigme,Old,,,,,T25,,,,
+mmtgol03,E,E22,mouse,T26,Trigme,Old,,,,,T26,,,,
+mmtgol04,F,F22,mouse,T27,Trigme,Old,,,,,T27,,,,
+mmtgol05,G,G22,mouse,T28,Trigme,Old,,,,,T28,,,,
+mmtgol06,H,H22,mouse,T29,Trigme,Old,,,,,T29,,,,
+mmpawt01,A,A23,mouse,P1,Palate,CONTROL,,,,,P1,,,,
+mmpako01,B,B23,mouse,P2,Palate,CKO,,,,,P2,,,,
+mmpako02,C,C23,mouse,P3,Palate,CKO,,,,,P3,,,,
+mmpawt02,D,D23,mouse,P4,Palate,CONTROL,,,,,P4,,,,
+mmpako03,E,E23,mouse,P6,Palate,CKO,,,,,P6,,,,
+mmpawt03,F,F23,mouse,P7,Palate,CONTROL,,,,,P7,,,,
+mmpako04,G,G23,mouse,P8,Palate,CKO,,,,,P8,,,,
+mmpako05,H,H23,mouse,P9,Palate,CKO,,,,,P9,,,,
+mmpawt04,A,A24,mouse,P10,Palate,CONTROL,,,,,P10,,,,
+mmpawt05,B,B24,mouse,P11,Palate,CONTROL,,,,,P11,,,,
+mmpako06,C,C24,mouse,P12,Palate,CKO,,,,,P12,,,,
+mmpawt06,D,D24,mouse,P13,Palate,CONTROL,,,,,P13,,,,
+mmpako07,E,E24,mouse,P14,Palate,CKO,,,,,P14,,,,
+mmpako08,F,F24,mouse,P15,Palate,CKO,,,,,P15,,,,
+mmpawt07,G,G24,mouse,P16,Palate,CONTROL,,,,,P16,,,,
+mmpawt08,H,H24,mouse,P17,Palate,CONTROL,,,,,P17,,,,
