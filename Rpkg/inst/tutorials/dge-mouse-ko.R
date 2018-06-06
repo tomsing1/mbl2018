@@ -1,3 +1,10 @@
+# This script was used as a template for discussion in class.
+# There is a lot of poking and exploring what the data objects we generate
+# during this analysis are.
+#
+# Please refer to the "dge-mouse-ko-short-sweet.R" script for a more succinct
+# version of the analysis you can use as a template to quickly perform a
+# differential expression analysis of your data.
 library(mbl2018)
 library(edgeR)
 library(dplyr)
@@ -5,7 +12,7 @@ library(ggplot2)
 theme_set(theme_bw())
 
 # Data Preparation =============================================================
-ym <- mbl_load_rnaseq("mouse", "may")
+nym <- mbl_load_rnaseq("mouse", "may")
 
 # This `is` function tells you what something is. From left to right, we go
 # from "most specific thing" to least, just like we are:
