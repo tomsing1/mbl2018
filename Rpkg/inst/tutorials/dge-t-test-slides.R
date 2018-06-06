@@ -68,14 +68,3 @@ pvals0 <- sapply(1:10000, function(i) {
 sum(pvals0 < 0.05)
 mean(pvals0 < 0.05)
 hist(pvals0, breaks = 30)
-
-# pval distribution for 1cm effect
-pvals1 <- sapply(1:10000, function(i) {
-  dat <- run_tail_length_experiment(20, 1)
-  tt <- t.test(tail_length ~ group, dat)
-  tt$p.value
-})
-sum(pvals1 < 0.05)
-mean(pvals1 < 0.05)
-hist(pvals1, breaks = 30)
-
