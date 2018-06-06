@@ -142,11 +142,15 @@ pca <- mbl_pca(vm)
 
 # GSEA =========================================================================
 library(multiGSEA)
+
+devtools::install_github("lianos/multiGSEA.shiny")
+
 library(multiGSEA.shiny)
 
 gdb <- getMSigGeneSetDb(c("h", "c2", "c5"), species = "mouse",
                         id.type = "ensembl")
-mgko <- multiGSEA(gdb, vm, vm$design, cm[, "cheek_KO"], methods = "camera")
+mgko <- multiGSEA(gdb, vm, vm$design, cm[, "cheek_KO"], methods = "camera",
+                  min.gs.size = 5)
 
 
 
