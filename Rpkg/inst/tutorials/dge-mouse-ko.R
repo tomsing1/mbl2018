@@ -133,9 +133,21 @@ ggplot(res, aes(P.Value)) +
 # We have provided a simple PCA function to make this easy
 pca <- mbl_pca(vm)
 
-# Do you have a favorite gene? We can try to plot it
+
+# What type of contrasts whould give results?
+# Try one for yourself.
 
 
-#
+
+
+# GSEA =========================================================================
+library(multiGSEA)
+library(multiGSEA.shiny)
+
+gdb <- getMSigGeneSetDb(c("h", "c2", "c5"), species = "mouse",
+                        id.type = "ensembl")
+mgko <- multiGSEA(gdb, vm, vm$design, cm[, "cheek_KO"], methods = "camera")
+
+
 
 
