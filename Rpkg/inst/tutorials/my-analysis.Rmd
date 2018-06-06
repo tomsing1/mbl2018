@@ -325,6 +325,7 @@ experiments that you can load into your workspace:
 
 ```{r}
 pheno <- read.csv("~/may-mouse-kallisto/sample-information.csv",
+                  row.names = 1,
                   stringsAsFactors = FALSE)
 ```
 
@@ -334,6 +335,15 @@ Take a peak at the `pheno` table:
 * Why do we have a `group` columns?
 * **Assume we didn't provide a `group` column, can you reconstruct its values
   and store them in a `group2` column on the `pheno` table?
+
+```{r}
+# head(pheno)
+# paste("a", "b")
+# paste(c("a", "b"), c("y", "z"), c(1, 2), sep = "_")
+
+# pheno$group2 <- paste(pheno$source, pheno$genotype, sep ="_")
+# mutate(pheno, pheno3 = paste(source, genotype, sep="_"))
+```
 
 This table will end up becoming our `y$samples` table.
 
