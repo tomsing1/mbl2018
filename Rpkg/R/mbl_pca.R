@@ -35,6 +35,15 @@ mbl_pca.DGEList <- function(x, ntop = 500, center = TRUE, scale. = FALSE, ...,
           row_covariates = x$genes, col_covariates = x$samples, ..., pcs = pcs)
 }
 
+#' @export
+#' @method mbl_pca EList
+mbl_pca.EList <- function(x, ntop = 500, center = TRUE, scale. = FALSE, ...,
+                          pcs = 1:10) {
+  assert_class(x, "EList")
+  mbl_pca(x$E, ntop = ntop, center = center, scale. = scale.,
+          row_covariates = x$genes, col_covariates = x$targets, ..., pcs = pcs)
+}
+
 #' @method mbl_pca matrix
 mbl_pca.matrix <- function(x, ntop = 500, center = TRUE, scale. = FALSE, ...,
                            row_covariates = NULL, col_covariates = NULL,
@@ -104,7 +113,7 @@ format.mblpca <- function(x, ...) {
     "  * The original result from the 'real R' PCA call is found\n",
     "    in: `result$prcomp`\n",
     "\n",
-    " Type `?mblpca` for more help\n",
+    " Type `?mbl_pca` for more help\n",
     "===========================================================\n",
     sep = "")
   out
