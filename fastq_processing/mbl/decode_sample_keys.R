@@ -5,13 +5,12 @@ library(purrr)
 library(aws.s3)
 library(here)
 
-kSampleKey <- here::here("fastq_processing", "may", "sample_key.txt")
-kOutPath <- here::here("fastq_processing", "may", "sample_annotation.csv")
+kSampleKey <- here::here("fastq_processing", "mbl", "sample_key.txt")
+kOutPath <- here::here("fastq_processing", "mbl", "sample_annotation.csv")
 kS3Bucket <- "mbl.data"
-kS3InPrefix <- "tmp/may"
-kS3OutPrefix <- "reads/may"
+kS3InPrefix <- "tmp/mbl"
+kS3OutPrefix <- "reads/mbl"
 
-kIgnore <- c("^dmunknown", "^c4da", "^epi")  # prefixes for irrelevant samples
 kSpecies <- c(mm = "mouse",
               dm = "fly",
               dr = "fish")
@@ -21,14 +20,19 @@ kSource <- c(ch = "cheek",
              wp = "whisker pad",
              ne = "neuron",
              dg = "DRG",
-             kr = "keratinocyte")
+             kr = "keratinocyte",
+             ep = "epidermis",
+             ed = "epidermis_dorsal",
+             ev = "epidermis_ventral")
 kGenotype <- c(ko = "knockout",
                wt = "wildtype",
-               ao = "silencing channel",
-               ap = "activating channel")
-kTreatment <- c( hi = "histamine inhibition",
-                 no = "no treatment",
-                 at = "ATP activation")
+               co = "cora",
+               pi = "PI4K",
+               ed = "eda_mutant",
+               ko = "CKO",
+               yo = "Young",
+               ol = "Old"
+               )
 
 Decode <- function(sample_id, species) {
   switch(species, 
@@ -38,7 +42,6 @@ Decode <- function(sample_id, species) {
              species = "mouse",
              source = kSource[str_sub(sample_id, 3, 4)],
              genotype = kGenotype[str_sub(sample_id, 5, 6)],
-             treatment = NA,
              replicate = str_sub(sample_id, 7, 8),
              stringsAsFactors = FALSE
            )},
@@ -48,7 +51,6 @@ Decode <- function(sample_id, species) {
                species = "fish",
                source = kSource[str_sub(sample_id, 3, 4)],
                genotype = kGenotype[str_sub(sample_id, 5, 6)],
-               treatment = NA,
                replicate = str_sub(sample_id, 7, 8),
                stringsAsFactors = FALSE
              )},
@@ -58,7 +60,6 @@ Decode <- function(sample_id, species) {
                  species = "fly",
                  source = kSource[str_sub(sample_id, 3, 4)],
                  genotype = kGenotype[str_sub(sample_id, 5, 6)],
-                 treatment = kTreatment[str_sub(sample_id, 7, 8)],
                  replicate = str_sub(sample_id, 9, 10),
                  stringsAsFactors = FALSE
                )
@@ -74,7 +75,6 @@ ListFastqFiles <- function() {
                                                      n = 6)[, 3],
                   lane = as.integer(stringr::str_split_fixed(Key, fixed("."), 
                                                    n = 6)[, 2]),
-                  barcode = str_replace(barcode, "_", "-"),
                   Key = basename(Key))
 }
 
@@ -86,7 +86,6 @@ Main <- function() {
     lane = col_integer(),
     barcode = col_character()
   )) %>%
-    dplyr::filter(!grepl(paste(kIgnore, collapse = "|"), sample_id)) %>%
     dplyr::mutate(species = kSpecies[stringr::str_sub(sample_id, 1, 2)])
 
   fastq_files <- ListFastqFiles()

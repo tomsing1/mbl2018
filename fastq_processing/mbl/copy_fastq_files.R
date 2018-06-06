@@ -6,10 +6,10 @@ library(aws.s3)
 library(here)
 library(dplyr)
 
-kSampleAnno <- here::here("fastq_processing", "may", "sample_annotation.csv")
+kSampleAnno <- here::here("fastq_processing", "mbl", "sample_annotation.csv")
 kS3Bucket <- "mbl.data"
-kS3InPrefix <- "tmp/may"
-kS3OutPrefix <- "reads/may"
+kS3InPrefix <- "tmp/mbl"
+kS3OutPrefix <- "reads/mbl"
 
 Main <- function() {
   sample_anno <- read_csv(kSampleAnno, col_types = cols())
