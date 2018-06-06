@@ -59,27 +59,23 @@ ggplot(test2, aes(x = group, tail_length)) +
              color = "red", size = 4)
 
 
-pvals <- sapply(1:10000, function(i) {
+# pval distribution for no effect
+pvals0 <- sapply(1:10000, function(i) {
   dat <- run_tail_length_experiment(20, 0)
   tt <- t.test(tail_length ~ group, dat)
   tt$p.value
 })
-sum(pvals < 0.05)
-mean(pvals < 0.05)
+sum(pvals0 < 0.05)
+mean(pvals0 < 0.05)
+hist(pvals0, breaks = 30)
 
-library(edgeR)
-ym <- mbl_load_rnaseq("mouse")
-ym$design <- model.matrix(~ 0 + group, data = ym$samples)
-ymf = ym[filterByExpr(ym, ym$design),]
-cm <- makeContrasts(tissue = groupcheek_wildtype - grouppalate_wildtype,
-                    levels = ymf$design)
-vm <- voom(ymf, ymf$design)
-res <- lmFit(vm, vm$design) %>%
-  contrasts.fit(cm) %>%
-  eBayes() %>%
-  topTable(n = Inf)
-
-vmt = mbl_tidy(vm)
-dat <- filter(vmt, ens_gene %in% res$ens_gene[1:5],
-              group %in% c("groupcheek_wildtype", "grouppalate_wildtype"))
+# pval distribution for 1cm effect
+pvals1 <- sapply(1:10000, function(i) {
+  dat <- run_tail_length_experiment(20, 1)
+  tt <- t.test(tail_length ~ group, dat)
+  tt$p.value
+})
+sum(pvals1 < 0.05)
+mean(pvals1 < 0.05)
+hist(pvals1, breaks = 30)
 
