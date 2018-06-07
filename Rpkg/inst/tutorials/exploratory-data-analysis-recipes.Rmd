@@ -60,7 +60,7 @@ separately. This code block shows you how to run it on all the data together.
 
 First load the data:
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(mbl2018)
 library(dplyr)
 library(ggplot2)
