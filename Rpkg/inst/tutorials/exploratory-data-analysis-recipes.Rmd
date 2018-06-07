@@ -1,0 +1,204 @@
+---
+title: "Exploratory data analysis recipes"
+author: "Steve Lianoglou and Thomas Sandmann"
+date: "MBL Neurobiology, Summer 2018"
+output: 
+  rmarkdown::html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    code_folding: show
+vignette: >
+  %\VignetteIndexEntry{Analysis of RNA-seq data (tutorial)}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Overview
+
+At this point in the course, we have introduced you to:
+
+1. some **very** basic R programming
+2. maninpulating data.frames using [dplyr](https://dplyr.tidyverse.org), ie:
+   * `filter`: extract rows
+   * `select`: extract columns
+   * `arrange`: sort the rows of a data.frame based on entries from one or more
+      columns (optionally with the combination of `desc()`)
+   * `mutate`: add / change columns
+3. plotting "tidy" data using [ggplot2](http://ggplot2.tidyverse.org)
+4. basic concepcts of gene-level differential expression:
+   * the data objects (`DGEList`) we use to store the assay, sample, and
+     gene-level metadata
+   * analog of gene-by-gene t-tests for questions of interest
+5. introduction to principal component analysis and how to use it to explore
+   sample similarity among our data, in combination with:
+   * ggplot2
+   * [plotly](https://plot.ly/r/) to make ggplot2 graphics interactive, and even
+     3d interactive plots
+
+You have also been playng with the R package we have made for this course and
+some of the helper functions we provide. I will be using those here.
+
+# Retrieving Processed RNA-seq Data
+
+We have quantitated and packaged up all of the RNA-seq data for you so that you
+can retrieve it easily using the `mbl_load_rnaseq` data. This function returns
+a `DGEList` of gene expression data for the organism you are asking for.
+
+By default it will return a data object that has data from both the "may" data
+generated before you got here, and the "mbl" data you generated here.
+
+Last night I showed you how to run PCA on the "may" and "mbl" from mouse
+separately. This code block shows you how to run it on all the data together.
+
+First load the data:
+
+```{r}
+library(mbl2018)
+library(dplyr)
+library(ggplot2)
+library(mbl2018)
+
+ym.all <- mbl_load_rnaseq("mouse", dataset = "all")
+```
+
+The `"dataset"` column in the `ym.all$samples` table tells you which dataset
+the data came from:
+
+```{r}
+table(ym.all$samples$dataset)
+```
+
+## Extracing Subsets of Samples
+
+You may want to use a subset of samples, perhaps just the "may" samples, or
+"knockout" samples. You can extract subsets of samples from this dgelist by
+testing values that are stored in the `$samples` columns.
+
+For instance, you  might just want the "`dataset == "may"` samples, or the
+"`genotype == "knockout`" samples. You can retrieve those like so:
+
+```{r}
+y.may <- ym.all[, ym.all$samples$dataset == "may"]       # 25 samples
+y.ko <- ym.all[, ym.all$samples$genotype == "knockout"]  # 34 samples
+```
+
+# PCA plots
+
+The `mbl_pca` function is a helper function to run PCA on a dataset and return
+data helpful to you.
+
+Let's run it on all data:
+
+```{r}
+pca.all <- mbl_pca(ym.all)
+```
+
+The `pca.all$data` slot has a `data.frame` with the coordinates of our samples
+on each of the prinipcal components ("PC1", "PC2", etc.), and we have added
+the sample-level phenotypic data for these (like "source") so you can use it for
+plotting.
+
+Let's take a loook at all the data together. We will color the data by
+source and shape it by the "dataset" column:
+
+```{r}
+gg.all <- ggplot(pca.all$data, aes(PC1, PC2, color = source, shape = dataset)) +
+  geom_point()
+gg.all
+```
+
+Recall that we can make ggplots interactive by using the plotly package and
+calling `ggplotly` on the plot object. We can use the `text` aesthetic to 
+customize the elements in the hover/tooltips for each point.
+
+For instance, you can include the `sample_id` into the hover tooltip to see
+where he outlier samples you have identified are.
+
+```{r, message=FALSE, warning=FALSE}
+library(plotly)
+gg.all <- ggplot(pca.all$data, 
+                 aes(PC1, PC2, color = source, 
+                     text = paste("dataset: ", dataset, "<br>",
+                                  "sample_id: ", sample_id))) +
+  geom_point()
+ggplotly(gg.all)
+```
+
+# Differential Gene Expression Analysis
+
+Please refer to the `inst/tutorials/dge-mouse-ko.R` script for a lot more
+exposition on what these steps mean, but I will just write the minimal
+DGE workflow.
+
+**First prepare data for analysis**
+
+Note that we were using "voom" before, but now using "voomWithQualityWeights".
+
+```{r}
+# create design matrix
+design <- model.matrix(~ 0 + group, ym.all$samples)
+
+# filter out lowly expressed genes
+ymf <- ym.all[filterByExpr(ym.all, design),]
+
+# run voomWithQualityWeights to prep data for linear models. I want to color
+# bars by group:
+cols <- mbl_create_color_map(ymf$samples$group) # This was not covered during
+cols <- cols[ymf$samples$group]                 # the tutorial
+vm <- voomWithQualityWeights(ymf, design, col = cols, plot = TRUE)
+```
+
+**Define the questions you want to ask**
+
+Here I setup a linear model to ask two questions:
+
+1. The difference in expression between "cheek_wildtype" and "cheek_knockout"
+2. The difference in expression between "old" vs "young" cheek wildtype
+   samples
+
+Note that you have to "phrase your questions" using the terms found in the
+column names of your design matrix (see `colnames(vm$design)`)
+
+```{r}
+# Phrase the questions
+cm <- makeContrasts(
+  cheek_KO = groupcheek_knockout - groupcheek_wildtype,
+  age = groupcheek_wildtype_Old - groupcheek_wildtype_Young,
+  levels = vm$design)
+
+# Construct linear model to ask the questions
+fit <- lmFit(vm, vm$design)
+fit2 <- contrasts.fit(fit, cm)
+
+# Do something about the variance
+fit2 <- eBayes(fit2)
+```
+
+**Get results for the "Cheek Knockout" Question**
+
+```{r, eval = FALSE}
+res.ko <- topTable(fit2, "cheek_KO", n = Inf)
+View(res.ko) # Take a peak
+```
+
+**Get results for the "age" Question**
+
+```{r, eval = FALSE}
+res.age <- topTable(fit2, "age", n = Inf)
+View(res.age) # Take a peak
+```
+
+# Gene Set Enrichment Analysis
+
+We didn't cover this, but we can do this later today -- having setup all the
+data in this way, you are only two commands away from insight!
+
+

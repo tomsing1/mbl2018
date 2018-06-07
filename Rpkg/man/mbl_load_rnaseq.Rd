@@ -2,21 +2,28 @@
 % Please edit documentation in R/mbl_load_rnaseq.R
 \name{mbl_load_rnaseq}
 \alias{mbl_load_rnaseq}
-\title{Loads RNA-seq datasets}
+\title{Loads RNA-seq dataset generated for MBL2018 Neurobiology Course.}
 \usage{
-mbl_load_rnaseq(organism = c("mouse", "fly", "fish"), dataset = c("may",
-  "generated"), ...)
+mbl_load_rnaseq(organism = c("mouse", "fly", "fish"), dataset = c("all",
+  "may", "mbl"), ...)
 }
 \arguments{
 \item{organism}{either "mouse", "fly", or "fish"}
 
-\item{dataset}{either "may" or "generated"}
+\item{dataset}{either `"all"`, `"mbl"`, or `"may"`.}
 }
 \value{
-a DGEList of the data.
+a DGEList of the RNAseq data.
 }
 \description{
-This function will load an R object that contains all of the expression data
-for a given organism from the the data that was generated before the
-workshop, or during the first few days of it.
+This loads curated DGEList objects for the RNA-seq datasets generated here
+for the specified organism.
+
+By default this will return a DGEList that has both the data generated
+prior to the course (the "may" dataset), and the data you generated here
+into one object. There is a `"dataset"` column in the `$samples` data.frame
+that can be used to split the two datasets.
+
+Alternatively you can load on specific dataset or another by specifing
+the `dataset` parameter to the function.
 }

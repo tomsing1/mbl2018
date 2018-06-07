@@ -1,25 +1,25 @@
-#' Loads RNA-seq datasets
+#' Loads RNA-seq dataset generated for MBL2018 Neurobiology Course.
 #'
-#' This function will load an R object that contains all of the expression data
-#' for a given organism from the the data that was generated before the
-#' workshop, or during the first few days of it.
+#' @description
+#' This loads curated DGEList objects for the RNA-seq datasets generated here
+#' for the specified organism.
+#'
+#' By default this will return a DGEList that has both the data generated
+#' prior to the course (the "may" dataset), and the data you generated here
+#' into one object. There is a `"dataset"` column in the `$samples` data.frame
+#' that can be used to split the two datasets.
+#'
+#' Alternatively you can load on specific dataset or another by specifing
+#' the `dataset` parameter to the function.
 #'
 #' @export
 #' @param organism either "mouse", "fly", or "fish"
-#' @param dataset either "may" or "generated"
-#' @return a DGEList of the data.
+#' @param dataset either `"all"`, `"mbl"`, or `"may"`.
+#' @return a DGEList of the RNAseq data.
 mbl_load_rnaseq <- function(organism = c("mouse", "fly", "fish"),
                             dataset = c("all", "may", "mbl"), ...) {
   organism <- match.arg(organism)
   dataset <- match.arg(dataset)
-
-  # if (dataset == "may") {
-  #   fn <- sprintf("s3://mbl.data/mapping/may/%s/kallisto-DGEList.rds",
-  #                 organism)
-  # } else {
-  #   stop("generated data not ready yet")
-  # }
-  # s3readRDS(fn)
 
   url <- "https://s3.amazonaws.com/mbl.data/mapping/%s/%s/kallisto-DGEList.rds"
   url <- sprintf(url, dataset, organism)
