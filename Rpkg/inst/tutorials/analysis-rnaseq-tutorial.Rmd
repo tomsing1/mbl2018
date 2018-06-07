@@ -386,63 +386,9 @@ will use the `paste` function to concatenate strings.
    [tximport][tximport]. Need a vector that points to the `abundance.h5` files
    for each sample.
 
-```{r, eval = FALSE}
-txi <- tximport(files, type = "kallisto", tx2gene = tx2gene,
-                countsFromAbundance = "lengthScaledTPM")
-```
 
-2. TODO: Create DGEList out of everythiing
+**We will do the rest live from analysis-tutorial-code.R**
 
-3. TODO: Redraw ExpressionSet image with `y$counts`, `y$genes`, `y$samples`
-   labels.
-
-# Quality Control
-
-In addition to the read-level quality control you already did with FastQC and
-MultiQC, there are a number of ways to explore the quality of our data now that
-it has been summarized to gene-level expression estimates per sample.
-
-## Effective Sequencing Depth
-
-How many reads actually aligned to the features (genes) we are analyzing here?
-
-1. TODO: barplot of `lib.size`
-2. TODO: barplot of `lib.size` per group
-
-## Principal Component Analysis
-
-TODO: Show simple example of 2d correlated measurements, rotate and project to
-1D.
-
-Fun interactive tutorial here: http://setosa.io/ev/principal-component-analysis/
-
-## Heatmaps
-
-TODO: Heatmaps
-
-## QC Conclusion
-
-3. TODO: identify crazy outliers and remove those samples
-
-# Differenial Gene Expression
-
-1. Introduce design matrix
-   i. explains experiment (`~ 0 + group`)
-   ii. call `lmFit` and show `fit$coefficients`
-   iii. `mbl_plot_expression` of genes and show 1:1 match to (ii)
-   
-2. Introduce contrast as doing arithmetic over columns of the design matrix
-3. Run DGE!
-4. Introduce alternate paramterization with intercept
-   i. show `fit$coefficients`, use `mbl_plot_expression` to eyeball logFC
-      calc off of columns vs intercept
-
-5. Use (4) paramaterization to find tissue specific genes
-   - [Omnibus test][omnibus]: test whether the explained variance in a set of
-     data is significantly greater than the unexplained variance, overall.
-
-6. Draw heatmap of (5)
-   i. use `mbl_heatmap` but explain further customization with `ComplexHeatmap`
 
 # GSEA
 

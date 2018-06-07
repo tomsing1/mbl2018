@@ -9,16 +9,19 @@
 #' @param dataset either "may" or "generated"
 #' @return a DGEList of the data.
 mbl_load_rnaseq <- function(organism = c("mouse", "fly", "fish"),
-                            dataset = c("may", "generated"), ...) {
+                            dataset = c("all", "may", "mbl"), ...) {
   organism <- match.arg(organism)
   dataset <- match.arg(dataset)
 
-  if (dataset == "may") {
-    fn <- sprintf("s3://mbl.data/mapping/may/%s/kallisto-DGEList.rds",
-                  organism)
-  } else {
-    stop("generated data not ready yet")
-  }
+  # if (dataset == "may") {
+  #   fn <- sprintf("s3://mbl.data/mapping/may/%s/kallisto-DGEList.rds",
+  #                 organism)
+  # } else {
+  #   stop("generated data not ready yet")
+  # }
+  # s3readRDS(fn)
 
-  s3readRDS(fn)
+  url <- "https://s3.amazonaws.com/mbl.data/mapping/%s/%s/kallisto-DGEList.rds"
+  url <- sprintf(url, dataset, organism)
+  readRDS(url(url))
 }
