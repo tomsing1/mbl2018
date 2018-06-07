@@ -11,7 +11,7 @@ kS3Bucket <- "mbl.data"
 kS3InPrefix <- "tmp/may"
 kS3OutPrefix <- "reads/may"
 
-kIgnore <- c("^dmunknown", "^c4da", "^epi")  # prefixes for irrelevant samples
+kIgnore <- c("^dmunknown")  # prefixes for irrelevant samples
 kSpecies <- c(mm = "mouse",
               dm = "fly",
               dr = "fish")
@@ -78,25 +78,58 @@ ListFastqFiles <- function() {
                   Key = basename(Key))
 }
 
+DecodeAging <- function(sample_id) {
+  data.frame(
+    sample_id = sample_id,
+    species = "fly",
+    source = ifelse(grepl("^cd4a", sample_id), "neuron", "epidermis"),
+    genotype = 'wt',
+    treatment = ifelse(grepl("120h", sample_id), "120h", "72h"),
+    replicate = NA,
+    stringsAsFactors = FALSE
+  )
+} 
+
 Main <- function() {
   
-  key <- read_tsv(kSampleKey, col_types = cols(
-    sample_id = col_character(),
-    library = col_character(),
-    lane = col_integer(),
-    barcode = col_character()
-  )) %>%
-    dplyr::filter(!grepl(paste(kIgnore, collapse = "|"), sample_id)) %>%
-    dplyr::mutate(species = kSpecies[stringr::str_sub(sample_id, 1, 2)])
-
+  # identify available FASTQ files
   fastq_files <- ListFastqFiles()
   
-  sample_anno <- purrr::map2_df(key$sample_id, key$species, .f = Decode) %>%
+  # read keys for all samples
+  all_samples <- read_tsv(kSampleKey,
+                          col_types = cols(
+                            sample_id = col_character(),
+                            library = col_character(),
+                            lane = col_integer(),
+                            barcode = col_character()
+                          ))
+  
+  # identify the two experiments
+  aging <- dplyr::filter(all_samples, grepl("^c4da|^epi", sample_id,
+                                            perl = TRUE))
+  other <- dplyr::filter(all_samples, !grepl("^c4da|^epi", sample_id,
+                                             perl = TRUE))
+  
+  #---- process experiment 'other'
+  key <- other %>%
+    dplyr::filter(!grepl(paste(kIgnore, collapse = "|"), sample_id)) %>%
+    dplyr::mutate(species = kSpecies[stringr::str_sub(sample_id, 1, 2)])
+  
+  
+  other_anno <- purrr::map2_df(key$sample_id, key$species, .f = Decode) %>%
     dplyr::mutate(fastq = paste0(species, "/", sample_id, "_R1.fastq.gz")) %>%
     dplyr::select(-species) %>%
     dplyr::left_join(key, by = "sample_id") %>%
     dplyr::left_join(fastq_files, by = c("barcode", "lane"))
-  write_csv(sample_anno, path = kOutPath)
+  
+  #---- process experiment 'aging'
+  aging_anno <- DecodeAging(aging$sample_id) %>%
+    dplyr::mutate(fastq = paste0(species, "/", sample_id, "_R1.fastq.gz")) %>%
+    dplyr::left_join(all_samples, by = "sample_id") %>%
+    dplyr::left_join(fastq_files, by = c("barcode", "lane"))
+  
+  sample_anno <- dplyr::bind_rows(other_anno, aging_anno) %>%
+    write_csv(path = kOutPath)
   aws.s3::s3write_using(
     sample_anno, FUN = write_csv, 
     object = paste0(kS3OutPrefix, "/", "sample_annotations.csv"),

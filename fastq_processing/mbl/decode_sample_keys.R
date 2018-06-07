@@ -4,6 +4,7 @@ library(dplyr)
 library(purrr)
 library(aws.s3)
 library(here)
+library(tidyr)
 
 kSampleKey <- here::here("fastq_processing", "mbl", "sample_key.txt")
 kOutPath <- here::here("fastq_processing", "mbl", "sample_annotation.csv")
@@ -30,9 +31,13 @@ kGenotype <- c(ko = "knockout",
                pi = "PI4K",
                ed = "eda_mutant",
                ko = "CKO",
-               yo = "Young",
-               ol = "Old"
+               yo = NA,
+               ol = NA
                )
+kTreatment <- c(
+  yo = "Young",
+  ol = "Old"
+)
 
 Decode <- function(sample_id, species) {
   switch(species, 
@@ -43,6 +48,7 @@ Decode <- function(sample_id, species) {
              source = kSource[str_sub(sample_id, 3, 4)],
              genotype = kGenotype[str_sub(sample_id, 5, 6)],
              replicate = str_sub(sample_id, 7, 8),
+             treatment = kTreatment[str_sub(sample_id, 5, 6)],
              stringsAsFactors = FALSE
            )},
            "fish" = {
@@ -51,6 +57,7 @@ Decode <- function(sample_id, species) {
                species = "fish",
                source = kSource[str_sub(sample_id, 3, 4)],
                genotype = kGenotype[str_sub(sample_id, 5, 6)],
+               treatment = NA,
                replicate = str_sub(sample_id, 7, 8),
                stringsAsFactors = FALSE
              )},
@@ -61,6 +68,7 @@ Decode <- function(sample_id, species) {
                  source = kSource[str_sub(sample_id, 3, 4)],
                  genotype = kGenotype[str_sub(sample_id, 5, 6)],
                  replicate = str_sub(sample_id, 9, 10),
+                 treatment = NA,
                  stringsAsFactors = FALSE
                )
          })
@@ -94,7 +102,8 @@ Main <- function() {
     dplyr::mutate(fastq = paste0(species, "/", sample_id, "_R1.fastq.gz")) %>%
     dplyr::select(-species) %>%
     dplyr::left_join(key, by = "sample_id") %>%
-    dplyr::left_join(fastq_files, by = c("barcode", "lane"))
+    dplyr::left_join(fastq_files, by = c("barcode", "lane")) %>%
+    tidyr::replace_na(list(genotype = "wildtype"))
   write_csv(sample_anno, path = kOutPath)
   aws.s3::s3write_using(
     sample_anno, FUN = write_csv, 
