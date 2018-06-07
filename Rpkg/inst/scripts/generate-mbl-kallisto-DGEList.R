@@ -2,13 +2,15 @@ library(tximport)
 library(edgeR)
 library(aws.s3)
 library(rhdf5)
+library(dplyr)
 
 aws.signature::use_credentials("mbl18")
 
 dat.dir <- "/data/kallisto"
 organism <- "mouse"
 
-sample.info <- read.csv("https://s3.amazonaws.com/mbl.data/reads/mbl/sample_annotations.csv")
+sample.info <- read.csv("https://s3.amazonaws.com/mbl.data/reads/mbl/sample_annotations.csv",
+                        stringsAsFactors = FALSE)
 sample.info$kallisto_fn <- file.path(
   dat.dir, sample.info$species,
   sample.info$sample_id,
@@ -23,10 +25,11 @@ build_kallisto_dge <- function(organism, kdir) {
     # may mouse: sample_id, source, geneotype, animal_id
     si <- sample.info %>%
       subset(species == organism) %>%
-      transform(group = paste(source, genotype, sep = "_"),
+      transform(group = paste(source, genotype, treatment, sep = "_"),
                 animal_id = paste(genotype, replicate, sep = "_"),
                 stringsAsFactors = FALSE) %>%
-      select(group, sample_id, source, genotype, animal_id, kallisto_fn)
+      transform(group = sub("_NA", "", group), stringsAsFactors = FALSE) %>%
+      select(group, sample_id, source, genotype, treatment, animal_id, kallisto_fn)
   } else if (organism == "fish") {
     # may fish: group, sample_id, source, genotype, animal_id
     si <- sample.info %>%
@@ -58,7 +61,7 @@ build_kallisto_dge <- function(organism, kdir) {
 
   gi <- mbl_get_gene_annotation(organism)
   out <- DGEList(counts = res$counts, samples = select(si, -kallisto_fn))
-
+  out$samples$group <- as.character(out$samples$group)
   gnz <- gi[rownames(out),]
   if (!all.equal(gnz$ens_gene, rownames(out))) {
     browser()
@@ -93,21 +96,32 @@ assemble_dataset <- function(organism) {
   may$samples$dataset <- "may"
   mbl$samples$dataset <- "mbl"
 
-  stopifnot(all.equal(colnames(may$samples), colnames(mbl$samples)))
+  # stopifnot(all.equal(colnames(may$samples), colnames(mbl$samples)))
   stopifnot(all.equal(rownames(may), rownames(mbl)))
 
   cnts <- cbind(may$counts, mbl$counts)
-  smpls <- rbind(may$samples, mbl$samples)
+  smpls <- bind_rows(may$samples, mbl$samples) %>%
+    as.data.frame(stringsAsFactors = FALSE) %>%
+    select(-lib.size, -norm.factors)
 
   # there are duplicate sample identifiers
-  smpls$sample_id <- paste(smpls$dataset, smpls$sample_id, sep="_")
-  rownames(smpls) <- smpls$sample_id
-  colnames(cnts) <- smpls$sample_id
+  rn <- paste(smpls$dataset, smpls$sample_id, sep="_")
+  rownames(smpls) <- rn
+  colnames(cnts) <- rn
 
   out <- DGEList(cnts, samples = smpls, genes = mbl$genes)
 }
 
 # Assemble all datasets
 if (FALSE) {
+  all.mouse <- assemble_dataset("mouse")
+  s3saveRDS(all.mouse, "s3://mbl.data/mapping/all/mouse/kallisto-DGEList.rds")
+
+  all.fly <- assemble_dataset("fly")
+  s3saveRDS(all.fly, "s3://mbl.data/mapping/all/fly/kallisto-DGEList.rds")
+
+  all.fish <- assemble_dataset("fish")
+  s3saveRDS(all.fish, "s3://mbl.data/mapping/all/fish/kallisto-DGEList.rds")
 
 }
+
