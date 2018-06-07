@@ -1,84 +1,115 @@
 sample_id,source,genotype,treatment,replicate,fastq,library,lane,barcode,species,Key
-mmchko02,cheek,knockout,NA,2,mouse/mmchko02_R1.fastq.gz,180524MBL01,1,TAAGGCGA-ACTGCATA,mouse,1_HHFGCBCX2.1.TAAGGCGA_ACTGCATA.unmapped.1.fastq.gz
-mmchko03,cheek,knockout,NA,3,mouse/mmchko03_R1.fastq.gz,180524MBL01,1,CGTACTAG-AAGGAGTA,mouse,1_HHFGCBCX2.1.CGTACTAG_AAGGAGTA.unmapped.1.fastq.gz
-mmchwt02,cheek,wildtype,NA,2,mouse/mmchwt02_R1.fastq.gz,180524MBL01,1,TAAGGCGA-GTAAGGAG,mouse,1_HHFGCBCX2.1.TAAGGCGA_GTAAGGAG.unmapped.1.fastq.gz
-mmchwt03,cheek,wildtype,NA,3,mouse/mmchwt03_R1.fastq.gz,180524MBL01,1,CGTACTAG-CTAAGCCT,mouse,1_HHFGCBCX2.1.CGTACTAG_CTAAGCCT.unmapped.1.fastq.gz
-mmchwt04,cheek,wildtype,NA,4,mouse/mmchwt04_R1.fastq.gz,180524MBL01,1,AGGCAGAA-CGTCTAAT,mouse,1_HHFGCBCX2.1.AGGCAGAA_CGTCTAAT.unmapped.1.fastq.gz
-mmpako01,palate,knockout,NA,1,mouse/mmpako01_R1.fastq.gz,180524MBL01,1,TAAGGCGA-TCTCTCCG,mouse,1_HHFGCBCX2.1.TAAGGCGA_TCTCTCCG.unmapped.1.fastq.gz
-mmpako02,palate,knockout,NA,2,mouse/mmpako02_R1.fastq.gz,180524MBL01,1,CGTACTAG-CTCTCTAT,mouse,1_HHFGCBCX2.1.CGTACTAG_CTCTCTAT.unmapped.1.fastq.gz
-mmpako03,palate,knockout,NA,3,mouse/mmpako03_R1.fastq.gz,180524MBL01,1,AGGCAGAA-ACTGCATA,mouse,1_HHFGCBCX2.1.AGGCAGAA_ACTGCATA.unmapped.1.fastq.gz
-mmpawt01,palate,wildtype,NA,1,mouse/mmpawt01_R1.fastq.gz,180524MBL01,1,TAAGGCGA-CGTCTAAT,mouse,1_HHFGCBCX2.1.TAAGGCGA_CGTCTAAT.unmapped.1.fastq.gz
-mmpawt02,palate,wildtype,NA,2,mouse/mmpawt02_R1.fastq.gz,180524MBL01,1,CGTACTAG-TATCCTCT,mouse,1_HHFGCBCX2.1.CGTACTAG_TATCCTCT.unmapped.1.fastq.gz
-mmpawt03,palate,wildtype,NA,3,mouse/mmpawt03_R1.fastq.gz,180524MBL01,1,AGGCAGAA-GTAAGGAG,mouse,1_HHFGCBCX2.1.AGGCAGAA_GTAAGGAG.unmapped.1.fastq.gz
-mmpawt04,palate,wildtype,NA,4,mouse/mmpawt04_R1.fastq.gz,180524MBL01,1,TCCTGAGC-CTCTCTAT,mouse,1_HHFGCBCX2.1.TCCTGAGC_CTCTCTAT.unmapped.1.fastq.gz
-mmtgko01,trigeminal,knockout,NA,1,mouse/mmtgko01_R1.fastq.gz,180524MBL01,1,TAAGGCGA-TATCCTCT,mouse,1_HHFGCBCX2.1.TAAGGCGA_TATCCTCT.unmapped.1.fastq.gz
-mmtgko02,trigeminal,knockout,NA,2,mouse/mmtgko02_R1.fastq.gz,180524MBL01,1,CGTACTAG-TCTCTCCG,mouse,1_HHFGCBCX2.1.CGTACTAG_TCTCTCCG.unmapped.1.fastq.gz
-mmtgko03,trigeminal,knockout,NA,3,mouse/mmtgko03_R1.fastq.gz,180524MBL01,1,AGGCAGAA-CTAAGCCT,mouse,1_HHFGCBCX2.1.AGGCAGAA_CTAAGCCT.unmapped.1.fastq.gz
-mmtgwt02,trigeminal,wildtype,NA,2,mouse/mmtgwt02_R1.fastq.gz,180524MBL01,1,TAAGGCGA-CTCTCTAT,mouse,1_HHFGCBCX2.1.TAAGGCGA_CTCTCTAT.unmapped.1.fastq.gz
-mmtgwt03,trigeminal,wildtype,NA,3,mouse/mmtgwt03_R1.fastq.gz,180524MBL01,1,CGTACTAG-CGTCTAAT,mouse,1_HHFGCBCX2.1.CGTACTAG_CGTCTAAT.unmapped.1.fastq.gz
-mmtgwt04,trigeminal,wildtype,NA,4,mouse/mmtgwt04_R1.fastq.gz,180524MBL01,1,AGGCAGAA-AAGGAGTA,mouse,1_HHFGCBCX2.1.AGGCAGAA_AAGGAGTA.unmapped.1.fastq.gz
-mmwpko01,whisker_pad,knockout,NA,1,mouse/mmwpko01_R1.fastq.gz,180524MBL01,1,TAAGGCGA-CTAAGCCT,mouse,1_HHFGCBCX2.1.TAAGGCGA_CTAAGCCT.unmapped.1.fastq.gz
-mmwpko02,whisker_pad,knockout,NA,2,mouse/mmwpko02_R1.fastq.gz,180524MBL01,1,CGTACTAG-GTAAGGAG,mouse,1_HHFGCBCX2.1.CGTACTAG_GTAAGGAG.unmapped.1.fastq.gz
-mmwpko03,whisker_pad,knockout,NA,3,mouse/mmwpko03_R1.fastq.gz,180524MBL01,1,AGGCAGAA-TATCCTCT,mouse,1_HHFGCBCX2.1.AGGCAGAA_TATCCTCT.unmapped.1.fastq.gz
-mmwpwt01,whisker_pad,wildtype,NA,1,mouse/mmwpwt01_R1.fastq.gz,180524MBL01,1,TAAGGCGA-AAGGAGTA,mouse,1_HHFGCBCX2.1.TAAGGCGA_AAGGAGTA.unmapped.1.fastq.gz
-mmwpwt02,whisker_pad,wildtype,NA,2,mouse/mmwpwt02_R1.fastq.gz,180524MBL01,1,CGTACTAG-ACTGCATA,mouse,1_HHFGCBCX2.1.CGTACTAG_ACTGCATA.unmapped.1.fastq.gz
-mmwpwt03,whisker_pad,wildtype,NA,3,mouse/mmwpwt03_R1.fastq.gz,180524MBL01,1,AGGCAGAA-CTCTCTAT,mouse,1_HHFGCBCX2.1.AGGCAGAA_CTCTCTAT.unmapped.1.fastq.gz
-mmwpwt04,whisker_pad,wildtype,NA,4,mouse/mmwpwt04_R1.fastq.gz,180524MBL01,1,AGGCAGAA-TCTCTCCG,mouse,1_HHFGCBCX2.1.AGGCAGAA_TCTCTCCG.unmapped.1.fastq.gz
-dmneaohi01,neuron,silencing_channel,histamine_inhibition,1,fly/dmneaohi01_R1.fastq.gz,180524MBL02,2,TAAGGCGA-CGTCTAAT,fly,2_HHFGCBCX2.2.TAAGGCGA_CGTCTAAT.unmapped.1.fastq.gz
-dmneaohi03,neuron,silencing_channel,histamine_inhibition,3,fly/dmneaohi03_R1.fastq.gz,180524MBL02,2,CGTACTAG-CTCTCTAT,fly,2_HHFGCBCX2.2.CGTACTAG_CTCTCTAT.unmapped.1.fastq.gz
-dmneaohi05,neuron,silencing_channel,histamine_inhibition,5,fly/dmneaohi05_R1.fastq.gz,180524MBL02,2,AGGCAGAA-GTAAGGAG,fly,2_HHFGCBCX2.2.AGGCAGAA_GTAAGGAG.unmapped.1.fastq.gz
-dmneaohi06,neuron,silencing_channel,histamine_inhibition,6,fly/dmneaohi06_R1.fastq.gz,180524MBL02,2,AGGCAGAA-ACTGCATA,fly,2_HHFGCBCX2.2.AGGCAGAA_ACTGCATA.unmapped.1.fastq.gz
-dmneaohi07,neuron,silencing_channel,histamine_inhibition,7,fly/dmneaohi07_R1.fastq.gz,180524MBL02,2,AGGCAGAA-AAGGAGTA,fly,2_HHFGCBCX2.2.AGGCAGAA_AAGGAGTA.unmapped.1.fastq.gz
-dmneaohi08,neuron,silencing_channel,histamine_inhibition,8,fly/dmneaohi08_R1.fastq.gz,180524MBL02,2,TCCTGAGC-CGTCTAAT,fly,2_HHFGCBCX2.2.TCCTGAGC_CGTCTAAT.unmapped.1.fastq.gz
-dmneaohi09,neuron,silencing_channel,histamine_inhibition,9,fly/dmneaohi09_R1.fastq.gz,180524MBL02,2,TCCTGAGC-TCTCTCCG,fly,2_HHFGCBCX2.2.TCCTGAGC_TCTCTCCG.unmapped.1.fastq.gz
-dmneaohi10,neuron,silencing_channel,histamine_inhibition,10,fly/dmneaohi10_R1.fastq.gz,180524MBL02,2,GGACTCCT-CTCTCTAT,fly,2_HHFGCBCX2.2.GGACTCCT_CTCTCTAT.unmapped.1.fastq.gz
-dmneaohi11,neuron,silencing_channel,histamine_inhibition,11,fly/dmneaohi11_R1.fastq.gz,180524MBL02,2,TAGGCATG-TATCCTCT,fly,2_HHFGCBCX2.2.TAGGCATG_TATCCTCT.unmapped.1.fastq.gz
-dmneaono04,neuron,silencing_channel,no_treatment,4,fly/dmneaono04_R1.fastq.gz,180524MBL02,2,TAAGGCGA-CTCTCTAT,fly,2_HHFGCBCX2.2.TAAGGCGA_CTCTCTAT.unmapped.1.fastq.gz
-dmneaono05,neuron,silencing_channel,no_treatment,5,fly/dmneaono05_R1.fastq.gz,180524MBL02,2,TAAGGCGA-TATCCTCT,fly,2_HHFGCBCX2.2.TAAGGCGA_TATCCTCT.unmapped.1.fastq.gz
-dmneaono06,neuron,silencing_channel,no_treatment,6,fly/dmneaono06_R1.fastq.gz,180524MBL02,2,TAAGGCGA-GTAAGGAG,fly,2_HHFGCBCX2.2.TAAGGCGA_GTAAGGAG.unmapped.1.fastq.gz
-dmneapat01,neuron,activating_channel,ATP_activation,1,fly/dmneapat01_R1.fastq.gz,180524MBL02,2,CGTACTAG-AAGGAGTA,fly,2_HHFGCBCX2.2.CGTACTAG_AAGGAGTA.unmapped.1.fastq.gz
-dmneapat02,neuron,activating_channel,ATP_activation,2,fly/dmneapat02_R1.fastq.gz,180524MBL02,2,CGTACTAG-CTAAGCCT,fly,2_HHFGCBCX2.2.CGTACTAG_CTAAGCCT.unmapped.1.fastq.gz
-dmneapat03,neuron,activating_channel,ATP_activation,3,fly/dmneapat03_R1.fastq.gz,180524MBL02,2,CGTACTAG-CGTCTAAT,fly,2_HHFGCBCX2.2.CGTACTAG_CGTCTAAT.unmapped.1.fastq.gz
-dmneapat05,neuron,activating_channel,ATP_activation,5,fly/dmneapat05_R1.fastq.gz,180524MBL02,2,TCCTGAGC-CTCTCTAT,fly,2_HHFGCBCX2.2.TCCTGAGC_CTCTCTAT.unmapped.1.fastq.gz
-dmneapat06,neuron,activating_channel,ATP_activation,6,fly/dmneapat06_R1.fastq.gz,180524MBL02,2,TCCTGAGC-TATCCTCT,fly,2_HHFGCBCX2.2.TCCTGAGC_TATCCTCT.unmapped.1.fastq.gz
-dmneapat07,neuron,activating_channel,ATP_activation,7,fly/dmneapat07_R1.fastq.gz,180524MBL02,2,TCCTGAGC-GTAAGGAG,fly,2_HHFGCBCX2.2.TCCTGAGC_GTAAGGAG.unmapped.1.fastq.gz
-dmneapat08,neuron,activating_channel,ATP_activation,8,fly/dmneapat08_R1.fastq.gz,180524MBL02,2,GGACTCCT-AAGGAGTA,fly,2_HHFGCBCX2.2.GGACTCCT_AAGGAGTA.unmapped.1.fastq.gz
-dmneapat09,neuron,activating_channel,ATP_activation,9,fly/dmneapat09_R1.fastq.gz,180524MBL02,2,GGACTCCT-CTAAGCCT,fly,2_HHFGCBCX2.2.GGACTCCT_CTAAGCCT.unmapped.1.fastq.gz
-dmneapat10,neuron,activating_channel,ATP_activation,10,fly/dmneapat10_R1.fastq.gz,180524MBL02,2,GGACTCCT-CGTCTAAT,fly,2_HHFGCBCX2.2.GGACTCCT_CGTCTAAT.unmapped.1.fastq.gz
-dmneapat12,neuron,activating_channel,ATP_activation,12,fly/dmneapat12_R1.fastq.gz,180524MBL02,2,TAGGCATG-GTAAGGAG,fly,2_HHFGCBCX2.2.TAGGCATG_GTAAGGAG.unmapped.1.fastq.gz
-dmnewtat01,neuron,wildtype,ATP_activation,1,fly/dmnewtat01_R1.fastq.gz,180524MBL02,2,CGTACTAG-TATCCTCT,fly,2_HHFGCBCX2.2.CGTACTAG_TATCCTCT.unmapped.1.fastq.gz
-dmnewtat02,neuron,wildtype,ATP_activation,2,fly/dmnewtat02_R1.fastq.gz,180524MBL02,2,CGTACTAG-GTAAGGAG,fly,2_HHFGCBCX2.2.CGTACTAG_GTAAGGAG.unmapped.1.fastq.gz
-dmnewtat04,neuron,wildtype,ATP_activation,4,fly/dmnewtat04_R1.fastq.gz,180524MBL02,2,CGTACTAG-ACTGCATA,fly,2_HHFGCBCX2.2.CGTACTAG_ACTGCATA.unmapped.1.fastq.gz
-dmnewtat05,neuron,wildtype,ATP_activation,5,fly/dmnewtat05_R1.fastq.gz,180524MBL02,2,AGGCAGAA-CTAAGCCT,fly,2_HHFGCBCX2.2.AGGCAGAA_CTAAGCCT.unmapped.1.fastq.gz
-dmnewtat06,neuron,wildtype,ATP_activation,6,fly/dmnewtat06_R1.fastq.gz,180524MBL02,2,AGGCAGAA-CGTCTAAT,fly,2_HHFGCBCX2.2.AGGCAGAA_CGTCTAAT.unmapped.1.fastq.gz
-dmnewtat08,neuron,wildtype,ATP_activation,8,fly/dmnewtat08_R1.fastq.gz,180524MBL02,2,GGACTCCT-TATCCTCT,fly,2_HHFGCBCX2.2.GGACTCCT_TATCCTCT.unmapped.1.fastq.gz
-dmnewtat11,neuron,wildtype,ATP_activation,11,fly/dmnewtat11_R1.fastq.gz,180524MBL02,2,GGACTCCT-GTAAGGAG,fly,2_HHFGCBCX2.2.GGACTCCT_GTAAGGAG.unmapped.1.fastq.gz
-dmnewtat12,neuron,wildtype,ATP_activation,12,fly/dmnewtat12_R1.fastq.gz,180524MBL02,2,GGACTCCT-ACTGCATA,fly,2_HHFGCBCX2.2.GGACTCCT_ACTGCATA.unmapped.1.fastq.gz
-dmnewthi01,neuron,wildtype,histamine_inhibition,1,fly/dmnewthi01_R1.fastq.gz,180524MBL02,2,TAAGGCGA-ACTGCATA,fly,2_HHFGCBCX2.2.TAAGGCGA_ACTGCATA.unmapped.1.fastq.gz
-dmnewthi02,neuron,wildtype,histamine_inhibition,2,fly/dmnewthi02_R1.fastq.gz,180524MBL02,2,TAAGGCGA-AAGGAGTA,fly,2_HHFGCBCX2.2.TAAGGCGA_AAGGAGTA.unmapped.1.fastq.gz
-dmnewthi03,neuron,wildtype,histamine_inhibition,3,fly/dmnewthi03_R1.fastq.gz,180524MBL02,2,TAAGGCGA-CTAAGCCT,fly,2_HHFGCBCX2.2.TAAGGCGA_CTAAGCCT.unmapped.1.fastq.gz
-dmnewthi04,neuron,wildtype,histamine_inhibition,4,fly/dmnewthi04_R1.fastq.gz,180524MBL02,2,CGTACTAG-TCTCTCCG,fly,2_HHFGCBCX2.2.CGTACTAG_TCTCTCCG.unmapped.1.fastq.gz
-dmnewthi05,neuron,wildtype,histamine_inhibition,5,fly/dmnewthi05_R1.fastq.gz,180524MBL02,2,AGGCAGAA-CTCTCTAT,fly,2_HHFGCBCX2.2.AGGCAGAA_CTCTCTAT.unmapped.1.fastq.gz
-dmnewthi06,neuron,wildtype,histamine_inhibition,6,fly/dmnewthi06_R1.fastq.gz,180524MBL02,2,AGGCAGAA-TATCCTCT,fly,2_HHFGCBCX2.2.AGGCAGAA_TATCCTCT.unmapped.1.fastq.gz
-dmnewthi08,neuron,wildtype,histamine_inhibition,8,fly/dmnewthi08_R1.fastq.gz,180524MBL02,2,TCCTGAGC-AAGGAGTA,fly,2_HHFGCBCX2.2.TCCTGAGC_AAGGAGTA.unmapped.1.fastq.gz
-dmnewthi09,neuron,wildtype,histamine_inhibition,9,fly/dmnewthi09_R1.fastq.gz,180524MBL02,2,TCCTGAGC-CTAAGCCT,fly,2_HHFGCBCX2.2.TCCTGAGC_CTAAGCCT.unmapped.1.fastq.gz
-dmnewthi11,neuron,wildtype,histamine_inhibition,11,fly/dmnewthi11_R1.fastq.gz,180524MBL02,2,GGACTCCT-TCTCTCCG,fly,2_HHFGCBCX2.2.GGACTCCT_TCTCTCCG.unmapped.1.fastq.gz
-dmnewthi12,neuron,wildtype,histamine_inhibition,12,fly/dmnewthi12_R1.fastq.gz,180524MBL02,2,TAGGCATG-CTCTCTAT,fly,2_HHFGCBCX2.2.TAGGCATG_CTCTCTAT.unmapped.1.fastq.gz
-drdgwt01,DRG,wildtype,NA,1,fish/drdgwt01_R1.fastq.gz,180524MBL02,2,CTCTCTAC-ACTGCATA,fish,2_HHFGCBCX2.2.CTCTCTAC_ACTGCATA.unmapped.1.fastq.gz
-drdgwt02,DRG,wildtype,NA,2,fish/drdgwt02_R1.fastq.gz,180524MBL02,2,CTCTCTAC-AAGGAGTA,fish,2_HHFGCBCX2.2.CTCTCTAC_AAGGAGTA.unmapped.1.fastq.gz
-drdgwt03,DRG,wildtype,NA,3,fish/drdgwt03_R1.fastq.gz,180524MBL02,2,CTCTCTAC-CTAAGCCT,fish,2_HHFGCBCX2.2.CTCTCTAC_CTAAGCCT.unmapped.1.fastq.gz
-drdgwt07,DRG,wildtype,NA,7,fish/drdgwt07_R1.fastq.gz,180524MBL02,2,CGAGGCTG-TCTCTCCG,fish,2_HHFGCBCX2.2.CGAGGCTG_TCTCTCCG.unmapped.1.fastq.gz
-drdgwt08,DRG,wildtype,NA,8,fish/drdgwt08_R1.fastq.gz,180524MBL02,2,AAGAGGCA-CTCTCTAT,fish,2_HHFGCBCX2.2.AAGAGGCA_CTCTCTAT.unmapped.1.fastq.gz
-drkrwt01,keratinocyte,wildtype,NA,1,fish/drkrwt01_R1.fastq.gz,180524MBL02,2,CTCTCTAC-CTCTCTAT,fish,2_HHFGCBCX2.2.CTCTCTAC_CTCTCTAT.unmapped.1.fastq.gz
-drkrwt02,keratinocyte,wildtype,NA,2,fish/drkrwt02_R1.fastq.gz,180524MBL02,2,CTCTCTAC-TATCCTCT,fish,2_HHFGCBCX2.2.CTCTCTAC_TATCCTCT.unmapped.1.fastq.gz
-drkrwt03,keratinocyte,wildtype,NA,3,fish/drkrwt03_R1.fastq.gz,180524MBL02,2,CTCTCTAC-GTAAGGAG,fish,2_HHFGCBCX2.2.CTCTCTAC_GTAAGGAG.unmapped.1.fastq.gz
-drkrwt06,keratinocyte,wildtype,NA,6,fish/drkrwt06_R1.fastq.gz,180524MBL02,2,CGAGGCTG-CTCTCTAT,fish,2_HHFGCBCX2.2.CGAGGCTG_CTCTCTAT.unmapped.1.fastq.gz
-drkrwt07,keratinocyte,wildtype,NA,7,fish/drkrwt07_R1.fastq.gz,180524MBL02,2,CGAGGCTG-AAGGAGTA,fish,2_HHFGCBCX2.2.CGAGGCTG_AAGGAGTA.unmapped.1.fastq.gz
-drkrwt08,keratinocyte,wildtype,NA,8,fish/drkrwt08_R1.fastq.gz,180524MBL02,2,CGAGGCTG-CTAAGCCT,fish,2_HHFGCBCX2.2.CGAGGCTG_CTAAGCCT.unmapped.1.fastq.gz
-drkrwt09,keratinocyte,wildtype,NA,9,fish/drkrwt09_R1.fastq.gz,180524MBL02,2,CGAGGCTG-CGTCTAAT,fish,2_HHFGCBCX2.2.CGAGGCTG_CGTCTAAT.unmapped.1.fastq.gz
+mmchko02,cheek,knockout,NA,02,mouse/mmchko02_R1.fastq.gz,180524MBL01,1,TAAGGCGA-ACTGCATA,mouse,1_HHFGCBCX2.1.TAAGGCGA_ACTGCATA.unmapped.1.fastq.gz
+mmchko03,cheek,knockout,NA,03,mouse/mmchko03_R1.fastq.gz,180524MBL01,1,CGTACTAG-AAGGAGTA,mouse,1_HHFGCBCX2.1.CGTACTAG_AAGGAGTA.unmapped.1.fastq.gz
+mmchwt02,cheek,wildtype,NA,02,mouse/mmchwt02_R1.fastq.gz,180524MBL01,1,TAAGGCGA-GTAAGGAG,mouse,1_HHFGCBCX2.1.TAAGGCGA_GTAAGGAG.unmapped.1.fastq.gz
+mmchwt03,cheek,wildtype,NA,03,mouse/mmchwt03_R1.fastq.gz,180524MBL01,1,CGTACTAG-CTAAGCCT,mouse,1_HHFGCBCX2.1.CGTACTAG_CTAAGCCT.unmapped.1.fastq.gz
+mmchwt04,cheek,wildtype,NA,04,mouse/mmchwt04_R1.fastq.gz,180524MBL01,1,AGGCAGAA-CGTCTAAT,mouse,1_HHFGCBCX2.1.AGGCAGAA_CGTCTAAT.unmapped.1.fastq.gz
+mmpako01,palate,knockout,NA,01,mouse/mmpako01_R1.fastq.gz,180524MBL01,1,TAAGGCGA-TCTCTCCG,mouse,1_HHFGCBCX2.1.TAAGGCGA_TCTCTCCG.unmapped.1.fastq.gz
+mmpako02,palate,knockout,NA,02,mouse/mmpako02_R1.fastq.gz,180524MBL01,1,CGTACTAG-CTCTCTAT,mouse,1_HHFGCBCX2.1.CGTACTAG_CTCTCTAT.unmapped.1.fastq.gz
+mmpako03,palate,knockout,NA,03,mouse/mmpako03_R1.fastq.gz,180524MBL01,1,AGGCAGAA-ACTGCATA,mouse,1_HHFGCBCX2.1.AGGCAGAA_ACTGCATA.unmapped.1.fastq.gz
+mmpawt01,palate,wildtype,NA,01,mouse/mmpawt01_R1.fastq.gz,180524MBL01,1,TAAGGCGA-CGTCTAAT,mouse,1_HHFGCBCX2.1.TAAGGCGA_CGTCTAAT.unmapped.1.fastq.gz
+mmpawt02,palate,wildtype,NA,02,mouse/mmpawt02_R1.fastq.gz,180524MBL01,1,CGTACTAG-TATCCTCT,mouse,1_HHFGCBCX2.1.CGTACTAG_TATCCTCT.unmapped.1.fastq.gz
+mmpawt03,palate,wildtype,NA,03,mouse/mmpawt03_R1.fastq.gz,180524MBL01,1,AGGCAGAA-GTAAGGAG,mouse,1_HHFGCBCX2.1.AGGCAGAA_GTAAGGAG.unmapped.1.fastq.gz
+mmpawt04,palate,wildtype,NA,04,mouse/mmpawt04_R1.fastq.gz,180524MBL01,1,TCCTGAGC-CTCTCTAT,mouse,1_HHFGCBCX2.1.TCCTGAGC_CTCTCTAT.unmapped.1.fastq.gz
+mmtgko01,trigeminal,knockout,NA,01,mouse/mmtgko01_R1.fastq.gz,180524MBL01,1,TAAGGCGA-TATCCTCT,mouse,1_HHFGCBCX2.1.TAAGGCGA_TATCCTCT.unmapped.1.fastq.gz
+mmtgko02,trigeminal,knockout,NA,02,mouse/mmtgko02_R1.fastq.gz,180524MBL01,1,CGTACTAG-TCTCTCCG,mouse,1_HHFGCBCX2.1.CGTACTAG_TCTCTCCG.unmapped.1.fastq.gz
+mmtgko03,trigeminal,knockout,NA,03,mouse/mmtgko03_R1.fastq.gz,180524MBL01,1,AGGCAGAA-CTAAGCCT,mouse,1_HHFGCBCX2.1.AGGCAGAA_CTAAGCCT.unmapped.1.fastq.gz
+mmtgwt02,trigeminal,wildtype,NA,02,mouse/mmtgwt02_R1.fastq.gz,180524MBL01,1,TAAGGCGA-CTCTCTAT,mouse,1_HHFGCBCX2.1.TAAGGCGA_CTCTCTAT.unmapped.1.fastq.gz
+mmtgwt03,trigeminal,wildtype,NA,03,mouse/mmtgwt03_R1.fastq.gz,180524MBL01,1,CGTACTAG-CGTCTAAT,mouse,1_HHFGCBCX2.1.CGTACTAG_CGTCTAAT.unmapped.1.fastq.gz
+mmtgwt04,trigeminal,wildtype,NA,04,mouse/mmtgwt04_R1.fastq.gz,180524MBL01,1,AGGCAGAA-AAGGAGTA,mouse,1_HHFGCBCX2.1.AGGCAGAA_AAGGAGTA.unmapped.1.fastq.gz
+mmwpko01,whisker pad,knockout,NA,01,mouse/mmwpko01_R1.fastq.gz,180524MBL01,1,TAAGGCGA-CTAAGCCT,mouse,1_HHFGCBCX2.1.TAAGGCGA_CTAAGCCT.unmapped.1.fastq.gz
+mmwpko02,whisker pad,knockout,NA,02,mouse/mmwpko02_R1.fastq.gz,180524MBL01,1,CGTACTAG-GTAAGGAG,mouse,1_HHFGCBCX2.1.CGTACTAG_GTAAGGAG.unmapped.1.fastq.gz
+mmwpko03,whisker pad,knockout,NA,03,mouse/mmwpko03_R1.fastq.gz,180524MBL01,1,AGGCAGAA-TATCCTCT,mouse,1_HHFGCBCX2.1.AGGCAGAA_TATCCTCT.unmapped.1.fastq.gz
+mmwpwt01,whisker pad,wildtype,NA,01,mouse/mmwpwt01_R1.fastq.gz,180524MBL01,1,TAAGGCGA-AAGGAGTA,mouse,1_HHFGCBCX2.1.TAAGGCGA_AAGGAGTA.unmapped.1.fastq.gz
+mmwpwt02,whisker pad,wildtype,NA,02,mouse/mmwpwt02_R1.fastq.gz,180524MBL01,1,CGTACTAG-ACTGCATA,mouse,1_HHFGCBCX2.1.CGTACTAG_ACTGCATA.unmapped.1.fastq.gz
+mmwpwt03,whisker pad,wildtype,NA,03,mouse/mmwpwt03_R1.fastq.gz,180524MBL01,1,AGGCAGAA-CTCTCTAT,mouse,1_HHFGCBCX2.1.AGGCAGAA_CTCTCTAT.unmapped.1.fastq.gz
+mmwpwt04,whisker pad,wildtype,NA,04,mouse/mmwpwt04_R1.fastq.gz,180524MBL01,1,AGGCAGAA-TCTCTCCG,mouse,1_HHFGCBCX2.1.AGGCAGAA_TCTCTCCG.unmapped.1.fastq.gz
+dmneaohi01,neuron,silencing channel,histamine inhibition,01,fly/dmneaohi01_R1.fastq.gz,180524MBL02,2,TAAGGCGA-CGTCTAAT,fly,2_HHFGCBCX2.2.TAAGGCGA_CGTCTAAT.unmapped.1.fastq.gz
+dmneaohi03,neuron,silencing channel,histamine inhibition,03,fly/dmneaohi03_R1.fastq.gz,180524MBL02,2,CGTACTAG-CTCTCTAT,fly,2_HHFGCBCX2.2.CGTACTAG_CTCTCTAT.unmapped.1.fastq.gz
+dmneaohi05,neuron,silencing channel,histamine inhibition,05,fly/dmneaohi05_R1.fastq.gz,180524MBL02,2,AGGCAGAA-GTAAGGAG,fly,2_HHFGCBCX2.2.AGGCAGAA_GTAAGGAG.unmapped.1.fastq.gz
+dmneaohi06,neuron,silencing channel,histamine inhibition,06,fly/dmneaohi06_R1.fastq.gz,180524MBL02,2,AGGCAGAA-ACTGCATA,fly,2_HHFGCBCX2.2.AGGCAGAA_ACTGCATA.unmapped.1.fastq.gz
+dmneaohi07,neuron,silencing channel,histamine inhibition,07,fly/dmneaohi07_R1.fastq.gz,180524MBL02,2,AGGCAGAA-AAGGAGTA,fly,2_HHFGCBCX2.2.AGGCAGAA_AAGGAGTA.unmapped.1.fastq.gz
+dmneaohi08,neuron,silencing channel,histamine inhibition,08,fly/dmneaohi08_R1.fastq.gz,180524MBL02,2,TCCTGAGC-CGTCTAAT,fly,2_HHFGCBCX2.2.TCCTGAGC_CGTCTAAT.unmapped.1.fastq.gz
+dmneaohi09,neuron,silencing channel,histamine inhibition,09,fly/dmneaohi09_R1.fastq.gz,180524MBL02,2,TCCTGAGC-TCTCTCCG,fly,2_HHFGCBCX2.2.TCCTGAGC_TCTCTCCG.unmapped.1.fastq.gz
+dmneaohi10,neuron,silencing channel,histamine inhibition,10,fly/dmneaohi10_R1.fastq.gz,180524MBL02,2,GGACTCCT-CTCTCTAT,fly,2_HHFGCBCX2.2.GGACTCCT_CTCTCTAT.unmapped.1.fastq.gz
+dmneaohi11,neuron,silencing channel,histamine inhibition,11,fly/dmneaohi11_R1.fastq.gz,180524MBL02,2,TAGGCATG-TATCCTCT,fly,2_HHFGCBCX2.2.TAGGCATG_TATCCTCT.unmapped.1.fastq.gz
+dmneaono04,neuron,silencing channel,no treatment,04,fly/dmneaono04_R1.fastq.gz,180524MBL02,2,TAAGGCGA-CTCTCTAT,fly,2_HHFGCBCX2.2.TAAGGCGA_CTCTCTAT.unmapped.1.fastq.gz
+dmneaono05,neuron,silencing channel,no treatment,05,fly/dmneaono05_R1.fastq.gz,180524MBL02,2,TAAGGCGA-TATCCTCT,fly,2_HHFGCBCX2.2.TAAGGCGA_TATCCTCT.unmapped.1.fastq.gz
+dmneaono06,neuron,silencing channel,no treatment,06,fly/dmneaono06_R1.fastq.gz,180524MBL02,2,TAAGGCGA-GTAAGGAG,fly,2_HHFGCBCX2.2.TAAGGCGA_GTAAGGAG.unmapped.1.fastq.gz
+dmneapat01,neuron,activating channel,ATP activation,01,fly/dmneapat01_R1.fastq.gz,180524MBL02,2,CGTACTAG-AAGGAGTA,fly,2_HHFGCBCX2.2.CGTACTAG_AAGGAGTA.unmapped.1.fastq.gz
+dmneapat02,neuron,activating channel,ATP activation,02,fly/dmneapat02_R1.fastq.gz,180524MBL02,2,CGTACTAG-CTAAGCCT,fly,2_HHFGCBCX2.2.CGTACTAG_CTAAGCCT.unmapped.1.fastq.gz
+dmneapat03,neuron,activating channel,ATP activation,03,fly/dmneapat03_R1.fastq.gz,180524MBL02,2,CGTACTAG-CGTCTAAT,fly,2_HHFGCBCX2.2.CGTACTAG_CGTCTAAT.unmapped.1.fastq.gz
+dmneapat05,neuron,activating channel,ATP activation,05,fly/dmneapat05_R1.fastq.gz,180524MBL02,2,TCCTGAGC-CTCTCTAT,fly,2_HHFGCBCX2.2.TCCTGAGC_CTCTCTAT.unmapped.1.fastq.gz
+dmneapat06,neuron,activating channel,ATP activation,06,fly/dmneapat06_R1.fastq.gz,180524MBL02,2,TCCTGAGC-TATCCTCT,fly,2_HHFGCBCX2.2.TCCTGAGC_TATCCTCT.unmapped.1.fastq.gz
+dmneapat07,neuron,activating channel,ATP activation,07,fly/dmneapat07_R1.fastq.gz,180524MBL02,2,TCCTGAGC-GTAAGGAG,fly,2_HHFGCBCX2.2.TCCTGAGC_GTAAGGAG.unmapped.1.fastq.gz
+dmneapat08,neuron,activating channel,ATP activation,08,fly/dmneapat08_R1.fastq.gz,180524MBL02,2,GGACTCCT-AAGGAGTA,fly,2_HHFGCBCX2.2.GGACTCCT_AAGGAGTA.unmapped.1.fastq.gz
+dmneapat09,neuron,activating channel,ATP activation,09,fly/dmneapat09_R1.fastq.gz,180524MBL02,2,GGACTCCT-CTAAGCCT,fly,2_HHFGCBCX2.2.GGACTCCT_CTAAGCCT.unmapped.1.fastq.gz
+dmneapat10,neuron,activating channel,ATP activation,10,fly/dmneapat10_R1.fastq.gz,180524MBL02,2,GGACTCCT-CGTCTAAT,fly,2_HHFGCBCX2.2.GGACTCCT_CGTCTAAT.unmapped.1.fastq.gz
+dmneapat12,neuron,activating channel,ATP activation,12,fly/dmneapat12_R1.fastq.gz,180524MBL02,2,TAGGCATG-GTAAGGAG,fly,2_HHFGCBCX2.2.TAGGCATG_GTAAGGAG.unmapped.1.fastq.gz
+dmnewtat01,neuron,wildtype,ATP activation,01,fly/dmnewtat01_R1.fastq.gz,180524MBL02,2,CGTACTAG-TATCCTCT,fly,2_HHFGCBCX2.2.CGTACTAG_TATCCTCT.unmapped.1.fastq.gz
+dmnewtat02,neuron,wildtype,ATP activation,02,fly/dmnewtat02_R1.fastq.gz,180524MBL02,2,CGTACTAG-GTAAGGAG,fly,2_HHFGCBCX2.2.CGTACTAG_GTAAGGAG.unmapped.1.fastq.gz
+dmnewtat04,neuron,wildtype,ATP activation,04,fly/dmnewtat04_R1.fastq.gz,180524MBL02,2,CGTACTAG-ACTGCATA,fly,2_HHFGCBCX2.2.CGTACTAG_ACTGCATA.unmapped.1.fastq.gz
+dmnewtat05,neuron,wildtype,ATP activation,05,fly/dmnewtat05_R1.fastq.gz,180524MBL02,2,AGGCAGAA-CTAAGCCT,fly,2_HHFGCBCX2.2.AGGCAGAA_CTAAGCCT.unmapped.1.fastq.gz
+dmnewtat06,neuron,wildtype,ATP activation,06,fly/dmnewtat06_R1.fastq.gz,180524MBL02,2,AGGCAGAA-CGTCTAAT,fly,2_HHFGCBCX2.2.AGGCAGAA_CGTCTAAT.unmapped.1.fastq.gz
+dmnewtat08,neuron,wildtype,ATP activation,08,fly/dmnewtat08_R1.fastq.gz,180524MBL02,2,GGACTCCT-TATCCTCT,fly,2_HHFGCBCX2.2.GGACTCCT_TATCCTCT.unmapped.1.fastq.gz
+dmnewtat11,neuron,wildtype,ATP activation,11,fly/dmnewtat11_R1.fastq.gz,180524MBL02,2,GGACTCCT-GTAAGGAG,fly,2_HHFGCBCX2.2.GGACTCCT_GTAAGGAG.unmapped.1.fastq.gz
+dmnewtat12,neuron,wildtype,ATP activation,12,fly/dmnewtat12_R1.fastq.gz,180524MBL02,2,GGACTCCT-ACTGCATA,fly,2_HHFGCBCX2.2.GGACTCCT_ACTGCATA.unmapped.1.fastq.gz
+dmnewthi01,neuron,wildtype,histamine inhibition,01,fly/dmnewthi01_R1.fastq.gz,180524MBL02,2,TAAGGCGA-ACTGCATA,fly,2_HHFGCBCX2.2.TAAGGCGA_ACTGCATA.unmapped.1.fastq.gz
+dmnewthi02,neuron,wildtype,histamine inhibition,02,fly/dmnewthi02_R1.fastq.gz,180524MBL02,2,TAAGGCGA-AAGGAGTA,fly,2_HHFGCBCX2.2.TAAGGCGA_AAGGAGTA.unmapped.1.fastq.gz
+dmnewthi03,neuron,wildtype,histamine inhibition,03,fly/dmnewthi03_R1.fastq.gz,180524MBL02,2,TAAGGCGA-CTAAGCCT,fly,2_HHFGCBCX2.2.TAAGGCGA_CTAAGCCT.unmapped.1.fastq.gz
+dmnewthi04,neuron,wildtype,histamine inhibition,04,fly/dmnewthi04_R1.fastq.gz,180524MBL02,2,CGTACTAG-TCTCTCCG,fly,2_HHFGCBCX2.2.CGTACTAG_TCTCTCCG.unmapped.1.fastq.gz
+dmnewthi05,neuron,wildtype,histamine inhibition,05,fly/dmnewthi05_R1.fastq.gz,180524MBL02,2,AGGCAGAA-CTCTCTAT,fly,2_HHFGCBCX2.2.AGGCAGAA_CTCTCTAT.unmapped.1.fastq.gz
+dmnewthi06,neuron,wildtype,histamine inhibition,06,fly/dmnewthi06_R1.fastq.gz,180524MBL02,2,AGGCAGAA-TATCCTCT,fly,2_HHFGCBCX2.2.AGGCAGAA_TATCCTCT.unmapped.1.fastq.gz
+dmnewthi08,neuron,wildtype,histamine inhibition,08,fly/dmnewthi08_R1.fastq.gz,180524MBL02,2,TCCTGAGC-AAGGAGTA,fly,2_HHFGCBCX2.2.TCCTGAGC_AAGGAGTA.unmapped.1.fastq.gz
+dmnewthi09,neuron,wildtype,histamine inhibition,09,fly/dmnewthi09_R1.fastq.gz,180524MBL02,2,TCCTGAGC-CTAAGCCT,fly,2_HHFGCBCX2.2.TCCTGAGC_CTAAGCCT.unmapped.1.fastq.gz
+dmnewthi11,neuron,wildtype,histamine inhibition,11,fly/dmnewthi11_R1.fastq.gz,180524MBL02,2,GGACTCCT-TCTCTCCG,fly,2_HHFGCBCX2.2.GGACTCCT_TCTCTCCG.unmapped.1.fastq.gz
+dmnewthi12,neuron,wildtype,histamine inhibition,12,fly/dmnewthi12_R1.fastq.gz,180524MBL02,2,TAGGCATG-CTCTCTAT,fly,2_HHFGCBCX2.2.TAGGCATG_CTCTCTAT.unmapped.1.fastq.gz
+drdgwt01,DRG,wildtype,NA,01,fish/drdgwt01_R1.fastq.gz,180524MBL02,2,CTCTCTAC-ACTGCATA,fish,2_HHFGCBCX2.2.CTCTCTAC_ACTGCATA.unmapped.1.fastq.gz
+drdgwt02,DRG,wildtype,NA,02,fish/drdgwt02_R1.fastq.gz,180524MBL02,2,CTCTCTAC-AAGGAGTA,fish,2_HHFGCBCX2.2.CTCTCTAC_AAGGAGTA.unmapped.1.fastq.gz
+drdgwt03,DRG,wildtype,NA,03,fish/drdgwt03_R1.fastq.gz,180524MBL02,2,CTCTCTAC-CTAAGCCT,fish,2_HHFGCBCX2.2.CTCTCTAC_CTAAGCCT.unmapped.1.fastq.gz
+drdgwt07,DRG,wildtype,NA,07,fish/drdgwt07_R1.fastq.gz,180524MBL02,2,CGAGGCTG-TCTCTCCG,fish,2_HHFGCBCX2.2.CGAGGCTG_TCTCTCCG.unmapped.1.fastq.gz
+drdgwt08,DRG,wildtype,NA,08,fish/drdgwt08_R1.fastq.gz,180524MBL02,2,AAGAGGCA-CTCTCTAT,fish,2_HHFGCBCX2.2.AAGAGGCA_CTCTCTAT.unmapped.1.fastq.gz
+drkrwt01,keratinocyte,wildtype,NA,01,fish/drkrwt01_R1.fastq.gz,180524MBL02,2,CTCTCTAC-CTCTCTAT,fish,2_HHFGCBCX2.2.CTCTCTAC_CTCTCTAT.unmapped.1.fastq.gz
+drkrwt02,keratinocyte,wildtype,NA,02,fish/drkrwt02_R1.fastq.gz,180524MBL02,2,CTCTCTAC-TATCCTCT,fish,2_HHFGCBCX2.2.CTCTCTAC_TATCCTCT.unmapped.1.fastq.gz
+drkrwt03,keratinocyte,wildtype,NA,03,fish/drkrwt03_R1.fastq.gz,180524MBL02,2,CTCTCTAC-GTAAGGAG,fish,2_HHFGCBCX2.2.CTCTCTAC_GTAAGGAG.unmapped.1.fastq.gz
+drkrwt06,keratinocyte,wildtype,NA,06,fish/drkrwt06_R1.fastq.gz,180524MBL02,2,CGAGGCTG-CTCTCTAT,fish,2_HHFGCBCX2.2.CGAGGCTG_CTCTCTAT.unmapped.1.fastq.gz
+drkrwt07,keratinocyte,wildtype,NA,07,fish/drkrwt07_R1.fastq.gz,180524MBL02,2,CGAGGCTG-AAGGAGTA,fish,2_HHFGCBCX2.2.CGAGGCTG_AAGGAGTA.unmapped.1.fastq.gz
+drkrwt08,keratinocyte,wildtype,NA,08,fish/drkrwt08_R1.fastq.gz,180524MBL02,2,CGAGGCTG-CTAAGCCT,fish,2_HHFGCBCX2.2.CGAGGCTG_CTAAGCCT.unmapped.1.fastq.gz
+drkrwt09,keratinocyte,wildtype,NA,09,fish/drkrwt09_R1.fastq.gz,180524MBL02,2,CGAGGCTG-CGTCTAAT,fish,2_HHFGCBCX2.2.CGAGGCTG_CGTCTAAT.unmapped.1.fastq.gz
 drkrwt10,keratinocyte,wildtype,NA,10,fish/drkrwt10_R1.fastq.gz,180524MBL02,2,AAGAGGCA-TATCCTCT,fish,2_HHFGCBCX2.2.AAGAGGCA_TATCCTCT.unmapped.1.fastq.gz
 drkrwt11,keratinocyte,wildtype,NA,11,fish/drkrwt11_R1.fastq.gz,180524MBL02,2,AAGAGGCA-GTAAGGAG,fish,2_HHFGCBCX2.2.AAGAGGCA_GTAAGGAG.unmapped.1.fastq.gz
 drkrwt12,keratinocyte,wildtype,NA,12,fish/drkrwt12_R1.fastq.gz,180524MBL02,2,AAGAGGCA-ACTGCATA,fish,2_HHFGCBCX2.2.AAGAGGCA_ACTGCATA.unmapped.1.fastq.gz
 drkrwt13,keratinocyte,wildtype,NA,13,fish/drkrwt13_R1.fastq.gz,180524MBL02,2,AAGAGGCA-AAGGAGTA,fish,2_HHFGCBCX2.2.AAGAGGCA_AAGGAGTA.unmapped.1.fastq.gz
 drkrwt14,keratinocyte,wildtype,NA,14,fish/drkrwt14_R1.fastq.gz,180524MBL02,2,AAGAGGCA-CTAAGCCT,fish,2_HHFGCBCX2.2.AAGAGGCA_CTAAGCCT.unmapped.1.fastq.gz
 drkrwt15,keratinocyte,wildtype,NA,15,fish/drkrwt15_R1.fastq.gz,180524MBL02,2,AAGAGGCA-CGTCTAAT,fish,2_HHFGCBCX2.2.AAGAGGCA_CGTCTAAT.unmapped.1.fastq.gz
+c4da120h01,epidermis,wt,120h,NA,fly/c4da120h01_R1.fastq.gz,180524MBL01,1,GGACTCCT-CGTCTAAT,fly,1_HHFGCBCX2.1.GGACTCCT_CGTCTAAT.unmapped.1.fastq.gz
+c4da120h02,epidermis,wt,120h,NA,fly/c4da120h02_R1.fastq.gz,180524MBL01,1,GGACTCCT-TCTCTCCG,fly,1_HHFGCBCX2.1.GGACTCCT_TCTCTCCG.unmapped.1.fastq.gz
+c4da120h03,epidermis,wt,120h,NA,fly/c4da120h03_R1.fastq.gz,180524MBL01,1,CTCTCTAC-GTAAGGAG,fly,1_HHFGCBCX2.1.CTCTCTAC_GTAAGGAG.unmapped.1.fastq.gz
+c4da120h04,epidermis,wt,120h,NA,fly/c4da120h04_R1.fastq.gz,180524MBL01,1,CTCTCTAC-ACTGCATA,fly,1_HHFGCBCX2.1.CTCTCTAC_ACTGCATA.unmapped.1.fastq.gz
+c4da120h05,epidermis,wt,120h,NA,fly/c4da120h05_R1.fastq.gz,180524MBL01,1,CGAGGCTG-CGTCTAAT,fly,1_HHFGCBCX2.1.CGAGGCTG_CGTCTAAT.unmapped.1.fastq.gz
+c4da120h06,epidermis,wt,120h,NA,fly/c4da120h06_R1.fastq.gz,180524MBL01,1,CGAGGCTG-TCTCTCCG,fly,1_HHFGCBCX2.1.CGAGGCTG_TCTCTCCG.unmapped.1.fastq.gz
+c4da72h01,epidermis,wt,72h,NA,fly/c4da72h01_R1.fastq.gz,180524MBL01,1,GGACTCCT-CTAAGCCT,fly,1_HHFGCBCX2.1.GGACTCCT_CTAAGCCT.unmapped.1.fastq.gz
+c4da72h02,epidermis,wt,72h,NA,fly/c4da72h02_R1.fastq.gz,180524MBL01,1,CTCTCTAC-CTCTCTAT,fly,1_HHFGCBCX2.1.CTCTCTAC_CTCTCTAT.unmapped.1.fastq.gz
+c4da72h03,epidermis,wt,72h,NA,fly/c4da72h03_R1.fastq.gz,180524MBL01,1,CTCTCTAC-TATCCTCT,fly,1_HHFGCBCX2.1.CTCTCTAC_TATCCTCT.unmapped.1.fastq.gz
+c4da72h04,epidermis,wt,72h,NA,fly/c4da72h04_R1.fastq.gz,180524MBL01,1,CGAGGCTG-AAGGAGTA,fly,1_HHFGCBCX2.1.CGAGGCTG_AAGGAGTA.unmapped.1.fastq.gz
+c4da72h05,epidermis,wt,72h,NA,fly/c4da72h05_R1.fastq.gz,180524MBL01,1,CGAGGCTG-CTAAGCCT,fly,1_HHFGCBCX2.1.CGAGGCTG_CTAAGCCT.unmapped.1.fastq.gz
+c4da72h06,epidermis,wt,72h,NA,fly/c4da72h06_R1.fastq.gz,180524MBL01,1,AAGAGGCA-AAGGAGTA,fly,1_HHFGCBCX2.1.AAGAGGCA_AAGGAGTA.unmapped.1.fastq.gz
+c4da72h07,epidermis,wt,72h,NA,fly/c4da72h07_R1.fastq.gz,180524MBL01,1,AAGAGGCA-CTAAGCCT,fly,1_HHFGCBCX2.1.AAGAGGCA_CTAAGCCT.unmapped.1.fastq.gz
+epi120h01,epidermis,wt,120h,NA,fly/epi120h01_R1.fastq.gz,180524MBL01,1,TAGGCATG-GTAAGGAG,fly,1_HHFGCBCX2.1.TAGGCATG_GTAAGGAG.unmapped.1.fastq.gz
+epi120h02,epidermis,wt,120h,NA,fly/epi120h02_R1.fastq.gz,180524MBL01,1,TAGGCATG-ACTGCATA,fly,1_HHFGCBCX2.1.TAGGCATG_ACTGCATA.unmapped.1.fastq.gz
+epi120h03,epidermis,wt,120h,NA,fly/epi120h03_R1.fastq.gz,180524MBL01,1,CTCTCTAC-AAGGAGTA,fly,1_HHFGCBCX2.1.CTCTCTAC_AAGGAGTA.unmapped.1.fastq.gz
+epi120h04,epidermis,wt,120h,NA,fly/epi120h04_R1.fastq.gz,180524MBL01,1,CTCTCTAC-CTAAGCCT,fly,1_HHFGCBCX2.1.CTCTCTAC_CTAAGCCT.unmapped.1.fastq.gz
+epi120h05,epidermis,wt,120h,NA,fly/epi120h05_R1.fastq.gz,180524MBL01,1,CGAGGCTG-CTCTCTAT,fly,1_HHFGCBCX2.1.CGAGGCTG_CTCTCTAT.unmapped.1.fastq.gz
+epi120h06,epidermis,wt,120h,NA,fly/epi120h06_R1.fastq.gz,180524MBL01,1,CGAGGCTG-TATCCTCT,fly,1_HHFGCBCX2.1.CGAGGCTG_TATCCTCT.unmapped.1.fastq.gz
+epi120h07,epidermis,wt,120h,NA,fly/epi120h07_R1.fastq.gz,180524MBL01,1,AAGAGGCA-GTAAGGAG,fly,1_HHFGCBCX2.1.AAGAGGCA_GTAAGGAG.unmapped.1.fastq.gz
+epi120h08,epidermis,wt,120h,NA,fly/epi120h08_R1.fastq.gz,180524MBL01,1,AAGAGGCA-ACTGCATA,fly,1_HHFGCBCX2.1.AAGAGGCA_ACTGCATA.unmapped.1.fastq.gz
+epi120h09,epidermis,wt,120h,NA,fly/epi120h09_R1.fastq.gz,180524MBL01,1,GTAGAGGA-CTCTCTAT,fly,1_HHFGCBCX2.1.GTAGAGGA_CTCTCTAT.unmapped.1.fastq.gz
+epi120h10,epidermis,wt,120h,NA,fly/epi120h10_R1.fastq.gz,180524MBL01,1,GTAGAGGA-TATCCTCT,fly,1_HHFGCBCX2.1.GTAGAGGA_TATCCTCT.unmapped.1.fastq.gz
+epi120h11,epidermis,wt,120h,NA,fly/epi120h11_R1.fastq.gz,180524MBL01,1,GTAGAGGA-GTAAGGAG,fly,1_HHFGCBCX2.1.GTAGAGGA_GTAAGGAG.unmapped.1.fastq.gz
+epi72h01,epidermis,wt,72h,NA,fly/epi72h01_R1.fastq.gz,180524MBL01,1,TAGGCATG-CTCTCTAT,fly,1_HHFGCBCX2.1.TAGGCATG_CTCTCTAT.unmapped.1.fastq.gz
+epi72h02,epidermis,wt,72h,NA,fly/epi72h02_R1.fastq.gz,180524MBL01,1,TAGGCATG-TATCCTCT,fly,1_HHFGCBCX2.1.TAGGCATG_TATCCTCT.unmapped.1.fastq.gz
+epi72h03,epidermis,wt,72h,NA,fly/epi72h03_R1.fastq.gz,180524MBL01,1,CTCTCTAC-CGTCTAAT,fly,1_HHFGCBCX2.1.CTCTCTAC_CGTCTAAT.unmapped.1.fastq.gz
+epi72h04,epidermis,wt,72h,NA,fly/epi72h04_R1.fastq.gz,180524MBL01,1,CTCTCTAC-TCTCTCCG,fly,1_HHFGCBCX2.1.CTCTCTAC_TCTCTCCG.unmapped.1.fastq.gz
+epi72h05,epidermis,wt,72h,NA,fly/epi72h05_R1.fastq.gz,180524MBL01,1,AAGAGGCA-CTCTCTAT,fly,1_HHFGCBCX2.1.AAGAGGCA_CTCTCTAT.unmapped.1.fastq.gz
+epi72h06,epidermis,wt,72h,NA,fly/epi72h06_R1.fastq.gz,180524MBL01,1,AAGAGGCA-TATCCTCT,fly,1_HHFGCBCX2.1.AAGAGGCA_TATCCTCT.unmapped.1.fastq.gz
+epi72h07,epidermis,wt,72h,NA,fly/epi72h07_R1.fastq.gz,180524MBL01,1,GTAGAGGA-CTAAGCCT,fly,1_HHFGCBCX2.1.GTAGAGGA_CTAAGCCT.unmapped.1.fastq.gz
