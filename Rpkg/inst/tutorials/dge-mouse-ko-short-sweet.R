@@ -112,7 +112,13 @@ expressed <- filterByExpr(ym, design)
 ymf <- ym[expressed, ]
 
 # Use voom to log transform data and prep it for use with linear models
-vm <- voom(ymf, design, plot = TRUE)
+# vm <- voom(ymf, design, plot = TRUE)
+
+# Instead of normal voom, we are using voomWithQualityWeights to do our best
+# to be robust to low quality samples
+cols <- mbl_create_color_map(ym$samples$group) # This was not covered during
+cols <- cols[ym$samples$group]                 # the tutorial
+vm <- voomWithQualityWeights(ymf, design, plot = TRUE)
 
 # Define the questions you want to ask using the columns of your design matrix.
 # ie. what comparisons to you want to measure the biological effect and

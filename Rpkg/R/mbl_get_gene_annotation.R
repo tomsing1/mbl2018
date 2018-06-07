@@ -30,7 +30,7 @@ mbl_get_gene_annotation <- function(organism = c("mouse", "fly", "fish"),
     ungroup %>%
     distinct(ens_gene, .keep_all = TRUE) %>%
     rename(biotype = transcript_biotype) %>%
-    select(ens_gene, ext_gene, n_txs, biotype, description) %>%
+    select(ens_gene, symbol, n_txs, biotype, description) %>%
     as.data.frame
 
   rownames(gi) <- gi$ens_gene
@@ -48,14 +48,15 @@ mbl_get_gene_annotation <- function(organism = c("mouse", "fly", "fish"),
 mbl_get_transcript_annotation <- function(organism = c("mouse", "fly", "fish"),
                                           rm.description = TRUE) {
   organism <- match.arg(organism)
-  anno.base <- "s3://mbl.data/references/%s/gene_table.csv"
-  t.info <- s3read_using(read_csv, object = sprintf(anno.base, organism))
+  # anno.base <- "s3://mbl.data/references/%s/gene_table.csv"
+  # t.info <- s3read_using(read_csv, object = sprintf(anno.base, organism))
+  # ti <- as.data.frame(t.info)
 
-  ti <- as.data.frame(t.info)
+  url <- "https://s3.amazonaws.com/mbl.data/references/%s/gene_table.csv"
+  ti <- read.csv(sprintf(url, organism), stringsAsFactors = FALSE)
   rownames(ti) <- ti$target_id
   if ("description" %in% colnames(ti) && rm.description) {
     ti$description <- NULL
   }
-
-  ti
+  rename(ti, symbol = "ext_gene")
 }
