@@ -59,3 +59,24 @@ if (FALSE) {
   sim <- s3read_using(read.csv, row.names = 1,
                       object = "s3://mbl.data/mapping/may/mouse/sample-information.csv")
 }
+
+# update sample information epidermmis -> neuron
+if (FALSE) {
+  sample.info <- read.csv("https://s3.amazonaws.com/mbl.data/reads/may/sample_annotations.csv",
+                          stringsAsFactors = FALSE)
+  fly.old <- mbl_load_rnaseq("fly", "may")
+  os <- fly.old$samples
+
+  si <- subset(sample.info, species == "fly")
+  stopifnot(all.equal(si$sample_id, os$sample_id))
+
+  # columns to change:
+  # source
+  os$source <- si$source
+  os$group <- paste(os$source, os$genotype, os$treatment, sep = "_")
+
+  stopifnot(all(rownames(os) == colnames(fly.old)))
+
+  fly.old$samples <- os
+  s3saveRDS(fly.old, "https://s3.amazonaws.com/mbl.data/mapping/may/fly/kallisto-DGEList.rds")
+}

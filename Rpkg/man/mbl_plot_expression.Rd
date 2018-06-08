@@ -6,6 +6,19 @@
 \usage{
 mbl_plot_expression(y, gene, group, color_by = NULL, ...)
 }
+\arguments{
+\item{y}{the DGEList or voomed object your data is in}
+
+\item{gene}{the name of the gene identifier or symbol you want to plot}
+
+\item{group}{what column in the $samples (or $targets, for vm) pheno table
+to use to plot split expression across the x axis}
+
+\item{color_by}{name of column (like `group` param) to color your points by}
+}
+\value{
+a ggplot object
+}
 \description{
 This function returns a raw ggplot object that you can decorate
 further

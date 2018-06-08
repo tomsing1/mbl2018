@@ -67,6 +67,11 @@ library(ggplot2)
 library(mbl2018)
 
 ym.all <- mbl_load_rnaseq("mouse", dataset = "all")
+ym.mbl <- mbl_load_rnaseq("mouse", dataset = "mbl")
+ym.may <- mbl_load_rnaseq("mouse", dataset = "may")
+
+ym.all <- mbl_load_rnaseq("mouse", dataset = "all")
+ym.all <- calcNormFactors(ym.all)
 ```
 
 The `"dataset"` column in the `ym.all$samples` table tells you which dataset
@@ -115,6 +120,7 @@ gg.all <- ggplot(pca.all$data, aes(PC1, PC2, color = source, shape = dataset)) +
 gg.all
 ```
 
+
 Recall that we can make ggplots interactive by using the plotly package and
 calling `ggplotly` on the plot object. We can use the `text` aesthetic to 
 customize the elements in the hover/tooltips for each point.
@@ -156,6 +162,12 @@ cols <- cols[ymf$samples$group]                 # the tutorial
 vm <- voomWithQualityWeights(ymf, design, col = cols, plot = TRUE)
 ```
 
+```{r}
+pcaw <- mbl_pca(vm)
+ggplot(pcaw$data, aes(PC1, PC2, color = source, size = sample.weights)) +
+  geom_point()
+```
+
 **Define the questions you want to ask**
 
 Here I setup a linear model to ask two questions:
@@ -172,6 +184,7 @@ column names of your design matrix (see `colnames(vm$design)`)
 cm <- makeContrasts(
   cheek_KO = groupcheek_knockout - groupcheek_wildtype,
   age = groupcheek_wildtype_Old - groupcheek_wildtype_Young,
+  tgko = grouptrigeminal_knockout - grouptrigeminal_wildtype,
   levels = vm$design)
 
 # Construct linear model to ask the questions
@@ -184,21 +197,137 @@ fit2 <- eBayes(fit2)
 
 **Get results for the "Cheek Knockout" Question**
 
-```{r, eval = FALSE}
+```{r, eval = TRUE}
 res.ko <- topTable(fit2, "cheek_KO", n = Inf)
-View(res.ko) # Take a peak
+# View(res.ko) # Take a peak
 ```
 
 **Get results for the "age" Question**
 
-```{r, eval = FALSE}
+```{r, eval = TRUE}
 res.age <- topTable(fit2, "age", n = Inf)
-View(res.age) # Take a peak
+# View(res.age) # Take a peak
 ```
+
+# More Plotting
+
+## Scatter and/or Boxplots 
+
+Did you find an interesting gene? We provided an `mbl_plot_expression` function
+to plot individual genes.
+
+One of the top hits in the `cheek_KO` comparison is "Krtap20-2". You can
+plot it like so:
+
+```{r}
+mbl_plot_expression(vm, "Krtap20-2", "group")
+```
+
+There are a few tweaks you might want to make to this plot.
+
+Maybe you just want to plot the expression of this gene in the samples whose
+group we tested, ie. just in "cheek_knockout" and "cheek_wildtype". You can
+use the values in the `vm$targets$group` colum to select just those samples
+and plot:
+
+```{r}
+mbl_plot_expression(
+  vm[, vm$targets$group %in% c("cheek_knockout", "cheek_wildtype")],
+  "Krtap20-2", "group")
+```
+
+You might be wondering what the third parameter is for ("group") it tells
+`mbl_plot_expression` how to split the expression of this gene across the
+x-axis. The value you put there must be the name of one of the columns of
+`vm$targets`
+
+What if you wanted to plot the expression of this gene, split by "source"
+
+```{r}
+mbl_plot_expression(vm, "Krtap20-2", "source")
+```
+
+If this isn't enough plotting for you, we provide the `mbl_tidy` function to
+take your expression expression dataset and turn it into a data.frame that
+you can use ggplot with.
+
+```{r}
+vmtbl <- mbl_tidy(vm)
+```
+
+Take a peak at `vmtbl` to see what it is. Every gene expression observation
+is in one row of the data.frame, which means there are nrow x ncol rows in
+this dataset. Each row also has the gene information and the sample information.
+
+**The log2 normalized expression of this gene is in the "cpm" column**
+
+
+What we will do here is subset all the data down to those rows that are just
+from for this gene.
+
+```{r}
+dat <- filter(vmtbl, symbol == "Krtap20-2")
+```
+
+Now we can plot with normal ggplot:
+
+```{r}
+ggplot(dat, aes(x = group, y = cpm)) +
+  geom_boxplot() +
+  geom_point() +
+  theme(axis.text.x=element_text(angle=90, hjust=1)) # I am rotating the x-axis labels
+```
+
+Or you can filter down the data to just the symbol and the
+You can use ggplot your own way.
+
+```{r}
+dat <- filter(vmtbl, 
+              symbol == "Krtap20-2",
+              group %in% c("cheek_knockout", "cheek_wildtype"))
+ggplot(dat, aes(x = group, y = cpm)) +
+  geom_boxplot() +
+  geom_point() +
+  theme(axis.text.x=element_text(angle=90, hjust=1)) # I am rotating the x-axis labels
+```
+
+## Heatmaps
+
+You can use the `coolmap` function to draw heatmaps using your `vm` object.
+
+The `rownames()` of the `vm` object are ensembl gene identifiers, so we need
+to use the ids of the genes we are interested in to draw the heatmap.
+
+We will:
+
+1. take the top 20 gene identifiers found in the `res.ko` result table
+2. Use those to subset the `vm` object and pass that into `coolmap`
+
+```{r}
+library(gplots)
+genez <- head(res.ko$ens_gene, 20)
+coolmap(vm[genez,], mar = c(5,10))
+```
+
+
+Just like we did in the `mbl_plot_expression` function, we can select out
+just the samples we are interested in:
+
+```{r}
+coolmap(vm[genez, vm$targets$group %in% c("cheek_knockout", "cheek_wildtype")],
+        mar = c(5,10))
+```
+
+
 
 # Gene Set Enrichment Analysis
 
 We didn't cover this, but we can do this later today -- having setup all the
 data in this way, you are only two commands away from insight!
+
+Some public resources:
+
+* [GOrilla](http://cbl-gorilla.cs.technion.ac.il)
+* [Enrichr](http://amp.pharm.mssm.edu/Enrichr/)
 
 

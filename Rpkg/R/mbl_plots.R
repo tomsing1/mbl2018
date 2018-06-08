@@ -4,6 +4,12 @@
 #' further
 #'
 #' @export
+#' @param y the DGEList or voomed object your data is in
+#' @param gene the name of the gene identifier or symbol you want to plot
+#' @param group what column in the $samples (or $targets, for vm) pheno table
+#'   to use to plot split expression across the x axis
+#' @param color_by name of column (like `group` param) to color your points by
+#' @return a ggplot object
 mbl_plot_expression <- function(y, gene, group, color_by = NULL, ...) {
   stopifnot(is(y, "DGEList") || is(y, "EList"))
   assert_string(gene)
