@@ -58,7 +58,7 @@ explore(mg)
 # Installation =================================================================
 install.packages("remotes")
 BiocInstaller::biocLite(
-  c("multiGSEA.shiny", "GeneSetDb.MSigDB.Mmusculus.v61"))
+  c("lianos/multiGSEA.shiny", "lianos/GeneSetDb.MSigDB.Mmusculus.v61"))
 
 # rgdb <- getReactomeGeneSetDb("mouse")
 # mgr <- multiGSEA(rgdb, vm, vm$design, cm[, "cheek_palate"],
