@@ -23,7 +23,7 @@ library(mbl2018)
 library(edgeR)
 library(dplyr)
 library(ggplot2)
-theme_set(theme_bw())
+theme_set(theme_classic())
 
 # Fetch the data (DGEList) for the experiment
 ym <- mbl_load_rnaseq("mouse", "may")
@@ -45,7 +45,7 @@ ymf <- ym[expressed, ]
 #
 # 1. the expression values in `vm` object have been log2 transformed.
 # 2. the `$samples`` data.frame is now called `$targets`.
-vm <- voom(ymf, design, plot = TRUE)
+vm <- voomWithQualityWeights(ymf, design, plot = TRUE)
 
 # STEP 1 OF T-TEST "WORKFLOW"
 # ---------------------------

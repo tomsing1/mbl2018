@@ -56,11 +56,10 @@ mg <- multiGSEA(gdb, vm, vm$design, cm[, "cheek_palate"],
 explore(mg)
 
 # Installation =================================================================
+# If multiGSEA and friends aren't installed on your machine, you should be
+# able to install them like so:
 install.packages("remotes")
-BiocInstaller::biocLite(
+source("http://bioconductor.org/biocLite.R")
+biocLite(
   c("lianos/multiGSEA.shiny", "lianos/GeneSetDb.MSigDB.Mmusculus.v61"))
-
-# rgdb <- getReactomeGeneSetDb("mouse")
-# mgr <- multiGSEA(rgdb, vm, vm$design, cm[, "cheek_palate"],
-#                  methods = "camera", min.gs.size = 5)
 

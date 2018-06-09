@@ -146,7 +146,8 @@ DGE workflow.
 
 **First prepare data for analysis**
 
-Note that we were using "voom" before, but now using "voomWithQualityWeights".
+Note that we were using the `voom` function before, but we will now be using
+`voomWithQualityWeights`.
 
 ```{r}
 # create design matrix
@@ -319,15 +320,7 @@ coolmap(vm[genez, vm$targets$group %in% c("cheek_knockout", "cheek_wildtype")],
 ```
 
 
-
 # Gene Set Enrichment Analysis
 
-We didn't cover this, but we can do this later today -- having setup all the
-data in this way, you are only two commands away from insight!
-
-Some public resources:
-
-* [GOrilla](http://cbl-gorilla.cs.technion.ac.il)
-* [Enrichr](http://amp.pharm.mssm.edu/Enrichr/)
-
-
+Please refer to the `gsea-mouse-wt.R` script to see how we can perform a
+GSEA analysis using `multiGSEA`.

@@ -1,4 +1,4 @@
-#' Performs a principle components analysis over a DGEList
+#' Perform a principle components analysis over a DGEList
 #'
 #' This function performs a PCA over a DGEList object, and returns the
 #' loadings (the position of the samples on the new axes/PCs), and the perecent
