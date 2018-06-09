@@ -12,6 +12,11 @@ In here you will find:
 2. An `Rpkg` subdirectory, which contains the `mbl2018` R package used during
    the workshop.
 
+## Getting Help
+
+Please feel free to contact either Thomas Sandmann or Steve Lianoglou if you
+need help with any of the topics covered during our workshop.
+
 ## The mbl2018 R package
 
 The `mbl2018` R package contains utility functions to help with:

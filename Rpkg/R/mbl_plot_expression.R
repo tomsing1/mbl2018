@@ -1,15 +1,31 @@
 #' Plot expression of a gene/feature
 #'
-#' This function returns a raw ggplot object that you can decorate
-#' further
+#' @description
+#' This is a conveniencde function that takes your expression object
+#' (`DGEList`, or "voomed" object) and plots the expression of one gene (`gene`)
+#' across the entire dataset grouped by the sample covariate specified by
+#' `group`. You can optionally color each point by a second sample covariate
+#' specified by the `color_by` parameter.
+#'
+#' Use the [mbl_tidy()] function combined with ggplot in order to make
+#' more complex vizualizations of your expression data.
 #'
 #' @export
+#' @seealso [mbl_tidy()]
+#'
 #' @param y the DGEList or voomed object your data is in
-#' @param gene the name of the gene identifier or symbol you want to plot
+#' @param gene the name of the gene identifier or symbol you want to plot.
 #' @param group what column in the $samples (or $targets, for vm) pheno table
 #'   to use to plot split expression across the x axis
 #' @param color_by name of column (like `group` param) to color your points by
 #' @return a ggplot object
+#'
+#' @examples
+#' y <- mbl_load_rnaseq("mouse", dataset = "mbl")
+#' mbl_plot_expression(y, gene = "Fxyd6", group = "group",
+#'                     color_by = "source")
+#' mbl_plot_expression(y, gene = "Fxyd6", group = "genotype",
+#'                     color_by = "source")
 mbl_plot_expression <- function(y, gene, group, color_by = NULL, ...) {
   stopifnot(is(y, "DGEList") || is(y, "EList"))
   assert_string(gene)
@@ -40,10 +56,6 @@ mbl_plot_expression <- function(y, gene, group, color_by = NULL, ...) {
   }
 
   gg
-}
-
-mbl_heatmap <- function(x, ...) {
-
 }
 
 # Utilify functions ============================================================

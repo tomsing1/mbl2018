@@ -4,7 +4,7 @@
 \alias{mbl_tidy}
 \alias{mbl_tidy.DGEList}
 \alias{mbl_tidy.EList}
-\title{Converts a DGEList into a tidy data.frame}
+\title{Converts your expression data into a (huge) "tidy" data.frame}
 \usage{
 mbl_tidy(x, ...)
 
@@ -16,6 +16,25 @@ mbl_tidy(x, ...)
 \arguments{
 \item{x}{The expression object to tidy}
 }
+\value{
+a (huge) data.frame with your expression data. Each row holds the
+  expression of one gene in one sample. The columns include all of the
+  gene- and sample-level metadata for the obseration.
+}
 \description{
-This makes downstream exploratory data analysis a bit easier.
+Use this function to extract all of your expression data into a data.frame
+that can be used with dplyr and ggplot to make arbitrariy informative
+plots.
+}
+\examples{
+# Make a boxplot with points of Fxyd6 in the cheek wildtype/knockout
+y <- mbl_load_rnaseq("mouse", dataset = "mbl")
+ydat <- mbl_tidy(y) # all of the rnaseq data
+gdat <- filter(ydat, source == "cheek", symbol == "Fxyd6")
+ggplot(gdat, aes(x = genotype, y = cpm)) +
+  geom_boxplot() +
+  geom_point()
+}
+\seealso{
+[mbl_plot_expression()]
 }

@@ -16,8 +16,9 @@ mbl_load_rnaseq(organism = c("mouse", "fly", "fish"), dataset = c("all",
 a DGEList of the RNAseq data.
 }
 \description{
-This loads curated DGEList objects for the RNA-seq datasets generated here
-for the specified organism.
+Curated datasets are stored on the `s3://mbl.data` Amazon S3 bucket.
+This function allows you to load the different datasets we generated for the
+model organisms studied here
 
 By default this will return a DGEList that has both the data generated
 prior to the course (the "may" dataset), and the data you generated here
@@ -26,4 +27,11 @@ that can be used to split the two datasets.
 
 Alternatively you can load on specific dataset or another by specifing
 the `dataset` parameter to the function.
+}
+\examples{
+# To load all of the mouse data:
+ym.all <- mbl_load_rnaseq("mouse", dataset = "all")
+
+# Load only the "mbl" mouse dataset
+ym.mbl <- mbl_load_rnaseq("mouse", dataset = "mbl")
 }

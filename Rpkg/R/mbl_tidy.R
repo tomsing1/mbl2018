@@ -1,9 +1,25 @@
-#' Converts a DGEList into a tidy data.frame
+#' Converts your expression data into a (huge) "tidy" data.frame
 #'
-#' This makes downstream exploratory data analysis a bit easier.
+#' Use this function to extract all of your expression data into a data.frame
+#' that can be used with dplyr and ggplot to make arbitrariy informative
+#' plots.
 #'
 #' @export
+#' @seealso [mbl_plot_expression()]
+#'
 #' @param x The expression object to tidy
+#' @return a (huge) data.frame with your expression data. Each row holds the
+#'   expression of one gene in one sample. The columns include all of the
+#'   gene- and sample-level metadata for the obseration.
+#'
+#' @examples
+#' # Make a boxplot with points of Fxyd6 in the cheek wildtype/knockout
+#' y <- mbl_load_rnaseq("mouse", dataset = "mbl")
+#' ydat <- mbl_tidy(y) # all of the rnaseq data
+#' gdat <- filter(ydat, source == "cheek", symbol == "Fxyd6")
+#' ggplot(gdat, aes(x = genotype, y = cpm)) +
+#'   geom_boxplot() +
+#'   geom_point()
 mbl_tidy <- function(x, ...) {
   UseMethod("mbl_tidy", x)
 }

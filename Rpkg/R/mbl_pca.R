@@ -1,11 +1,13 @@
 #' Perform a principle components analysis over a DGEList
 #'
+#' @description
 #' This function performs a PCA over a DGEList object, and returns the
 #' loadings (the position of the samples on the new axes/PCs), and the perecent
-#' of variance explained by each PC.
+#' of variance explained by each PC stored in the `$data` and `$percentVar`
+#' elements on the returned object.
 #'
-#' Refer to XXX section of the tutorial for more information.
-#' FIXME: Provide link to PCA section of tutorial
+#' The basic code to perform the PCA was and calculate the percentage of various
+#' explained per PC was taken from the `DESeq2::plotPCA` function.
 #'
 #' @export
 #' @rdname mbl_pca
@@ -20,6 +22,12 @@
 #'   shifted to be zero centered. Alternately, a vector of length equal the
 #'   number of columns of x can be supplied. The value is passed to scale.
 #' @return a list with `$loadings`, `$percentVar`, ...
+#'
+#' @examples
+#' ym <- mbl_load_rnaseq("mouse", "may")
+#' pca <- mbl_pca(ym)
+#' ggplot(pca$data, aes(PC1, PC2, color = genotype, shape = source)) +
+#'   geom_point()
 mbl_pca <- function(x, ntop = 500, center = TRUE, scale. = FALSE, ...,
                     pcs = 1:10) {
   UseMethod("mbl_pca", x)
